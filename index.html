@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>JS Technology</title>
-  <p>La calidad está en nuestro servicio</p>
-    
   <style>
     * {
       margin: 0;
@@ -12,14 +10,12 @@
       box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
     }
-
     body {
       display: flex;
       min-height: 100vh;
       background: #f0f0f0;
       overflow-x: hidden;
     }
-
     .sidebar {
       width: 260px;
       background: #1b1b2f;
@@ -29,13 +25,11 @@
       height: 100%;
       overflow-y: auto;
     }
-
     .logo-container {
       display: flex;
       align-items: center;
       margin-bottom: 5px;
     }
-
     .logo-img {
       width: 28px;
       height: 28px;
@@ -44,13 +38,11 @@
       background-position: center;
       margin-right: 8px;
     }
-
     .sidebar h2 {
       font-size: 24px;
       color: #00aaff;
       display: inline-block;
     }
-
     .refran {
       font-size: 10px;
       color: white;
@@ -58,11 +50,9 @@
       margin-left: 36px;
       margin-bottom: 30px;
     }
-
     .menu-item {
       margin-bottom: 10px;
     }
-
     .menu-button {
       width: 100%;
       text-align: left;
@@ -74,17 +64,14 @@
       transition: background 0.3s;
       border-radius: 4px;
     }
-
     .menu-button:hover {
       background: #3f3f5f;
     }
-
     .submenu {
       display: none;
       margin-left: 10px;
       margin-top: 5px;
     }
-
     .submenu button {
       background: #3c3c52;
       margin-top: 5px;
@@ -95,17 +82,14 @@
       text-align: left;
       border-radius: 4px;
     }
-
     .submenu button:hover {
       background: #555571;
     }
-
     .main {
-      margin-left: 30px;
-      padding: 30px 30px 20px 10px; 
+      margin-left: 280px;
+      padding: 30px 30px 20px 10px;
       flex: 1;
     }
-
     .section {
       background: white;
       padding: 20px;
@@ -113,12 +97,10 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       animation: fadeIn 0.5s ease;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     .product-card {
       width: 200px;
       display: inline-block;
@@ -128,14 +110,12 @@
       border-radius: 8px;
       border: 1px solid #ccc;
     }
-
     .product-card img {
       width: 100%;
       height: 120px;
       object-fit: cover;
       border-radius: 6px;
     }
-
     .whatsapp {
       position: fixed;
       bottom: 20px;
@@ -150,7 +130,6 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       z-index: 999;
     }
-
     .whatsapp-icon {
       width: 30px;
       height: 30px;
@@ -158,12 +137,10 @@
       background-size: cover;
       background-position: center;
     }
-
     textarea {
       width: 100%;
       margin-top: 10px;
     }
-
     .enviar-btn {
       margin-top: 10px;
       padding: 8px 12px;
@@ -173,24 +150,20 @@
       border-radius: 5px;
       cursor: pointer;
     }
-
     .enviar-btn:hover {
       background-color: #0077cc;
     }
-
     ul {
       margin-left: 20px;
       margin-top: 10px;
       margin-bottom: 10px;
     }
-
     ul li {
       margin-bottom: 5px;
     }
   </style>
 </head>
 <body>
-
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="logo-container">
@@ -198,7 +171,6 @@
       <h2>JS Technology</h2>
     </div>
     <div class="refran">La calidad está en nuestro servicio</div>
-
     <!-- Servicio Técnico -->
     <div class="menu-item">
       <button class="menu-button" onclick="toggleSubmenu('st')" ontouchstart="toggleSubmenu('st')">🛠 Servicio Técnico</button>
@@ -211,208 +183,283 @@
         <button onclick="showContent('Otro')" ontouchstart="showContent('Otro')">🔍 ¿Buscas otro servicio?</button>
       </div>
     </div>
-
-   <!-- Cámaras -->
-<div class="menu-item">
-  <button class="menu-button" onclick="toggleSubmenu('cs')" ontouchstart="toggleSubmenu('cs')">📷 Cámaras de Seguridad</button>
-  <div class="submenu" id="cs">
-    <button onclick="showContent('CamaraHogar')" ontouchstart="showContent('CamaraHogar')">🏠 Hogar</button>
-    <button onclick="showContent('CamaraHD')" ontouchstart="showContent('CamaraHD')">🏢 HD Empresa</button>
-    <button onclick="showContent('KitCamaras')" ontouchstart="showContent('KitCamaras')">🎥 Kit 4 Cámaras </button>
+    <!-- Cámaras -->
+    <div class="menu-item">
+      <button class="menu-button" onclick="toggleSubmenu('cs')" ontouchstart="toggleSubmenu('cs')">📷 Cámaras de Seguridad</button>
+      <div class="submenu" id="cs">
+        <button onclick="showContent('CamaraHogar')" ontouchstart="showContent('CamaraHogar')">🏠 Hogar</button>
+        <button onclick="showContent('CamaraHD')" ontouchstart="showContent('CamaraHD')">🏢 HD Empresa</button>
+        <button onclick="showContent('KitCamaras')" ontouchstart="showContent('KitCamaras')">🎥 Kit 4 Cámaras </button>
+      </div>
+    </div>
+    <!-- Tienda -->
+    <div class="menu-item">
+      <button class="menu-button" onclick="showContent('Tienda')" ontouchstart="showContent('Tienda')">🛒 Tienda Online</button>
+    </div>
   </div>
-</div>
-
-<!-- Tienda -->
-<div class="menu-item">
-  <button class="menu-button" onclick="showContent('Tienda')" ontouchstart="showContent('Tienda')">🛒 Tienda Online</button>
-</div>
-</div>
-
-<!-- Main -->
-<div class="main">
-  <div class="section" id="content">
-    <h3>Bienvenido a JS Technology</h3>
-    <p>Selecciona una opción del menú para ver más detalles.</p>
+  <!-- Main -->
+  <div class="main">
+    <div class="section" id="content">
+      <h3>Bienvenido a JS Technology</h3>
+      <p>Selecciona una opción del menú para ver más detalles.</p>
+    </div>
   </div>
-</div>
-
-<!-- WhatsApp -->
-<a class="whatsapp" href="https://wa.me/573244973675" target="_blank">
-  <div class="whatsapp-icon"></div>
-</a>
-
-<!-- Scripts -->
-<script>
-  function toggleSubmenu(id) {
-    const submenu = document.getElementById(id);
-    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-  }
-
-  function attachDualEvent(id, handler) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.addEventListener('click', handler);
-      element.addEventListener('touchstart', handler);
+  <!-- WhatsApp -->
+  <a class="whatsapp" href="https://wa.me/573244973675" target="_blank">
+    <div class="whatsapp-icon"></div>
+  </a>
+  <!-- Scripts -->
+  <script>
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById(id);
+      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
     }
-  }
+    function attachDualEvent(id, handler) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.addEventListener('click', handler);
+        element.addEventListener('touchstart', handler);
+      }
+    }
+   function showContent(option) {
+  const content = document.getElementById('content');
+  let servicio = '';
+  let texto = '';
+  let mensaje = '';
 
-  function showContent(option) {
-    const content = document.getElementById('content');
-    let servicio = '';
-    let texto = '';
-    let mensaje = '';
+switch(option) {
+  case 'PC':
+    servicio = 'Reparación de PC';
+    texto = `
+      <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 24px;">
+        <img src="ServicioTecnico/ReparacionPC.png" alt="Reparación de PC" style="width: 110px; height: 110px; border-radius: 14px; box-shadow: 0 4px 16px #94a3b8;">
+        <h2 style="color: #1e293b; font-weight: 800; font-size: 2.1rem;">Reparación de PC</h2>
+      </div>
+      <p class="slide-up" style="font-size: 1.15rem;">En nuestro servicio de <strong>Reparación de PC</strong> te ofrecemos una solución integral para cualquier problema que pueda estar afectando el funcionamiento de tu computador, ya sea de escritorio o portátil.</p>
+      <div style="display: flex; gap: 18px; margin: 18px 0;">
+        <img src="ServicioTecnico/Hardware.png" alt="Hardware" style="width: 80px; border-radius: 12px;">
+        <img src="ServicioTecnico/Windows.png" alt="Sistema Operativo" style="width: 80px; border-radius: 12px;">
+        <img src="ServicioTecnico/Virus.png" alt="Virus" style="width: 80px; border-radius: 12px;">
+      </div>
+      <ul style="color: #334155; font-size: 1.07rem;">
+        <li>Revisión y prueba de componentes físicos (disco duro, memoria RAM, placa madre, procesador, fuente de poder, entre otros).</li>
+        <li>Verificación y solución de fallos en el sistema operativo (Windows, Linux, etc.).</li>
+        <li>Eliminación de virus, malware y software no deseado que afecte el rendimiento del equipo.</li>
+        <li>Reparación o reinstalación del sistema operativo si es necesario.</li>
+        <li>Limpieza interna del equipo para evitar sobrecalentamientos.</li>
+        <li>Optimización general del sistema para mejorar velocidad y estabilidad.</li>
+      </ul>
+      <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
+        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span style="font-size:1.25rem;color:#0ea5e9;"><strong>Precio:</strong> $80.000 COP</span>
+      </div>
+      <a 
+        href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20reparaci%C3%B3n%20de%20PC."
+        class="adquirir-btn pulse"
+        style="background: linear-gradient(90deg, #06b6d4 60%, #0ea5e9 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #38bdf8;">
+        Quiero adquirir este servicio
+      </a>
+      <p style="font-size: 1.02rem; color: #64748b; margin-top: 36px;">* Incluye diagnóstico, reparación básica y pruebas funcionales. Si se requieren repuestos, se notificará previamente.</p>
+    `;
+    break;
 
-    switch(option) {
-        case 'PC':
-          servicio = 'Reparación de PC';
-          texto = `
-            <p>En nuestro servicio de <strong>Reparación de PC</strong> te ofrecemos una solución integral para cualquier problema que pueda estar afectando el funcionamiento de tu computador, ya sea de escritorio o portátil.</p>
-            <p>Realizamos un <strong>diagnóstico completo</strong> de hardware y software para identificar la causa raíz de la falla y ofrecerte la mejor alternativa de reparación. Este servicio incluye:</p>
-            <ul>
-              <li>Revisión y prueba de componentes físicos (disco duro, memoria RAM, placa madre, procesador, fuente de poder, entre otros).</li>
-              <li>Verificación y solución de fallos en el sistema operativo (Windows, Linux, etc.).</li>
-              <li>Eliminación de virus, malware y software no deseado que afecte el rendimiento del equipo.</li>
-              <li>Reparación o reinstalación del sistema operativo si es necesario.</li>
-              <li>Limpieza interna del equipo para evitar sobrecalentamientos.</li>
-              <li>Optimización general del sistema para mejorar velocidad y estabilidad.</li>
-            </ul>
-            <p><strong>Precio:</strong> $80.000 COP (incluye diagnóstico, reparación básica y pruebas funcionales). Si se requieren repuestos, se notificará previamente.</p>
-          `;
-          mensaje = 'Me interesa el servicio de reparación de PC.';
-          break;
+  case 'Laptop':
+    servicio = 'Servicio a Laptops';
+    texto = `
+      <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 24px;">
+        <img src="ServicioTecnico/Laptop.png" alt="Servicio a Laptops" style="width: 110px; height: 110px; border-radius: 14px; box-shadow: 0 4px 16px #94a3b8;">
+        <h2 style="color: #0f172a; font-weight: 800; font-size: 2.1rem;">Servicio a Laptops</h2>
+      </div>
+      <p class="slide-up" style="font-size: 1.15rem;">En <strong>JS Technology</strong>, entendemos que tu laptop es una herramienta esencial para tu vida diaria, ya sea para estudiar, trabajar o mantenerte conectado con el mundo. Por eso, ofrecemos un <strong>servicio técnico integral para laptops</strong> que combina calidad, eficiencia y atención personalizada a un precio accesible.</p>
+      <div style="display: flex; gap: 18px; margin: 18px 0;">
+        <img src="ServicioTecnico/Pantalla.png" alt="Reparación pantalla" style="width: 80px; border-radius: 12px;">
+        <img src="ServicioTecnico/Teclado.png" alt="Teclado" style="width: 80px; border-radius: 12px;">
+        <img src="ServicioTecnico/Bateria.png" alt="Batería" style="width: 80px; border-radius: 12px;">
+      </div>
+      <ul style="color: #334155; font-size: 1.07rem;">
+        <li><strong>Reparación de pantallas:</strong> Reemplazo de pantallas dañadas o con fallos de visualización, utilizando repuestos de alta calidad.</li>
+        <li><strong>Reemplazo de teclados:</strong> Sustitución de teclas o teclados completos que no funcionan correctamente.</li>
+        <li><strong>Cambio de baterías:</strong> Sustitución de baterías agotadas por modelos nuevos y de larga duración.</li>
+        <li><strong>Limpieza interna y mantenimiento preventivo:</strong> Eliminación de polvo, revisión de ventiladores y aplicación de pasta térmica para evitar sobrecalentamientos.</li>
+        <li><strong>Diagnóstico completo del sistema:</strong> Evaluación de hardware y software para identificar fallas y ofrecer soluciones efectivas.</li>
+        <li><strong>Asesoría técnica personalizada:</strong> Te informamos sobre el estado general de tu equipo y brindamos recomendaciones para su cuidado.</li>
+      </ul>
+      <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
+        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span style="font-size:1.25rem;color:#0ea5e9;"><strong>Precio:</strong> $100.000 COP</span>
+      </div>
+      <a 
+        href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20reparaci%C3%B3n%20de%20Laptop."
+        class="adquirir-btn pulse"
+        style="background: linear-gradient(90deg, #14b8a6 60%, #06b6d4 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #2dd4bf;">
+        Quiero adquirir este servicio
+      </a>
+      <p style="font-size: 1.02rem; color: #64748b; margin-top: 36px;">* Incluye diagnóstico, mano de obra, limpieza interna y la reparación o reemplazo de un componente: pantalla, teclado o batería. En caso de necesitar piezas adicionales, se presentará un presupuesto previo sin compromiso.</p>
+    `;
+    break;
 
-      case 'Laptop':
-  servicio = 'Servicio a Laptops';
-  texto = `
-    <p>En <strong>JS Technology</strong>, entendemos que tu laptop es una herramienta esencial para tu vida diaria, ya sea para estudiar, trabajar o mantenerte conectado con el mundo. Por eso, ofrecemos un <strong>servicio técnico integral para laptops</strong> que combina calidad, eficiencia y atención personalizada a un precio accesible.</p>
-    <p><strong>¿Qué incluye nuestro servicio?</strong></p>
-    <ul>
-      <li><strong>Reparación de pantallas:</strong> Reemplazo de pantallas dañadas o con fallos de visualización, utilizando repuestos de alta calidad.</li>
-      <li><strong>Reemplazo de teclados:</strong> Sustitución de teclas o teclados completos que no funcionan correctamente.</li>
-      <li><strong>Cambio de baterías:</strong> Sustitución de baterías agotadas por modelos nuevos y de larga duración.</li>
-      <li><strong>Limpieza interna y mantenimiento preventivo:</strong> Eliminación de polvo, revisión de ventiladores y aplicación de pasta térmica para evitar sobrecalentamientos.</li>
-      <li><strong>Diagnóstico completo del sistema:</strong> Evaluación de hardware y software para identificar fallas y ofrecer soluciones efectivas.</li>
-      <li><strong>Asesoría técnica personalizada:</strong> Te informamos sobre el estado general de tu equipo y brindamos recomendaciones para su cuidado.</li>
-    </ul>
-    <p>Contamos con técnicos capacitados, herramientas especializadas y repuestos de alta compatibilidad para trabajar con todas las marcas: HP, Dell, Lenovo, Asus, Acer, Apple, entre otras. Además, todas nuestras reparaciones incluyen garantía.</p>
-    <p><strong>Precio:</strong> $100.000 COP (incluye diagnóstico, mano de obra, limpieza interna y la reparación o reemplazo de un componente: pantalla, teclado o batería). En caso de necesitar piezas adicionales, se presentará un presupuesto previo sin compromiso.</p>
-  `;
-  mensaje = 'Me interesa el servicio de reparación de Laptop.';
-  break;
+  case 'Formateo':
+    servicio = 'Formateo de PC';
+    texto = `
+      <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 24px;">
+        <img src="ServicioTecnico/Formateo.png" alt="Formateo de PC" style="width: 110px; height: 110px; border-radius: 14px; box-shadow: 0 4px 16px #fbbf24;">
+        <h2 style="color: #78350f; font-weight: 800; font-size: 2.1rem;">Formateo de PC</h2>
+      </div>
+      <p class="slide-up" style="font-size: 1.15rem;">¿Tu computador está lento, presenta errores frecuentes o necesita una limpieza total del sistema? En <strong>JS Technology</strong> ofrecemos un <strong>formateo profesional de PC</strong> que garantiza velocidad, estabilidad y seguridad para tu equipo, cuidando al máximo tu información personal.</p>
+      <div style="display: flex; gap: 18px; margin: 18px 0;">
+        <img src="ServicioTecnico/Backup.png" alt="Respaldo" style="width: 80px; border-radius: 12px;">
+        <img src="ServicioTecnico/ReparacionPC.png" alt="Reinstalación" style="width: 80px; border-radius: 12px;">
+      </div>
+      <ul style="color: #92400e; font-size: 1.07rem;">
+        <li><strong>Respaldo de información personal:</strong> Hacemos copia segura de documentos, fotos, videos y demás archivos importantes antes de formatear.</li>
+        <li><strong>Formateo completo del disco duro:</strong> Eliminación total de archivos dañinos, virus, software innecesario y residuos del sistema.</li>
+        <li><strong>Reinstalación del sistema operativo:</strong> Instalamos la versión original o actualizada del sistema operativo, según disponibilidad y requerimientos del cliente.</li>
+        <li><strong>Instalación de drivers:</strong> Configuración de todos los controladores esenciales para un funcionamiento completo del equipo (audio, video, red, etc.).</li>
+        <li><strong>Optimización del sistema:</strong> Ajustes personalizados para mejorar velocidad, reducir procesos innecesarios y lograr un arranque más rápido.</li>
+        <li><strong>Instalación de software básico:</strong> Navegador web, suite ofimática, reproductores multimedia, antivirus gratuito y otras herramientas útiles, según tus necesidades.</li>
+        <li><strong>Pruebas finales de rendimiento:</strong> Revisión completa del equipo para asegurar un funcionamiento fluido antes de la entrega.</li>
+      </ul>
+      <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
+        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span style="font-size:1.25rem;color:#f59e42;"><strong>Precio:</strong> $70.000 COP</span>
+      </div>
+      <a 
+        href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20formateo."
+        class="adquirir-btn pulse"
+        style="background: linear-gradient(90deg, #fbbf24 60%, #a3e635 100%); color: #78350f; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #fde68a;">
+        Quiero adquirir este servicio
+      </a>
+      <p style="font-size: 1.02rem; color: #b45309; margin-top: 36px;">* Incluye respaldo, formateo, reinstalación de sistema operativo, drivers y software básico. Si se requieren licencias específicas o respaldo de más de 100 GB, se cotizará por separado.</p>
+    `;
+    break;
 
-       case 'Formateo':
-  servicio = 'Formateo de PC';
-  texto = `
-    <p>¿Tu computador está lento, presenta errores frecuentes o necesita una limpieza total del sistema? En <strong>JS Technology</strong> ofrecemos un <strong>formateo profesional de PC</strong> que garantiza velocidad, estabilidad y seguridad para tu equipo, cuidando al máximo tu información personal.</p>
-    <p><strong>¿Qué incluye nuestro servicio de formateo?</strong></p>
-    <ul>
-      <li><strong>Respaldo de información personal:</strong> Hacemos copia segura de documentos, fotos, videos y demás archivos importantes antes de formatear.</li>
-      <li><strong>Formateo completo del disco duro:</strong> Eliminación total de archivos dañinos, virus, software innecesario y residuos del sistema.</li>
-      <li><strong>Reinstalación del sistema operativo:</strong> Instalamos la versión original o actualizada del sistema operativo, según disponibilidad y requerimientos del cliente.</li>
-      <li><strong>Instalación de drivers:</strong> Configuración de todos los controladores esenciales para un funcionamiento completo del equipo (audio, video, red, etc.).</li>
-      <li><strong>Optimización del sistema:</strong> Ajustes personalizados para mejorar velocidad, reducir procesos innecesarios y lograr un arranque más rápido.</li>
-      <li><strong>Instalación de software básico:</strong> Navegador web, suite ofimática, reproductores multimedia, antivirus gratuito y otras herramientas útiles, según tus necesidades.</li>
-      <li><strong>Pruebas finales de rendimiento:</strong> Revisión completa del equipo para asegurar un funcionamiento fluido antes de la entrega.</li>
-    </ul>
-    <p>Contamos con técnicos especializados que realizan cada proceso con total seguridad, eficiencia y garantía sobre el servicio prestado.</p>
-    <p><strong>Precio:</strong> $70.000 COP (incluye respaldo, formateo, reinstalación de sistema operativo, drivers y software básico). Si se requieren licencias específicas o respaldo de más de 100 GB, se cotizará por separado.</p>
-  `;
-  mensaje = 'Me interesa el servicio de formateo.';
-  break;
+  case 'Software':
+    servicio = 'Instalación de Software';
+    texto = `
+      <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 24px;">
+        <img src="ServicioTecnico/Software.png" alt="Instalación de Software" style="width: 110px; height: 110px; border-radius: 14px; box-shadow: 0 4px 16px #a78bfa;">
+        <h2 style="color: #4c1d95; font-weight: 800; font-size: 2.1rem;">Instalación de Software</h2>
+      </div>
+      <p class="slide-up" style="font-size: 1.15rem;">En <strong>JS Technology</strong>, ofrecemos un servicio profesional de <strong>instalación de software</strong> para que tu computador esté equipado con las herramientas necesarias para trabajar, estudiar o navegar con total seguridad y eficiencia.</p>
+      <div style="display: flex; gap: 18px; margin: 18px 0;">
+        <img src="ServicioTecnico/Oficce.png" alt="Office" style="width: 80px; border-radius: 12px;">
+        <img src="ServicioTecnico/Antivirus.png" alt="Antivirus" style="width: 80px; border-radius: 12px;">
+        <img src="ServicioTecnico/Multimedia.png" alt="Multimedia" style="width: 80px; border-radius: 12px;">
+      </div>
+      <ul style="color: #4c1d95; font-size: 1.07rem;">
+        <li><strong>Instalación de sistemas operativos:</strong> Windows 7, 10, 11 o distribuciones de Linux, según la compatibilidad del equipo y la preferencia del cliente.</li>
+        <li><strong>Instalación de Microsoft Office y suites ofimáticas:</strong> Word, Excel, PowerPoint, Outlook o alternativas como LibreOffice y WPS Office.</li>
+        <li><strong>Instalación de antivirus:</strong> Protección esencial con antivirus gratuitos o de pago (el cliente debe contar con licencia si aplica).</li>
+        <li><strong>Instalación de software adicional:</strong> Navegadores, reproductores multimedia, gestores de PDF, programas de edición, herramientas de compresión, entre otros.</li>
+        <li><strong>Configuración básica:</strong> Accesos directos, ajustes personalizados, idioma, región y actualizaciones aplicadas.</li>
+        <li><strong>Verificación de funcionamiento:</strong> Comprobación de que todos los programas estén correctamente instalados, activados y operativos.</li>
+      </ul>
+      <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
+        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span style="font-size:1.25rem;color:#6366f1;"><strong>Precio:</strong> $60.000 COP</span>
+      </div>
+      <a 
+        href="https://wa.me/573244973675?text=Me%20interesa%20la%20instalaci%C3%B3n%20de%20software."
+        class="adquirir-btn pulse"
+        style="background: linear-gradient(90deg, #6366f1 60%, #a21caf 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #d1fae5;">
+        Quiero adquirir este servicio
+      </a>
+      <p style="font-size: 1.02rem; color: #6d28d9; margin-top: 36px;">* Incluye instalación de hasta 10 programas esenciales, configuración básica y verificación completa del sistema. Programas adicionales o especializados pueden tener un costo adicional previo acuerdo.</p>
+    `;
+    break;
 
-        case 'Software':
-  servicio = 'Instalación de Software';
-  texto = `
-    <p>En <strong>JS Technology</strong>, ofrecemos un servicio profesional de <strong>instalación de software</strong> para que tu computador esté equipado con las herramientas necesarias para trabajar, estudiar o navegar con total seguridad y eficiencia.</p>
-    <p><strong>¿Qué incluye nuestro servicio?</strong></p>
-    <ul>
-      <li><strong>Instalación de sistemas operativos:</strong> Windows 7, 10, 11 o distribuciones de Linux, según la compatibilidad del equipo y la preferencia del cliente.</li>
-      <li><strong>Instalación de Microsoft Office y suites ofimáticas:</strong> Word, Excel, PowerPoint, Outlook o alternativas como LibreOffice y WPS Office.</li>
-      <li><strong>Instalación de antivirus:</strong> Protección esencial con antivirus gratuitos o de pago (el cliente debe contar con licencia si aplica).</li>
-      <li><strong>Instalación de software adicional:</strong> Navegadores, reproductores multimedia, gestores de PDF, programas de edición, herramientas de compresión, entre otros.</li>
-      <li><strong>Configuración básica:</strong> Accesos directos, ajustes personalizados, idioma, región y actualizaciones aplicadas.</li>
-      <li><strong>Verificación de funcionamiento:</strong> Comprobación de que todos los programas estén correctamente instalados, activados y operativos.</li>
-    </ul>
-    <p>Nuestros técnicos están capacitados para instalar software en una amplia variedad de equipos, garantizando compatibilidad, funcionalidad y estabilidad.</p>
-    <p><strong>Precio:</strong> $60.000 COP (incluye instalación de hasta 10 programas esenciales, configuración básica y verificación completa del sistema). Programas adicionales o especializados pueden tener un costo adicional previo acuerdo.</p>
-  `;
-  mensaje = 'Me interesa la instalación de software.';
-  break;
+  case 'Optimizacion':
+    servicio = 'Optimización';
+    texto = `
+      <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 24px;">
+        <img src="ServicioTecnico/Optimizacion.png" alt="Optimización" style="width: 110px; height: 110px; border-radius: 14px; box-shadow: 0 4px 16px #f472b6;">
+        <h2 style="color: #be185d; font-weight: 800; font-size: 2.1rem;">Optimización</h2>
+      </div>
+      <p class="slide-up" style="font-size: 1.15rem;">¿Tu computador se ha vuelto lento o tarda en ejecutar tareas básicas? En <strong>JS Technology</strong> te ofrecemos un servicio completo de <strong>optimización de equipos</strong> para mejorar significativamente el rendimiento sin perder tus archivos ni programas.</p>
+      <div style="display: flex; gap: 18px; margin: 18px 0;">
+        <img src="ServicioTecnico/Performance.png" alt="Rendimiento" style="width: 80px; border-radius: 12px;">
+        <img src="ServicioTecnico/Malware.png" alt="Malware" style="width: 80px; border-radius: 12px;">
+        <img src="ServicioTecnico/Hardware2.png" alt="Check hardware" style="width: 80px; border-radius: 12px;">
+      </div>
+      <ul style="color: #be185d; font-size: 1.07rem;">
+        <li><strong>Limpieza del sistema operativo:</strong> Eliminamos archivos temporales, residuos de programas y registros innecesarios que afectan la velocidad del equipo.</li>
+        <li><strong>Optimización del inicio del sistema:</strong> Configuramos los programas que se ejecutan al encender el equipo para reducir el tiempo de arranque.</li>
+        <li><strong>Desinstalación de software innecesario:</strong> Identificamos y eliminamos programas que consumen recursos y no usas.</li>
+        <li><strong>Ajustes de rendimiento:</strong> Aplicamos configuraciones que optimizan el uso de memoria, disco y CPU.</li>
+        <li><strong>Eliminación de malware y adware:</strong> Escaneamos el sistema en busca de virus, spyware o software que disminuya el rendimiento.</li>
+        <li><strong>Optimización de navegadores:</strong> Limpiamos extensiones, cookies y archivos acumulados para mejorar la navegación web.</li>
+        <li><strong>Revisión de hardware:</strong> Verificamos el estado del disco duro, RAM y temperatura para descartar problemas físicos.</li>
+      </ul>
+      <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
+        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span style="font-size:1.25rem;color:#f472b6;"><strong>Precio:</strong> $50.000 COP</span>
+      </div>
+      <a 
+        href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20optimizaci%C3%B3n."
+        class="adquirir-btn pulse"
+        style="background: linear-gradient(90deg, #f472b6 60%, #fcd34d 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #fbcfe8;">
+        Quiero adquirir este servicio
+      </a>
+      <p style="font-size: 1.02rem; color: #e11d48; margin-top: 36px;">* Incluye diagnóstico, limpieza del sistema, optimización del arranque, eliminación de amenazas y ajustes de rendimiento. Si se detecta que el equipo requiere un servicio mayor como formateo, se notificará previamente.</p>
+    `;
+    break;
 
-      case 'Optimizacion':
-  servicio = 'Optimización';
-  texto = `
-    <p>¿Tu computador se ha vuelto lento o tarda en ejecutar tareas básicas? En <strong>JS Technology</strong> te ofrecemos un servicio completo de <strong>optimización de equipos</strong> para mejorar significativamente el rendimiento sin perder tus archivos ni programas.</p>
-    <p><strong>¿Qué incluye nuestro servicio?</strong></p>
-    <ul>
-      <li><strong>Limpieza del sistema operativo:</strong> Eliminamos archivos temporales, residuos de programas y registros innecesarios que afectan la velocidad del equipo.</li>
-      <li><strong>Optimización del inicio del sistema:</strong> Configuramos los programas que se ejecutan al encender el equipo para reducir el tiempo de arranque.</li>
-      <li><strong>Desinstalación de software innecesario:</strong> Identificamos y eliminamos programas que consumen recursos y no usas.</li>
-      <li><strong>Ajustes de rendimiento:</strong> Aplicamos configuraciones que optimizan el uso de memoria, disco y CPU.</li>
-      <li><strong>Eliminación de malware y adware:</strong> Escaneamos el sistema en busca de virus, spyware o software que disminuya el rendimiento.</li>
-      <li><strong>Optimización de navegadores:</strong> Limpiamos extensiones, cookies y archivos acumulados para mejorar la navegación web.</li>
-      <li><strong>Revisión de hardware:</strong> Verificamos el estado del disco duro, RAM y temperatura para descartar problemas físicos.</li>
-    </ul>
-    <p>Este servicio es ideal para quienes desean mejorar la velocidad del equipo sin formatear ni perder información. Es rápido, efectivo y con resultados visibles desde el primer uso.</p>
-    <p><strong>Precio:</strong> $50.000 COP (incluye diagnóstico, limpieza del sistema, optimización del arranque, eliminación de amenazas y ajustes de rendimiento). Si se detecta que el equipo requiere un servicio mayor como formateo, se notificará previamente.</p>
-  `;
-  mensaje = 'Me interesa el servicio de optimización.';
-  break;
+    case 'Otro':
+      content.innerHTML =
+        `<h3 style="color: #0ea5e9; font-weight: bold;">¿Qué servicio necesitas?</h3>
+         <p style="color: #334155;">Describe lo que necesitas y lo enviaremos por WhatsApp.</p>
+         <textarea id="userRequest" rows="4" placeholder="Escribe aquí..." style="width:100%; border-radius: 10px; border: 1px solid #bae6fd; padding: 12px; resize: vertical;"></textarea>
+         <button class="enviar-btn pulse" onclick="enviarWhatsApp()" ontouchstart="enviarWhatsApp()" style="margin-top: 12px; background: linear-gradient(90deg, #06b6d4 60%, #0ea5e9 100%); color: #fff; padding: 12px 22px; border-radius: 10px; font-weight: bold; font-size: 1rem; box-shadow: 0 2px 10px #38bdf8;">Enviar</button>`;
+      return;
 
-        case 'Otro':
-        content.innerHTML =
-          `<h3>¿Qué servicio necesitas?</h3>
-           <p>Describe lo que necesitas y lo enviaremos por WhatsApp.</p>
-           <textarea id="userRequest" rows="4" placeholder="Escribe aquí..."></textarea>
-           <button class="enviar-btn" onclick="enviarWhatsApp()" ontouchstart="enviarWhatsApp()">Enviar</button>`;
-        return;
-      case 'CamaraHogar':
-        servicio = 'Cámara para Hogar';
-        texto = `
-          <p>La <strong>cámara para hogar</strong> es una opción asequible y funcional para quienes desean monitorear su vivienda de forma sencilla y segura.</p>
-          <ul>
-            <li>Resolución HD 720p.</li>
-            <li>Conectividad Wi-Fi para monitoreo desde el celular.</li>
-            <li>Visión nocturna infrarroja.</li>
-            <li>Detección de movimiento y alertas al teléfono.</li>
-            <li>Grabación en tarjeta SD o en la nube.</li>
-          </ul>
-          <p><strong>Precio:</strong> $150.000 COP + $50.000 COP por instalación.</p>
-        `;
-        mensaje = 'Me interesa instalar cámara para hogar.';
-        break;
+    case 'CamaraHogar':
+      servicio = 'Cámara para Hogar';
+      texto = `
+        <p>La <strong>cámara para hogar</strong> es una opción asequible y funcional para quienes desean monitorear su vivienda de forma sencilla y segura.</p>
+        <ul>
+          <li>Resolución HD 720p.</li>
+          <li>Conectividad Wi-Fi para monitoreo desde el celular.</li>
+          <li>Visión nocturna infrarroja.</li>
+          <li>Detección de movimiento y alertas al teléfono.</li>
+          <li>Grabación en tarjeta SD o en la nube.</li>
+        </ul>
+        <p><strong>Precio:</strong> $150.000 COP + $50.000 COP por instalación.</p>
+        <a href="https://wa.me/573244973675?text=Me%20interesa%20instalar%20c%C3%A1mara%20para%20hogar." class="adquirir-btn pulse" style="background: linear-gradient(90deg, #25d366 60%, #128c7e 100%); color: #fff; padding: 12px 22px; border-radius: 10px; font-weight: bold; font-size: 1rem; text-decoration: none; box-shadow: 0 2px 10px #38bdf8;">Quiero adquirir este servicio</a>
+      `;
+      break;
 
-      case 'CamaraHD':
-        servicio = 'Cámara HD para Empresa';
-        texto = `
-          <p>La <strong>cámara HD para empresas</strong> está diseñada para entornos comerciales y oficinas que requieren monitoreo de alta calidad y confiabilidad.</p>
-          <ul>
-            <li>Resolución Full HD 1080p.</li>
-            <li>Ángulo de visión amplio y zoom digital.</li>
-            <li>Grabación continua en DVR/NVR o en la nube.</li>
-            <li>Visión nocturna profesional hasta 30 metros.</li>
-            <li>Detección de movimiento con notificaciones.</li>
-          </ul>
-          <p><strong>Precio:</strong> $350.000 COP + $100.000 COP por instalación.</p>
-        `;
-        mensaje = 'Me interesa instalar cámara HD para empresa.';
-        break;
+    case 'CamaraHD':
+      servicio = 'Cámara HD para Empresa';
+      texto = `
+        <p>La <strong>cámara HD para empresas</strong> está diseñada para entornos comerciales y oficinas que requieren monitoreo de alta calidad y confiabilidad.</p>
+        <ul>
+          <li>Resolución Full HD 1080p.</li>
+          <li>Ángulo de visión amplio y zoom digital.</li>
+          <li>Grabación continua en DVR/NVR o en la nube.</li>
+          <li>Visión nocturna profesional hasta 30 metros.</li>
+          <li>Detección de movimiento con notificaciones.</li>
+        </ul>
+        <p><strong>Precio:</strong> $350.000 COP + $100.000 COP por instalación.</p>
+        <a href="https://wa.me/573244973675?text=Me%20interesa%20instalar%20c%C3%A1mara%20HD%20para%20empresa." class="adquirir-btn pulse" style="background: linear-gradient(90deg, #25d366 60%, #128c7e 100%); color: #fff; padding: 12px 22px; border-radius: 10px; font-weight: bold; font-size: 1rem; text-decoration: none; box-shadow: 0 2px 10px #38bdf8;">Quiero adquirir este servicio</a>
+      `;
+      break;
 
-      case 'KitCamaras':
-        servicio = 'Kit de 4 Cámaras';
-        texto = `
-          <p>El <strong>kit de 4 cámaras</strong> es ideal para cubrir múltiples zonas de una propiedad con un sistema completo y profesional.</p>
-          <ul>
-            <li>Incluye 4 cámaras HD con visión nocturna.</li>
-            <li>DVR de 4 canales con disco duro.</li>
-            <li>Visualización remota desde celular o PC.</li>
-            <li>Incluye todos los cables y accesorios.</li>
-            <li>Instalación profesional incluida.</li>
-          </ul>
-          <p><strong>Precio:</strong> $1.200.000 COP todo incluido.</p>
-        `;
-        mensaje = 'Me interesa adquirir el Kit de 4 cámaras.';
-        break;
+    case 'KitCamaras':
+      servicio = 'Kit de 4 Cámaras';
+      texto = `
+        <p>El <strong>kit de 4 cámaras</strong> es ideal para cubrir múltiples zonas de una propiedad con un sistema completo y profesional.</p>
+        <ul>
+          <li>Incluye 4 cámaras HD con visión nocturna.</li>
+          <li>DVR de 4 canales con disco duro.</li>
+          <li>Visualización remota desde celular o PC.</li>
+          <li>Incluye todos los cables y accesorios.</li>
+          <li>Instalación profesional incluida.</li>
+        </ul>
+        <p><strong>Precio:</strong> $1.200.000 COP todo incluido.</p>
+        <a href="https://wa.me/573244973675?text=Me%20interesa%20adquirir%20el%20Kit%20de%204%20c%C3%A1maras." class="adquirir-btn pulse" style="background: linear-gradient(90deg, #25d366 60%, #128c7e 100%); color: #fff; padding: 12px 22px; border-radius: 10px; font-weight: bold; font-size: 1rem; text-decoration: none; box-shadow: 0 2px 10px #38bdf8;">Quiero adquirir este servicio</a>
+      `;
+      break;
+
 case 'Tienda':
   content.innerHTML = `
     <h3>Tienda Online</h3>
@@ -831,11 +878,8 @@ case 'Tienda':
 
     }
 
-    content.innerHTML =
-      `<h3>${servicio}</h3>
-       ${texto}
-       <button class="enviar-btn" onclick="enviarWhatsAppTexto('${mensaje}')" ontouchstart="enviarWhatsAppTexto('${mensaje}')">Quiero adquirir el servicio</button>`;
-  }
+ content.innerHTML = `<h3>${servicio}</h3>${texto}`;
+}
 
   function enviarWhatsAppTexto(texto) {
     const url = `https://wa.me/573244973675?text=${encodeURIComponent(texto)}`;
