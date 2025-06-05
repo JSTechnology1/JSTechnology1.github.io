@@ -212,37 +212,36 @@
       </div>
     </div>
 
-    <!-- Cámaras -->
-    <div class="menu-item">
-      <button class="menu-button" onclick="toggleSubmenu('cs')" ontouchstart="toggleSubmenu('cs')">📷 Cámaras de Seguridad</button>
-      <div class="submenu" id="cs">
-        <button onclick="showContent('CamaraHogar')" ontouchstart="showContent('CamaraHogar')">🏠 Hogar - $150.000 + $50.000</button>
-        <button onclick="showContent('CamaraHD')" ontouchstart="showContent('CamaraHD')">🏢 HD Empresa - $350.000 + $100.000</button>
-        <button onclick="showContent('KitCamaras')" ontouchstart="showContent('KitCamaras')">🎥 Kit 4 Cámaras - $1.200.000</button>
-      </div>
-    </div>
-
-    <!-- Tienda -->
-    <div class="menu-item">
-      <button class="menu-button" onclick="showContent('Tienda')" ontouchstart="showContent('Tienda')">🛒 Tienda Online</button>
-    </div>
+   <!-- Cámaras -->
+<div class="menu-item">
+  <button class="menu-button" onclick="toggleSubmenu('cs')" ontouchstart="toggleSubmenu('cs')">📷 Cámaras de Seguridad</button>
+  <div class="submenu" id="cs">
+    <button onclick="showContent('CamaraHogar')" ontouchstart="showContent('CamaraHogar')">🏠 Hogar</button>
+    <button onclick="showContent('CamaraHD')" ontouchstart="showContent('CamaraHD')">🏢 HD Empresa</button>
+    <button onclick="showContent('KitCamaras')" ontouchstart="showContent('KitCamaras')">🎥 Kit 4 Cámaras </button>
   </div>
+</div>
 
-  <!-- Main -->
-  <div class="main">
-    <div class="section" id="content">
-      <h3>Bienvenido a JS Technology</h3>
-      <p>Selecciona una opción del menú para ver más detalles.</p>
-    </div>
+<!-- Tienda -->
+<div class="menu-item">
+  <button class="menu-button" onclick="showContent('Tienda')" ontouchstart="showContent('Tienda')">🛒 Tienda Online</button>
+</div>
+</div>
+
+<!-- Main -->
+<div class="main">
+  <div class="section" id="content">
+    <h3>Bienvenido a JS Technology</h3>
+    <p>Selecciona una opción del menú para ver más detalles.</p>
   </div>
+</div>
 
-  <!-- WhatsApp -->
-  <a class="whatsapp" href="https://wa.me/573244973675" target="_blank">
-    <div class="whatsapp-icon"></div>
-  </a>
+<!-- WhatsApp -->
+<a class="whatsapp" href="https://wa.me/573244973675" target="_blank">
+  <div class="whatsapp-icon"></div>
+</a>
 
-
-  <!-- Scripts -->
+<!-- Scripts -->
 <script>
   function toggleSubmenu(id) {
     const submenu = document.getElementById(id);
@@ -369,235 +368,464 @@
         return;
       case 'CamaraHogar':
         servicio = 'Cámara para Hogar';
-        texto = 'Cámara básica para interiores.';
+        texto = `
+          <p>La <strong>cámara para hogar</strong> es una opción asequible y funcional para quienes desean monitorear su vivienda de forma sencilla y segura.</p>
+          <ul>
+            <li>Resolución HD 720p.</li>
+            <li>Conectividad Wi-Fi para monitoreo desde el celular.</li>
+            <li>Visión nocturna infrarroja.</li>
+            <li>Detección de movimiento y alertas al teléfono.</li>
+            <li>Grabación en tarjeta SD o en la nube.</li>
+          </ul>
+          <p><strong>Precio:</strong> $150.000 COP + $50.000 COP por instalación.</p>
+        `;
         mensaje = 'Me interesa instalar cámara para hogar.';
         break;
+
       case 'CamaraHD':
-        servicio = 'Cámara HD Empresa';
-        texto = 'Alta definición, visión nocturna.';
+        servicio = 'Cámara HD para Empresa';
+        texto = `
+          <p>La <strong>cámara HD para empresas</strong> está diseñada para entornos comerciales y oficinas que requieren monitoreo de alta calidad y confiabilidad.</p>
+          <ul>
+            <li>Resolución Full HD 1080p.</li>
+            <li>Ángulo de visión amplio y zoom digital.</li>
+            <li>Grabación continua en DVR/NVR o en la nube.</li>
+            <li>Visión nocturna profesional hasta 30 metros.</li>
+            <li>Detección de movimiento con notificaciones.</li>
+          </ul>
+          <p><strong>Precio:</strong> $350.000 COP + $100.000 COP por instalación.</p>
+        `;
         mensaje = 'Me interesa instalar cámara HD para empresa.';
         break;
+
       case 'KitCamaras':
         servicio = 'Kit de 4 Cámaras';
-        texto = 'Kit 4 cámaras + DVR + instalación.';
+        texto = `
+          <p>El <strong>kit de 4 cámaras</strong> es ideal para cubrir múltiples zonas de una propiedad con un sistema completo y profesional.</p>
+          <ul>
+            <li>Incluye 4 cámaras HD con visión nocturna.</li>
+            <li>DVR de 4 canales con disco duro.</li>
+            <li>Visualización remota desde celular o PC.</li>
+            <li>Incluye todos los cables y accesorios.</li>
+            <li>Instalación profesional incluida.</li>
+          </ul>
+          <p><strong>Precio:</strong> $1.200.000 COP todo incluido.</p>
+        `;
         mensaje = 'Me interesa adquirir el Kit de 4 cámaras.';
         break;
-     case 'Tienda':
+case 'Tienda':
   content.innerHTML = `
     <h3>Tienda Online</h3>
-
-    <div class="product-card">
-      <button id="openModalBtn" style="border:none; background:none; padding:0; cursor:pointer;">
-        <img src="TiendaOnline/M1.png" alt="Motorola G85 512GB" style="width:200px;">
-        <h4>Motorola G85 512GB</h4>
-        <p>$1'050.000 COP</p>
-      </button>
+    <div class="productos-container">
+      <div class="product-card">
+        <button class="openModalBtn" data-product="1" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/M1.png" alt="Motorola G85 512GB" style="width:200px;">
+          <h4>Motorola G85 512GB</h4>
+          <p>$1'050.000 COP</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="2" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/S1.png" alt="Samsung A16 5G" style="width:200px;">
+          <h4>Samsung A16 5G</h4>
+          <p>$740.000 COP</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="3" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/S2.png" alt="Samsung A05s 128gb" style="width:200px;">
+          <h4>Samsung A05s 128gb</h4>
+          <p>$450.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="4" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/S3.png" alt="Samsung a36 5G 256GB" style="width:200px;">
+          <h4>Samsung a36 5G 256GB</h4>
+          <p>$1.170.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="5" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/S4.png" alt="Samsung A55 5g 256gb" style="width:200px;">
+          <h4>Samsung A55 5g 256gb</h4>
+          <p>$1.510.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="6" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/S5.png" alt="Samsung a 56 5g 256GB" style="width:200px;">
+          <h4>Samsung a 56 5g 256GB</h4>
+          <p>$1.650.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="7" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X1.png" alt="Xiaomi 14t 512 GB" style="width:200px;">
+          <h4>Xiaomi 14t 512 GB</h4>
+          <p>$1.870.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="8" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X2.png" alt="Xiaomi 14t pro 512gb" style="width:200px;">
+          <h4>Xiaomi 14t pro 512gb</h4>
+          <p>$2.530.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="9" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X3.png" alt="Redmi note 14 256gb + buds 6 play" style="width:200px;">
+          <h4>Redmi note 14 256gb + buds 6 play</h4>
+          <p>$720.000 COP</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="10" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X4.png" alt="Redmi note 14 pro" style="width:200px;">
+          <h4>Redmi note 14 pro</h4>
+          <p>$910.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="11" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X5.png" alt="Redmi A3 64gb" style="width:200px;">
+          <h4>Redmi A3 64gb</h4>
+          <p>$399.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="12" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X6.png" alt="redmi 14c 128 GB" style="width:200px;">
+          <h4>redmi 14c 128 GB</h4>
+          <p>399.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="13" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X7.png" alt="Redmi 14c 256gb" style="width:200px;">
+          <h4>Redmi 14c 256gb</h4>
+          <p>$460.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="14" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/Z1.png" alt="Zte A75 128 gb" style="width:200px;">
+          <h4>Zte A75 128 gb</h4>
+          <p>$340.000</p>
+        </button>
+      </div>
     </div>
-
     <div id="modal" class="modal">
       <div class="modal-container">
         <span class="close-btn">&times;</span>
         <div class="modal-left">
-          <img class="slide active" src="TiendaOnline/M1.png" alt="Imagen 1">
-          <img class="slide" src="TiendaOnline/M11.jpg" alt="Imagen 2">
-          <img class="slide" src="TiendaOnline/M111.jpg" alt="Imagen 3">
+          <img class="slide active" id="modalImg1" src="TiendaOnline/M1.png" alt="Imagen 1">
+          <img class="slide" id="modalImg2" src="TiendaOnline/M11.jpg" alt="Imagen 2">
+          <img class="slide" id="modalImg3" src="TiendaOnline/M111.jpg" alt="Imagen 3">
           <div class="slider-controls">
             <button id="prevBtn">&#10094;</button>
             <button id="nextBtn">&#10095;</button>
           </div>
         </div>
         <div class="modal-right">
-          <h4>Motorola G85 512GB</h4>
-          <p>El <strong>Motorola G85</strong> es un smartphone de última generación que ofrece un excelente equilibrio entre rendimiento, estilo y funcionalidad. Con una impresionante <strong>capacidad de almacenamiento de 512GB</strong>, tendrás espacio más que suficiente para guardar todas tus fotos, videos, aplicaciones y archivos importantes.</p>
-          <ul>
-            <li><strong>Pantalla:</strong> AMOLED de 6.5" FHD+ con tasa de refresco de 120Hz.</li>
-            <li><strong>Procesador:</strong> Qualcomm Snapdragon 695 para un rendimiento fluido.</li>
-            <li><strong>Memoria RAM:</strong> 8GB para multitarea eficiente.</li>
-            <li><strong>Almacenamiento:</strong> 512GB internos, expandibles vía microSD.</li>
-            <li><strong>Cámaras:</strong> Dual 64MP + 8MP traseras / 16MP frontal.</li>
-            <li><strong>Batería:</strong> 5000mAh con carga rápida de 30W.</li>
-            <li><strong>Sistema operativo:</strong> Android 13.</li>
-            <li><strong>Otros:</strong> Lector de huellas, reconocimiento facial, audio estéreo Dolby Atmos.</li>
-          </ul>
-          <p><strong>Precio:</strong> $1'050.000 COP</p>
+          <h4 id="modalTitle">Motorola G85 512GB</h4>
+          <p id="modalDescription"></p>
+          <ul id="modalSpecs"></ul>
+          <p id="modalPrice"></p>
           <p style="color: green; font-weight: bold;">Pago 100% contraentrega en todo el país.</p>
-          <a href="https://wa.me/573244973675?text=Hola,%20estoy%20interesado%20en%20adquirir%20el%20Motorola%20G85%20512GB" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background-color:#25D366; color:white; text-decoration:none; border-radius:5px; font-weight:bold;">Comprar</a>
+          <a id="modalBuyLink" href="#" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background-color:#25D366; color:white; text-decoration:none; border-radius:5px; font-weight:bold;">Comprar</a>
         </div>
       </div>
     </div>
-
     <style>
-      .product-card {
-        display: inline-block;
-        margin: 15px;
-        text-align: center;
-      }
-
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.8);
-        animation: fadeIn 0.3s ease-in-out;
-      }
-
-      .modal.fade-out {
-        animation: fadeOut 0.4s forwards;
-      }
-
-      .modal-container {
-        display: flex;
-        width: 80%;
-        height: 80%;
-        margin: 5% auto;
-        background-color: #fff;
-        border-radius: 10px;
-        overflow: hidden;
-        animation: slideIn 0.4s ease-in-out;
-        position: relative;
-      }
-
-      .close-btn {
-        position: absolute;
-        top: 10px;
-        right: 20px;
-        font-size: 24px;
-        cursor: pointer;
-        color: #444;
-        z-index: 10;
-      }
-
-      .modal-left {
-        flex: 1;
-        position: relative;
-        background-color: #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-      }
-
-      .modal-left img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        display: none;
-      }
-
-      .modal-left img.active {
-        display: block;
-      }
-
-      .modal-right {
-        flex: 1;
-        padding: 20px;
-        overflow-y: auto;
-        text-align: left;
-      }
-
-      .slider-controls {
-        position: absolute;
-        width: 100%;
-        bottom: 10px;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 10px;
-      }
-
-      .slider-controls button {
-        background-color: rgba(255,255,255,0.5);
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 5px;
-      }
-
-      @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
-      }
-
-      @keyframes fadeOut {
-        from {opacity: 1;}
-        to {opacity: 0;}
-      }
-
-      @keyframes slideIn {
-        from {transform: scale(0.9); opacity: 0;}
-        to {transform: scale(1); opacity: 1;}
-      }
+      .productos-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+      .product-card { display: inline-block; margin: 15px; text-align: center; }
+      .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); animation: fadeIn 0.3s ease-in-out; }
+      .modal.fade-out { animation: fadeOut 0.4s forwards; }
+      .modal-container { display: flex; width: 80%; height: 80%; margin: 5% auto; background-color: #fff; border-radius: 10px; overflow: hidden; animation: slideIn 0.4s ease-in-out; position: relative; }
+      .close-btn { position: absolute; top: 10px; right: 20px; font-size: 24px; cursor: pointer; color: #444; z-index: 10; }
+      .modal-left { flex: 1; position: relative; background-color: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+      .modal-left img { max-width: 100%; max-height: 100%; object-fit: contain; display: none; }
+      .modal-left img.active { display: block; }
+      .modal-right { flex: 1; padding: 20px; overflow-y: auto; text-align: left; }
+      .slider-controls { position: absolute; width: 100%; bottom: 10px; display: flex; justify-content: space-between; padding: 0 10px; }
+      .slider-controls button { background-color: rgba(255,255,255,0.5); border: none; font-size: 24px; cursor: pointer; padding: 5px 10px; border-radius: 5px; }
+      @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+      @keyframes fadeOut { from {opacity: 1;} to {opacity: 0;} }
+      @keyframes slideIn { from {transform: scale(0.9); opacity: 0;} to {transform: scale(1); opacity: 1;} }
     </style>
   `;
 
-  const script = document.createElement('script');
-  script.textContent = `
+  const productsInfo = {
+    1: {
+      title: "Motorola G85 512GB",
+      images: ["TiendaOnline/M1.png", "TiendaOnline/M11.jpg", "TiendaOnline/M111.jpg"],
+      description: "El <strong>Motorola G85</strong> es un smartphone de última generación que ofrece un excelente equilibrio entre rendimiento, estilo y funcionalidad. Con una impresionante <strong>capacidad de almacenamiento de 512GB</strong>, tendrás espacio más que suficiente para guardar todas tus fotos, videos, aplicaciones y archivos importantes.",
+      specs: `<li><strong>Pantalla:</strong> AMOLED de 6.5" FHD+ con tasa de refresco de 120Hz.</li>
+        <li><strong>Procesador:</strong> Qualcomm Snapdragon 695 para un rendimiento fluido.</li>
+        <li><strong>Memoria RAM:</strong> 8GB para multitarea eficiente.</li>
+        <li><strong>Almacenamiento:</strong> 512GB internos, expandibles vía microSD.</li>
+        <li><strong>Cámaras:</strong> Dual 64MP + 8MP traseras / 16MP frontal.</li>
+        <li><strong>Batería:</strong> 5000mAh con carga rápida de 30W.</li>
+        <li><strong>Sistema operativo:</strong> Android 13.</li>
+        <li><strong>Otros:</strong> Lector de huellas, reconocimiento facial, audio estéreo Dolby Atmos.</li>`,
+      price: "$1'050.000 COP",
+      buyLink: "https://wa.me/573244973675?text=Hola,%20estoy%20interesado%20en%20adquirir%20el%20Motorola%20G85%20512GB"
+    },
+    2: {
+      title: "Samsung A16 5G",
+      images: ["TiendaOnline/S1.png", "TiendaOnline/S11.png", "TiendaOnline/S111.png"],
+      description: "El <strong>Samsung A16 5G</strong> combina conectividad 5G con una capacidad de almacenamiento de 256GB, ideal para una experiencia multimedia veloz y sin interrupciones.",
+      specs: `<li><strong>Pantalla:</strong> LCD de 6.6" HD+.</li>
+        <li><strong>Procesador:</strong> MediaTek Dimensity 700.</li>
+        <li><strong>Memoria RAM:</strong> 6GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB expandible.</li>
+        <li><strong>Cámaras:</strong> Triple 48MP+2MP+2MP / 13MP frontal.</li>
+        <li><strong>Batería:</strong> 5000mAh carga rápida.</li>
+        <li><strong>Sistema operativo:</strong> Android 14.</li>`,
+      price: "$740.000 COP",
+      buyLink: "https://wa.me/573244973675?text=Hola,%20estoy%20interesado%20en%20adquirir%20el%20Samsung%20A16%205G%20256GB"
+    },
+    3: {
+      title: "Samsung A05s 128gb",
+      images: ["TiendaOnline/S2.png", "TiendaOnline/S22.png", "TiendaOnline/S222.png"],
+      description: "El <strong>Samsung A05s</strong> es un equipo accesible con 128GB de almacenamiento, perfecto para tareas diarias, redes sociales y contenido multimedia básico.",
+      specs: `<li><strong>Pantalla:</strong> LCD de 6.7".</li>
+        <li><strong>Procesador:</strong> Snapdragon 680.</li>
+        <li><strong>RAM:</strong> 4GB.</li>
+        <li><strong>Almacenamiento:</strong> 128GB.</li>
+        <li><strong>Cámara:</strong> 50MP principal.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$450.000",
+      buyLink: "https://wa.me/573244973675?text=Hola,%20quiero%20comprar%20el%20Samsung%20A05s%20128GB"
+    },
+    4: {
+      title: "Samsung a36 5G 256GB",
+      images: ["TiendaOnline/S3.png", "TiendaOnline/S33.png", "TiendaOnline/S333.png"],
+      description: "El <strong>Samsung A36 5G</strong> destaca por su conectividad veloz y 256GB de memoria, ofreciendo un equilibrio entre rendimiento, almacenamiento y diseño.",
+      specs: `<li><strong>Pantalla:</strong> AMOLED 6.4".</li>
+        <li><strong>Procesador:</strong> Exynos 1380.</li>
+        <li><strong>RAM:</strong> 8GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB.</li>
+        <li><strong>Cámara:</strong> 50MP triple lente.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$1.170.000",
+      buyLink: "https://wa.me/573244973675?text=Estoy%20interesado%20en%20el%20Samsung%20A36%205G%20256GB"
+    },
+    5: {
+      title: "Samsung A55 5g 256gb",
+      images: ["TiendaOnline/S4.png", "TiendaOnline/S44.png", "TiendaOnline/S444.png"],
+      description: "El <strong>Samsung A55 5G</strong> ofrece 256GB de almacenamiento y una cámara optimizada para fotos nítidas, ideal para usuarios exigentes.",
+      specs: `<li><strong>Pantalla:</strong> 6.7" Super AMOLED.</li>
+        <li><strong>Procesador:</strong> Exynos 1480.</li>
+        <li><strong>RAM:</strong> 8GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB.</li>
+        <li><strong>Cámara:</strong> 64MP triple lente.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$1.510.000",
+      buyLink: "https://wa.me/573244973675?text=Hola,%20me%20interesa%20el%20Samsung%20A55%205G%20256GB"
+    },
+    6: {
+      title: "Samsung a 56 5g 256GB",
+      images: ["TiendaOnline/S5.png", "TiendaOnline/S55.png", "TiendaOnline/S555.png"],
+      description: "Con 256GB y conectividad 5G, el <strong>Samsung A56 5G</strong> ofrece potencia y velocidad para juegos, multitarea y streaming sin interrupciones.",
+      specs: `<li><strong>Pantalla:</strong> AMOLED 6.8".</li>
+        <li><strong>Procesador:</strong> Octa-Core 2.8GHz.</li>
+        <li><strong>RAM:</strong> 8GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB.</li>
+        <li><strong>Cámara:</strong> 64MP triple lente.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$1.650.000",
+      buyLink: "https://wa.me/573244973675?text=Quiero%20el%20Samsung%20A56%205G%20256GB"
+    },
+    7: {
+      title: "Xiaomi 14t 512 GB",
+      images: ["TiendaOnline/X1.png", "TiendaOnline/X11.png", "TiendaOnline/X111.png"],
+      description: "El <strong>Xiaomi 14T</strong> ofrece 512GB de almacenamiento con un rendimiento fluido, ideal para creadores de contenido y usuarios avanzados.",
+      specs: `<li><strong>Pantalla:</strong> AMOLED 6.8".</li>
+        <li><strong>Procesador:</strong> Dimensity 8200 Ultra.</li>
+        <li><strong>RAM:</strong> 12GB.</li>
+        <li><strong>Almacenamiento:</strong> 512GB.</li>
+        <li><strong>Cámara:</strong> 108MP triple lente.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$1.870.000",
+      buyLink: "https://wa.me/573244973675?text=Interesado%20en%20el%20Xiaomi%2014T%20512GB"
+    },
+    8: {
+      title: "Xiaomi 14t pro 512gb",
+      images: ["TiendaOnline/X2.png", "TiendaOnline/X22.png", "TiendaOnline/X222.png"],
+      description: "El <strong>Xiaomi 14T Pro</strong> combina tecnología de punta, 512GB de espacio y alto rendimiento para quienes exigen lo mejor.",
+      specs: `<li><strong>Pantalla:</strong> AMOLED 6.8".</li>
+        <li><strong>Procesador:</strong> Snapdragon 8 Gen 3.</li>
+        <li><strong>RAM:</strong> 12GB.</li>
+        <li><strong>Almacenamiento:</strong> 512GB.</li>
+        <li><strong>Cámara:</strong> 200MP triple lente.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$2.530.000",
+      buyLink: "https://wa.me/573244973675?text=Hola,%20deseo%20el%20Xiaomi%2014T%20Pro%20512GB"
+    },
+    9: {
+      title: "Redmi note 14 256gb + buds 6 play",
+      images: ["TiendaOnline/X3.png", "TiendaOnline/X33.png", "TiendaOnline/X333.png"],
+      description: "El <strong>Redmi Note 14</strong> de 256GB incluye los audífonos Buds 6 Play. Gran relación calidad-precio y excelente para multimedia.",
+      specs: `<li><strong>Pantalla:</strong> LCD 6.5".</li>
+        <li><strong>Procesador:</strong> Snapdragon 680.</li>
+        <li><strong>RAM:</strong> 6GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB.</li>
+        <li><strong>Cámara:</strong> 50MP triple lente.</li>
+        <li><strong>Incluye:</strong> Buds 6 Play.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$720.000 COP",
+      buyLink: "https://wa.me/573244973675?text=Estoy%20interesado%20en%20el%20Redmi%20Note%2014%20256GB%20+%20Buds%206%20Play"
+    },
+    10: {
+      title: "Redmi note 14 pro",
+      images: ["TiendaOnline/X4.png", "TiendaOnline/X44.png", "TiendaOnline/X444.png"],
+      description: "El <strong>Redmi Note 14 Pro</strong> combina diseño, fluidez y buena cámara con sus 256GB de almacenamiento. Ideal para el día a día.",
+      specs: `<li><strong>Pantalla:</strong> AMOLED 6.7".</li>
+        <li><strong>Procesador:</strong> Snapdragon 732G.</li>
+        <li><strong>RAM:</strong> 8GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB.</li>
+        <li><strong>Cámara:</strong> 108MP cuádruple.</li>
+        <li><strong>Batería:</strong> 5020mAh.</li>`,
+      price: "$910.000",
+      buyLink: "https://wa.me/573244973675?text=Quiero%20comprar%20el%20Redmi%20Note%2014%20Pro"
+    },
+    11: {
+      title: "Redmi A3 64gb",
+      images: ["TiendaOnline/X5.png", "TiendaOnline/X55.png", "TiendaOnline/X555.png"],
+      description: "El <strong>Redmi A3</strong> es una opción económica con 64GB de almacenamiento, perfecta para quienes buscan funcionalidad básica.",
+      specs: `<li><strong>Pantalla:</strong> LCD 6.5".</li>
+        <li><strong>Procesador:</strong> Helio G36.</li>
+        <li><strong>RAM:</strong> 3GB.</li>
+        <li><strong>Almacenamiento:</strong> 64GB.</li>
+        <li><strong>Cámara:</strong> 8MP dual.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$399.000",
+      buyLink: "https://wa.me/573244973675?text=Hola,%20me%20interesa%20el%20Redmi%20A3%2064GB"
+    },
+    12: {
+      title: "redmi 14c 128 GB",
+      images: ["TiendaOnline/X6.png", "TiendaOnline/X66.png", "TiendaOnline/X666.png"],
+      description: "El <strong>Redmi 14C</strong> cuenta con 128GB de almacenamiento, ideal para estudiantes y usuarios que buscan rendimiento esencial.",
+      specs: `<li><strong>Pantalla:</strong> LCD 6.5".</li>
+        <li><strong>Procesador:</strong> Unisoc T606.</li>
+        <li><strong>RAM:</strong> 4GB.</li>
+        <li><strong>Almacenamiento:</strong> 128GB.</li>
+        <li><strong>Cámara:</strong> 50MP dual.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$399.000",
+      buyLink: "https://wa.me/573244973675?text=Estoy%20interesado%20en%20el%20Redmi%2014C%20128GB"
+    },
+    13: {
+      title: "Redmi 14c 256gb",
+      images: ["TiendaOnline/X7.png", "TiendaOnline/X77.png", "TiendaOnline/X777.png"],
+      description: "El <strong>Redmi 14c 256gb</strong> en su versión estándar de 256GB es ideal para quienes buscan equilibrio entre calidad y precio.",
+      specs: `<li><strong>Pantalla:</strong> LCD 6.5".</li>
+        <li><strong>Procesador:</strong> Unisoc T606.</li>
+        <li><strong>RAM:</strong> 6GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB.</li>
+        <li><strong>Cámara:</strong> 50MP dual.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$460.000",
+      buyLink: "https://wa.me/573244973675?text=Quiero%20el%20Redmi14c%20G85%20256GB"
+    },
+    14: {
+      title: "Zte A75 128 gb",
+      images: ["TiendaOnline/Z1.png", "TiendaOnline/Z11.png", "TiendaOnline/Z111.png"],
+      description: "Otro modelo del <strong>Zte A75 128 gb</strong> con mejoras menores y excelente rendimiento general. Opción ideal para usuarios promedio.",
+      specs: `<li><strong>Pantalla:</strong> LCD 6.5".</li>
+        <li><strong>Procesador:</strong> Unisoc T610.</li>
+        <li><strong>RAM:</strong> 4GB.</li>
+        <li><strong>Almacenamiento:</strong> 128GB.</li>
+        <li><strong>Cámara:</strong> 13MP dual.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$340.000",
+      buyLink: "https://wa.me/573244973675?text=Interesado%20en%20ZteA75%20de%20128GB%20variante"
+    }
+  };
+
+  setTimeout(() => {
     const modal = document.getElementById('modal');
-    const openBtn = document.getElementById('openModalBtn');
-    const closeBtn = document.querySelector('.close-btn');
-    const slides = modal.querySelectorAll('.slide');
+    const closeBtn = modal.querySelector('.close-btn');
+    const slides = [
+      document.getElementById('modalImg1'),
+      document.getElementById('modalImg2'),
+      document.getElementById('modalImg3')
+    ];
     let currentSlide = 0;
     let slideInterval;
+
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalSpecs = document.getElementById('modalSpecs');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalBuyLink = document.getElementById('modalBuyLink');
 
     function showSlide(index) {
       slides.forEach((slide, i) => {
         slide.classList.remove('active');
-        if (i === index) slide.classList.add('active');
+        if(i === index) slide.classList.add('active');
       });
     }
-
+    function openModal(event) {
+      const id = event.currentTarget.getAttribute('data-product');
+      const info = productsInfo[id];
+      if(!info) return;
+      slides[0].src = info.images[0];
+      slides[1].src = info.images[1];
+      slides[2].src = info.images[2];
+      slides[0].alt = info.title + " imagen 1";
+      slides[1].alt = info.title + " imagen 2";
+      slides[2].alt = info.title + " imagen 3";
+      modalTitle.textContent = info.title;
+      modalDescription.innerHTML = info.description;
+      modalSpecs.innerHTML = info.specs;
+      modalPrice.innerHTML = "<strong>Precio:</strong> " + info.price;
+      modalBuyLink.href = info.buyLink;
+      modal.classList.remove('fade-out');
+      modal.style.display = 'block';
+      currentSlide = 0;
+      showSlide(currentSlide);
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+    function closeModal() {
+      modal.classList.add('fade-out');
+      clearInterval(slideInterval);
+      setTimeout(() => {
+        modal.style.display = 'none';
+        modal.classList.remove('fade-out');
+      }, 400);
+    }
     function nextSlide() {
       currentSlide = (currentSlide + 1) % slides.length;
       showSlide(currentSlide);
     }
-
     function prevSlide() {
       currentSlide = (currentSlide - 1 + slides.length) % slides.length;
       showSlide(currentSlide);
     }
-
-    openBtn.addEventListener('click', () => {
-      modal.classList.remove('fade-out');
-      modal.style.display = 'block';
-      showSlide(currentSlide);
-      slideInterval = setInterval(nextSlide, 5000);
+    document.querySelectorAll('.openModalBtn').forEach(btn => {
+      btn.addEventListener('click', openModal);
+      btn.addEventListener('touchstart', openModal);
     });
-
-    openBtn.addEventListener('touchstart', () => {
-      modal.classList.remove('fade-out');
-      modal.style.display = 'block';
-      showSlide(currentSlide);
-      slideInterval = setInterval(nextSlide, 5000);
+    closeBtn.addEventListener('click', closeModal);
+    closeBtn.addEventListener('touchstart', closeModal);
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      prevSlide(); clearInterval(slideInterval);
     });
-
-    closeBtn.addEventListener('click', () => {
-      modal.classList.add('fade-out');
-      clearInterval(slideInterval);
-      setTimeout(() => {
-        modal.style.display = 'none';
-        modal.classList.remove('fade-out');
-      }, 400);
+    document.getElementById('prevBtn').addEventListener('touchstart', () => {
+      prevSlide(); clearInterval(slideInterval);
     });
-
-    closeBtn.addEventListener('touchstart', () => {
-      modal.classList.add('fade-out');
-      clearInterval(slideInterval);
-      setTimeout(() => {
-        modal.style.display = 'none';
-        modal.classList.remove('fade-out');
-      }, 400);
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      nextSlide(); clearInterval(slideInterval);
     });
-
-    document.getElementById('prevBtn').addEventListener('click', prevSlide);
-    document.getElementById('prevBtn').addEventListener('touchstart', prevSlide);
-    document.getElementById('nextBtn').addEventListener('click', nextSlide);
-    document.getElementById('nextBtn').addEventListener('touchstart', nextSlide);
-  `;
-  document.body.appendChild(script);
+    document.getElementById('nextBtn').addEventListener('touchstart', () => {
+      nextSlide(); clearInterval(slideInterval);
+    });
+  }, 0);
 
   return;
 
