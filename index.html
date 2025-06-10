@@ -414,174 +414,61 @@ switch(option) {
  case 'CamaraHogar':
   servicio = 'Cámara para Hogar';
   texto = `
-    <div style="display:flex;gap:19px;flex-wrap:wrap;">
-      <div class="mini-cam-card" onclick="abrirModalCamHogar(1)" style="cursor:pointer;width:170px;background:#fff;border-radius:13px;box-shadow:0 2px 10px #e5e7eb;padding:13px 7px;text-align:center;">
-        <img src="Camaras/CH1.png" alt="Cámara Básica" style="width:100%;max-width:110px;border-radius:8px;">
-        <div style="font-weight:bold;color:#0ea5e9;margin-top:7px;">Cámara Básica HD</div>
-        <div style="font-size:0.93rem;color:#64748b;">$150.000</div>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <div style="text-align: center;">
+        <button onclick="mostrarDetalleCamaraHogar('hogar1')" style="border: none; background: none;">
+          <img src='Camaras/CH1.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div style="margin-top:8px;">$120.000</div>
+        </button>
+        <div>Cámara Mini Interior</div>
       </div>
-      <div class="mini-cam-card" onclick="abrirModalCamHogar(2)" style="cursor:pointer;width:170px;background:#fff;border-radius:13px;box-shadow:0 2px 10px #e5e7eb;padding:13px 7px;text-align:center;">
-        <img src="Camaras/CH2.png" alt="Cámara Giro" style="width:100%;max-width:110px;border-radius:8px;">
-        <div style="font-weight:bold;color:#0ea5e9;margin-top:7px;">Cámara Giro 360°</div>
-        <div style="font-size:0.93rem;color:#64748b;">$210.000</div>
+      <div style="text-align: center;">
+        <button onclick="mostrarDetalleCamaraHogar('hogar2')" style="border: none; background: none;">
+          <img src='Camaras/CH2.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div style="margin-top:8px;">$180.000</div>
+        </button>
+        <div>Cámara Panorámica 360°</div>
       </div>
-      <div class="mini-cam-card" onclick="abrirModalCamHogar(3)" style="cursor:pointer;width:170px;background:#fff;border-radius:13px;box-shadow:0 2px 10px #e5e7eb;padding:13px 7px;text-align:center;">
-        <img src="Camaras/CH3.png" alt="Cámara WiFi HD" style="width:100%;max-width:110px;border-radius:8px;">
-        <div style="font-weight:bold;color:#0ea5e9;margin-top:7px;">Cámara WiFi HD</div>
-        <div style="font-size:0.93rem;color:#64748b;">$185.000</div>
-      </div>
-    </div>
-    <div id="modal-hogar-cam" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(24,28,42,0.80);justify-content:center;align-items:center;">
-      <div id="modal-hogar-content" style="background:#fff;border-radius:18px;max-width:600px;width:94vw;display:flex;gap:22px;padding:24px 20px 22px 20px;align-items:center;box-shadow:0 6px 32px #0004;position:relative;flex-wrap:wrap;">
-        <span onclick="cerrarModalCamHogar()" style="position:absolute;top:12px;right:22px;font-size:2rem;color:#64748b;cursor:pointer;font-weight:bold;">&times;</span>
-        <img id="modal-hogar-img" src="" alt="Cámara" style="width:210px;max-width:90vw;border-radius:12px;">
-        <div style="flex:1;min-width:180px;">
-          <div id="modal-hogar-nombre" style="font-weight:bold;font-size:1.23rem;color:#0ea5e9;"></div>
-          <div id="modal-hogar-desc" style="font-size:1.02rem;color:#334155;margin:7px 0 18px 0;"></div>
-          <div id="modal-hogar-precio" style="font-weight:bold;color:#16a34a;font-size:1.08rem;margin-bottom:10px;"></div>
-          <a id="modal-hogar-btn" href="#" target="_blank" style="display:inline-block;padding:11px 22px;background:linear-gradient(90deg,#06b6d4 60%,#0ea5e9 100%);color:white;border-radius:8px;font-weight:bold;text-decoration:none;">Comprar</a>
-        </div>
+      <div style="text-align: center;">
+        <button onclick="mostrarDetalleCamaraHogar('hogar3')" style="border: none; background: none;">
+          <img src='Camaras/CH3.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div style="margin-top:8px;">$210.000</div>
+        </button>
+        <div>Cámara Exterior WiFi</div>
       </div>
     </div>
-    <script>
-      (function(){
-        const hogarCams = [
-          {
-            nombre: "Cámara Básica HD",
-            img: "Camaras/CH1.png",
-            desc: "Ideal para habitaciones y oficinas pequeñas. Resolución HD 720p, visión nocturna, audio bidireccional, app móvil. Fácil de instalar.",
-            precio: "$150.000 + Instalación $50.000",
-            wa: "https://wa.me/573244973675?text=Me%20interesa%20la%20c%C3%A1mara%20b%C3%A1sica%20para%20hogar%20con%20instalaci%C3%B3n"
-          },
-          {
-            nombre: "Cámara Giro 360°",
-            img: "Camaras/CH2.png",
-            desc: "Cobertura total con giro horizontal 355° y vertical 90°. Seguimiento automático, audio, visión nocturna, notificaciones y app.",
-            precio: "$210.000 + Instalación $60.000",
-            wa: "https://wa.me/573244973675?text=Me%20interesa%20la%20c%C3%A1mara%20con%20giro%20para%20hogar%20con%20instalaci%C3%B3n"
-          },
-          {
-            nombre: "Cámara WiFi HD",
-            img: "Camaras/CH3.png",
-            desc: "Visualización remota desde celular, notificaciones, grabación en nube, visión nocturna, audio, fácil de instalar.",
-            precio: "$185.000 + Instalación $50.000",
-            wa: "https://wa.me/573244973675?text=Me%20interesa%20la%20c%C3%A1mara%20WiFi%20HD%20para%20hogar%20con%20instalaci%C3%B3n"
-          }
-        ];
-
-        // Corrige inicialización para evitar errores de referencia nula
-        window.abrirModalCamHogar = function(idx) {
-          const data = hogarCams[idx - 1];
-          document.getElementById('modal-hogar-img').src = data.img;
-          document.getElementById('modal-hogar-nombre').innerText = data.nombre;
-          document.getElementById('modal-hogar-desc').innerText = data.desc;
-          document.getElementById('modal-hogar-precio').innerText = data.precio;
-          document.getElementById('modal-hogar-btn').href = data.wa;
-          document.getElementById('modal-hogar-cam').style.display = "flex";
-          document.body.style.overflow = "hidden";
-        }
-        window.cerrarModalCamHogar = function() {
-          document.getElementById('modal-hogar-cam').style.display = "none";
-          document.body.style.overflow = "";
-        }
-        // Delegación para cerrar al hacer click fuera del modal content (funciona incluso si el código es inyectado varias veces)
-        setTimeout(function() {
-          var modalHogar = document.getElementById('modal-hogar-cam');
-          if (modalHogar) {
-            modalHogar.addEventListener('mousedown', function(e) {
-              let content = document.getElementById('modal-hogar-content');
-              if (content && !content.contains(e.target)) window.cerrarModalCamHogar();
-            });
-          }
-        }, 0);
-      })();
-    
   `;
+  mensaje = 'Me interesa instalar cámara para hogar.';
   break;
+
 case 'CamaraHD':
   servicio = 'Cámara HD Empresa';
   texto = `
-    <div style="display:flex;gap:19px;flex-wrap:wrap;">
-      <div class="mini-cam-card" onclick="abrirModalCamEmp(1)" style="cursor:pointer;width:170px;background:#fff;border-radius:13px;box-shadow:0 2px 10px #e5e7eb;padding:13px 7px;text-align:center;">
-        <img src="Camaras/CE1.png" alt="Bullet HD" style="width:100%;max-width:110px;border-radius:8px;">
-        <div style="font-weight:bold;color:#0ea5e9;margin-top:7px;">Bullet HD</div>
-        <div style="font-size:0.93rem;color:#64748b;">$320.000</div>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <div style="text-align: center;">
+        <button onclick="mostrarDetalleCamaraEmpresa('empresa1')" style="border: none; background: none;">
+          <img src='Camaras/CE1.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div style="margin-top:8px;">$320.000</div>
+        </button>
+        <div>Cámara Domo HD</div>
       </div>
-      <div class="mini-cam-card" onclick="abrirModalCamEmp(2)" style="cursor:pointer;width:170px;background:#fff;border-radius:13px;box-shadow:0 2px 10px #e5e7eb;padding:13px 7px;text-align:center;">
-        <img src="Camaras/CE2.png" alt="Domo HD" style="width:100%;max-width:110px;border-radius:8px;">
-        <div style="font-weight:bold;color:#0ea5e9;margin-top:7px;">Domo HD</div>
-        <div style="font-size:0.93rem;color:#64748b;">$340.000</div>
+      <div style="text-align: center;">
+        <button onclick="mostrarDetalleCamaraEmpresa('empresa2')" style="border: none; background: none;">
+          <img src='Camaras/CE2.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div style="margin-top:8px;">$390.000</div>
+        </button>
+        <div>Cámara Bullet IR</div>
       </div>
-      <div class="mini-cam-card" onclick="abrirModalCamEmp(3)" style="cursor:pointer;width:170px;background:#fff;border-radius:13px;box-shadow:0 2px 10px #e5e7eb;padding:13px 7px;text-align:center;">
-        <img src="Camaras/CE3.png" alt="PTZ HD" style="width:100%;max-width:110px;border-radius:8px;">
-        <div style="font-weight:bold;color:#0ea5e9;margin-top:7px;">PTZ HD</div>
-        <div style="font-size:0.93rem;color:#64748b;">$680.000</div>
-      </div>
-    </div>
-    <div id="modal-emp-cam" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(24,28,42,0.80);justify-content:center;align-items:center;">
-      <div id="modal-emp-content" style="background:#fff;border-radius:18px;max-width:600px;width:94vw;display:flex;gap:22px;padding:24px 20px 22px 20px;align-items:center;box-shadow:0 6px 32px #0004;position:relative;flex-wrap:wrap;">
-        <span onclick="cerrarModalCamEmp()" style="position:absolute;top:12px;right:22px;font-size:2rem;color:#64748b;cursor:pointer;font-weight:bold;">&times;</span>
-        <img id="modal-emp-img" src="" alt="Cámara" style="width:210px;max-width:90vw;border-radius:12px;">
-        <div style="flex:1;min-width:180px;">
-          <div id="modal-emp-nombre" style="font-weight:bold;font-size:1.23rem;color:#0ea5e9;"></div>
-          <div id="modal-emp-desc" style="font-size:1.02rem;color:#334155;margin:7px 0 18px 0;"></div>
-          <div id="modal-emp-precio" style="font-weight:bold;color:#16a34a;font-size:1.08rem;margin-bottom:10px;"></div>
-          <a id="modal-emp-btn" href="#" target="_blank" style="display:inline-block;padding:11px 22px;background:linear-gradient(90deg,#06b6d4 60%,#0ea5e9 100%);color:white;border-radius:8px;font-weight:bold;text-decoration:none;">Comprar</a>
-        </div>
+      <div style="text-align: center;">
+        <button onclick="mostrarDetalleCamaraEmpresa('empresa3')" style="border: none; background: none;">
+          <img src='Camaras/CE3.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div style="margin-top:8px;">$750.000</div>
+        </button>
+        <div>Cámara PTZ Motorizada</div>
       </div>
     </div>
-    <script>
-      (function(){
-        const empresaCams = [
-          {
-            nombre: "Bullet HD",
-            img: "Camaras/CE1.png",
-            desc: "Exterior, resistente al clima. Full HD 1080p, visión nocturna 30m, lente gran angular, conexión DVR/NVR.",
-            precio: "$320.000 + Instalación $70.000",
-            wa: "https://wa.me/573244973675?text=Me%20interesa%20la%20c%C3%A1mara%20Bullet%20HD%20para%20empresa%20con%20instalaci%C3%B3n"
-          },
-          {
-            nombre: "Domo HD",
-            img: "Camaras/CE2.png",
-            desc: "Interior/Exterior, antivandálica. Full HD 1080p, visión nocturna, ángulo amplio, resistente.",
-            precio: "$340.000 + Instalación $75.000",
-            wa: "https://wa.me/573244973675?text=Me%20interesa%20la%20c%C3%A1mara%20Domo%20HD%20para%20empresa%20con%20instalaci%C3%B3n"
-          },
-          {
-            nombre: "PTZ HD",
-            img: "Camaras/CE3.png",
-            desc: "Zoom y movimiento remoto. Full HD 1080p, zoom óptico 4x, visión nocturna profesional, control desde app.",
-            precio: "$680.000 + Instalación $120.000",
-            wa: "https://wa.me/573244973675?text=Me%20interesa%20la%20c%C3%A1mara%20PTZ%20HD%20para%20empresa%20con%20instalaci%C3%B3n"
-          }
-        ];
-
-        window.abrirModalCamEmp = function(idx) {
-          const data = empresaCams[idx - 1];
-          document.getElementById('modal-emp-img').src = data.img;
-          document.getElementById('modal-emp-nombre').innerText = data.nombre;
-          document.getElementById('modal-emp-desc').innerText = data.desc;
-          document.getElementById('modal-emp-precio').innerText = data.precio;
-          document.getElementById('modal-emp-btn').href = data.wa;
-          document.getElementById('modal-emp-cam').style.display = "flex";
-          document.body.style.overflow = "hidden";
-        }
-        window.cerrarModalCamEmp = function() {
-          document.getElementById('modal-emp-cam').style.display = "none";
-          document.body.style.overflow = "";
-        }
-        setTimeout(function() {
-          var modalEmp = document.getElementById('modal-emp-cam');
-          if (modalEmp) {
-            modalEmp.addEventListener('mousedown', function(e) {
-              let content = document.getElementById('modal-emp-content');
-              if (content && !content.contains(e.target)) window.cerrarModalCamEmp();
-            });
-          }
-        }, 0);
-      })();
-
   `;
+  mensaje = 'Me interesa instalar cámara HD para empresa.';
   break;
 
 case 'KitCamaras':
@@ -1077,6 +964,161 @@ case 'Tienda':
     const url = `https://wa.me/573244973675?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
   }
+      
+function mostrarDetalleCamaraHogar(modelo) {
+  let data = {
+    hogar1: {
+      nombre: "Cámara Mini Interior",
+      precio: "$120.000",
+      img: 'Camaras/CH1.png',
+      desc: `Compacta y discreta, ideal para espacios pequeños como habitaciones, estudios u oficinas en el hogar. 
+      Cuenta con visión nocturna para monitoreo las 24 horas, audio bidireccional para escuchar y hablar desde la app móvil, y grabación en alta definición. 
+      Su instalación es sencilla y permite acceso remoto desde cualquier lugar.
+      <br><br>
+      <b>Nota:</b> El precio corresponde solo al equipo. Acepto y entiendo que el valor de la instalación se cotiza por separado y puede variar según el tipo de cámara elegido y las características del lugar.`,
+    },
+    hogar2: {
+      nombre: "Cámara Panorámica 360°",
+      precio: "$180.000",
+      img: 'Camaras/CH2.png',
+      desc: `Cámara con visión panorámica de 360°, diseñada para cubrir todo el ambiente desde un solo punto, ideal para salas, comercios o espacios amplios. 
+      Incluye seguimiento inteligente de movimiento, grabación en alta definición, almacenamiento en la nube y audio bidireccional. 
+      Puedes controlar la orientación de la cámara desde tu celular.
+      <br><br>
+      <b>Nota:</b> El precio corresponde solo al equipo. Acepto y entiendo que el valor de la instalación se cotiza por separado y puede variar según el tipo de cámara elegido y las características del lugar.`,
+    },
+    hogar3: {
+      nombre: "Cámara Exterior WiFi",
+      precio: "$210.000",
+      img: 'Camaras/CH3.png',
+      desc: `Especial para exteriores, resistente al agua y a condiciones climáticas adversas. 
+      Ofrece visión nocturna avanzada, detección de movimiento y notificaciones en tiempo real. 
+      Conéctala a tu red WiFi y visualiza todo desde tu dispositivo móvil. Perfecta para entradas, patios o zonas externas del hogar.
+      <br><br>
+      <b>Nota:</b> El precio corresponde solo al equipo. Acepto y entiendo que el valor de la instalación se cotiza por separado y puede variar según el tipo de cámara elegido y las características del lugar.`,
+    }
+  }
+  let cam = data[modelo];
+  let urlWhatsapp = 'https://wa.me/573244973675?text=Quiero%20adquirir%20la%20'+encodeURIComponent(cam.nombre);
+  document.body.insertAdjacentHTML('beforeend', `
+    <div id="modalCamaraHogar" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0008;display:flex;justify-content:center;align-items:center;z-index:9999;">
+      <div style="background:#fff;border-radius:14px;padding:32px 36px;display:flex;gap:36px;align-items:center;max-width:95vw;box-shadow:0 4px 24px #0002;">
+        <img src='${cam.img}' alt='${cam.nombre}' style='width:320px;height:320px;object-fit:cover;border-radius:12px;box-shadow:0 2px 8px #0004;flex-shrink:0;'>
+        <div style="max-width:440px;min-width:320px;">
+          <h2 style="margin-top:0;margin-bottom:8px;font-size:2.1em;line-height:1.1;">${cam.nombre}</h2>
+          <div style="font-size:1.18em;line-height:1.6;margin-bottom:20px;color:#333;">
+            ${cam.desc}
+          </div>
+          <div style="font-weight:bold;font-size:1.3em;margin-bottom:18px;margin-top:8px;">${cam.precio}</div>
+          <div id="aceptarAvisoHogar" style="margin:18px 0 8px 0; background:#f7f7f7; border-radius:8px; padding:12px; display:flex; align-items:center; gap:10px;">
+            <input type="checkbox" id="chkAceptarHogar" style="width:22px;height:22px;accent-color:#111;cursor:pointer;" onchange="document.getElementById('btnAdquirirHogar').disabled=!this.checked;document.getElementById('nikeCheckHogar').style.opacity=this.checked?1:0;">
+            <label for="chkAceptarHogar" style="cursor:pointer;user-select:none;font-size:0.97em;">Acepto que el precio de la instalación puede variar según el tipo de cámara y las características del lugar.</label>
+            <span id="nikeCheckHogar" style="margin-left:6px;opacity:0;transition:opacity 0.2s;"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 12.5L9.2 17L18 6" stroke="#23d160" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <a id="btnAdquirirHogar" href="${urlWhatsapp}" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:1.13em;opacity:0.7;pointer-events:none;margin-top:8px;" disabled>Adquirir por WhatsApp</a>
+          <br><br>
+          <button onclick="document.getElementById('modalCamaraHogar').remove()" style="margin-top:10px;background:#eee;padding:8px 16px;border-radius:6px;border:none;cursor:pointer;font-size:1em;">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  `);
+
+  // Habilitar botón solo si acepta
+  setTimeout(()=>{
+    const chk = document.getElementById('chkAceptarHogar');
+    const btn = document.getElementById('btnAdquirirHogar');
+    if(chk && btn) {
+      chk.addEventListener('change', function() {
+        if(this.checked) {
+          btn.style.opacity = "1";
+          btn.style.pointerEvents = "auto";
+          btn.removeAttribute("disabled");
+        } else {
+          btn.style.opacity = "0.7";
+          btn.style.pointerEvents = "none";
+          btn.setAttribute("disabled", "true");
+        }
+      });
+    }
+  },100);
+}
+
+function mostrarDetalleCamaraEmpresa(modelo) {
+  let data = {
+    empresa1: {
+      nombre: "Cámara Domo HD",
+      precio: "$320.000",
+      img: 'Camaras/CE1.png',
+      desc: `Cámara profesional de alta definición apta para interiores y exteriores. 
+      Su diseño domo la hace resistente a actos vandálicos y permite vigilancia discreta de áreas comunes, pasillos o recepciones. 
+      Incorpora visión nocturna infrarroja y grabación HD continua.
+      <br><br>
+      <b>Nota:</b> El precio corresponde solo al equipo. Acepto y entiendo que el valor de la instalación se cotiza por separado y puede variar según el modelo de cámara elegido y las condiciones del sitio.`,
+    },
+    empresa2: {
+      nombre: "Cámara Bullet IR",
+      precio: "$390.000",
+      img: 'Camaras/CE2.png',
+      desc: `Especializada para vigilancia perimetral y zonas externas. 
+      Cuenta con visión infrarroja de largo alcance, carcasa metálica de alta resistencia y gran angular para monitorear amplias áreas con excelente calidad de imagen HD.
+      <br><br>
+      <b>Nota:</b> El precio corresponde solo al equipo. Acepto y entiendo que el valor de la instalación se cotiza por separado y puede variar según el modelo de cámara elegido y las condiciones del sitio.`,
+    },
+    empresa3: {
+      nombre: "Cámara PTZ Motorizada",
+      precio: "$750.000",
+      img: 'Camaras/CE3.png',
+      desc: `Cámara motorizada con control remoto de giro, inclinación y zoom óptico 18X. 
+      Ideal para cubrir grandes espacios, realizar patrullajes automáticos y seguimiento inteligente de personas u objetos. Grabación en alta definición y alertas automáticas por movimiento.
+      <br><br>
+      <b>Nota:</b> El precio corresponde solo al equipo. Acepto y entiendo que el valor de la instalación se cotiza por separado y puede variar según el modelo de cámara elegido y las condiciones del sitio.`,
+    }
+  }
+  let cam = data[modelo];
+  let urlWhatsapp = 'https://wa.me/573244973675?text=Quiero%20adquirir%20la%20'+encodeURIComponent(cam.nombre);
+  document.body.insertAdjacentHTML('beforeend', `
+    <div id="modalCamaraEmpresa" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0008;display:flex;justify-content:center;align-items:center;z-index:9999;">
+      <div style="background:#fff;border-radius:14px;padding:32px 36px;display:flex;gap:36px;align-items:center;max-width:95vw;box-shadow:0 4px 24px #0002;">
+        <img src='${cam.img}' alt='${cam.nombre}' style='width:320px;height:320px;object-fit:cover;border-radius:12px;box-shadow:0 2px 8px #0004;flex-shrink:0;'>
+        <div style="max-width:440px;min-width:320px;">
+          <h2 style="margin-top:0;margin-bottom:8px;font-size:2.1em;line-height:1.1;">${cam.nombre}</h2>
+          <div style="font-size:1.18em;line-height:1.6;margin-bottom:20px;color:#333;">
+            ${cam.desc}
+          </div>
+          <div style="font-weight:bold;font-size:1.3em;margin-bottom:18px;margin-top:8px;">${cam.precio}</div>
+          <div id="aceptarAvisoEmpresa" style="margin:18px 0 8px 0; background:#f7f7f7; border-radius:8px; padding:12px; display:flex; align-items:center; gap:10px;">
+            <input type="checkbox" id="chkAceptarEmpresa" style="width:22px;height:22px;accent-color:#111;cursor:pointer;" onchange="document.getElementById('btnAdquirirEmpresa').disabled=!this.checked;document.getElementById('nikeCheckEmpresa').style.opacity=this.checked?1:0;">
+            <label for="chkAceptarEmpresa" style="cursor:pointer;user-select:none;font-size:0.97em;">Acepto que el precio de la instalación puede variar según el modelo de cámara y las condiciones del sitio.</label>
+            <span id="nikeCheckEmpresa" style="margin-left:6px;opacity:0;transition:opacity 0.2s;"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 12.5L9.2 17L18 6" stroke="#23d160" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <a id="btnAdquirirEmpresa" href="${urlWhatsapp}" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:1.13em;opacity:0.7;pointer-events:none;margin-top:8px;" disabled>Adquirir por WhatsApp</a>
+          <br><br>
+          <button onclick="document.getElementById('modalCamaraEmpresa').remove()" style="margin-top:10px;background:#eee;padding:8px 16px;border-radius:6px;border:none;cursor:pointer;font-size:1em;">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  `);
+
+  // Habilitar botón solo si acepta
+  setTimeout(()=>{
+    const chk = document.getElementById('chkAceptarEmpresa');
+    const btn = document.getElementById('btnAdquirirEmpresa');
+    if(chk && btn) {
+      chk.addEventListener('change', function() {
+        if(this.checked) {
+          btn.style.opacity = "1";
+          btn.style.pointerEvents = "auto";
+          btn.removeAttribute("disabled");
+        } else {
+          btn.style.opacity = "0.7";
+          btn.style.pointerEvents = "none";
+          btn.setAttribute("disabled", "true");
+        }
+      });
+    }
+  },100);
+}
+      
 </script>
 </body>
 </html>
