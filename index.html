@@ -24,6 +24,10 @@
       position: fixed;
       height: 100%;
       overflow-y: auto;
+      left: 0;
+      top: 0;
+      z-index: 1000;
+      transition: width 0.3s, padding 0.3s;
     }
     .logo-container {
       display: flex;
@@ -63,6 +67,7 @@
       cursor: pointer;
       transition: background 0.3s;
       border-radius: 4px;
+      font-size: 16px;
     }
     .menu-button:hover {
       background: #3f3f5f;
@@ -81,6 +86,7 @@
       width: 100%;
       text-align: left;
       border-radius: 4px;
+      font-size: 15px;
     }
     .submenu button:hover {
       background: #555571;
@@ -89,6 +95,7 @@
       margin-left: 280px;
       padding: 30px 30px 20px 10px;
       flex: 1;
+      transition: margin-left 0.3s, padding 0.3s;
     }
     .section {
       background: white;
@@ -129,6 +136,7 @@
       justify-content: center;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       z-index: 999;
+      transition: width 0.3s, height 0.3s, left 0.3s, bottom 0.3s;
     }
     .whatsapp-icon {
       width: 30px;
@@ -140,6 +148,7 @@
     textarea {
       width: 100%;
       margin-top: 10px;
+      font-size: 16px;
     }
     .enviar-btn {
       margin-top: 10px;
@@ -149,6 +158,7 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 16px;
     }
     .enviar-btn:hover {
       background-color: #0077cc;
@@ -162,42 +172,42 @@
       margin-bottom: 5px;
     }
 
-    /* MOBILE STYLES */
+    /* MOBILE STYLES*/
     @media (max-width: 800px) {
       body {
-        flex-direction: column;
+        flex-direction: row;
       }
       .sidebar {
-        width: 100vw !important;
-        height: auto !important;
-        position: relative !important;
-        padding: 12px 6px 10px 6px !important;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        overflow-x: auto;
-        overflow-y: visible;
-        z-index: 1000;
+        width: 97vw !important;
+        max-width: 330px;
+        min-width: 110px;
+        height: 100vh !important;
+        padding: 10px 4px 10px 4px !important;
+        position: fixed !important;
+        left: 0 !important;
+        top: 0 !important;
+        z-index: 1200;
+        display: block !important;
       }
       .logo-container {
-        margin-bottom: 0;
-        margin-right: 8px;
+        margin-bottom: 3px;
       }
       .logo-img {
-        width: 32px;
-        height: 32px;
-        margin-right: 3px;
+        width: 30px;
+        height: 30px;
+        margin-right: 4px;
       }
       .sidebar h2 {
-        font-size: 16px;
+        font-size: 15px;
       }
       .refran {
         font-size: 8px;
-        margin: 0 8px 0 0;
+        margin-top: 1px;
+        margin-left: 24px;
+        margin-bottom: 18px;
       }
       .menu-item {
-        margin: 0 3px 0 0;
-        flex: 1 1 auto;
+        margin-bottom: 7px;
       }
       .menu-button {
         font-size: 13px;
@@ -205,98 +215,115 @@
         border-radius: 3px;
       }
       .submenu {
-        margin-left: 0;
+        margin-left: 2px;
         margin-top: 4px;
-        position: absolute;
-        left: 0;
-        width: 100vw;
-        background: #23234d;
-        z-index: 2000;
-        border-radius: 0 0 8px 8px;
       }
       .submenu button {
-        font-size: 13px;
-        padding: 7px 6px;
+        font-size: 12px;
+        padding: 6px 5px;
         border-radius: 3px;
       }
       .main {
-        margin-left: 0;
+        margin-left: 99vw;
         padding: 8px 4px 14px 4px;
+        min-width: 0;
+        width: 100vw;
       }
       .section {
-        padding: 10px;
+        padding: 8px;
         border-radius: 7px;
       }
       .product-card {
-        width: 98vw;
-        margin: 7px 1vw;
+        width: 96vw;
+        min-width: 150px;
+        margin: 6px 1vw;
         padding: 7px;
       }
       .product-card img {
-        height: 110px;
+        height: 100px;
       }
       .whatsapp {
-        position: fixed;
-        bottom: 14px;
-        left: 14px;
-        width: 44px;
-        height: 44px;
+        width: 42px;
+        height: 42px;
+        left: 12px;
+        bottom: 12px;
       }
       .whatsapp-icon {
-        width: 24px;
-        height: 24px;
+        width: 22px;
+        height: 22px;
       }
       textarea {
-        font-size: 15px;
+        font-size: 14px;
       }
       .enviar-btn {
-        padding: 7px 10px;
-        font-size: 15px;
+        padding: 6px 10px;
+        font-size: 14px;
       }
       ul {
-        margin-left: 10px;
-        margin-top: 7px;
-        margin-bottom: 7px;
+        margin-left: 8px;
+        margin-top: 6px;
+        margin-bottom: 6px;
       }
       ul li {
-        margin-bottom: 4px;
+        margin-bottom: 3px;
       }
     }
   </style>
   <script>
-    // Ajuste extra para forzar modo "app móvil" cuando es móvil 
+    // Ajuste extra para forzar modo "app móvil" cuando es móvil
     function isMobileDevice() {
       return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase());
     }
     function forceMobileAppLook() {
       if (isMobileDevice()) {
-        // Cambios adicionales JS 
-        document.body.style.flexDirection = 'column';
         // Sidebar
         var sidebar = document.querySelector('.sidebar');
         if (sidebar) {
-          sidebar.style.width = '100vw';
-          sidebar.style.height = 'auto';
-          sidebar.style.position = 'relative';
-          sidebar.style.padding = '12px 6px 10px 6px';
-          sidebar.style.display = 'flex';
-          sidebar.style.flexDirection = 'row';
-          sidebar.style.alignItems = 'flex-start';
+          sidebar.style.width = '97vw';
+          sidebar.style.maxWidth = '330px';
+          sidebar.style.minWidth = '110px';
+          sidebar.style.height = '100vh';
+          sidebar.style.padding = '10px 4px 10px 4px';
+          sidebar.style.position = 'fixed';
+          sidebar.style.left = '0';
+          sidebar.style.top = '0';
+          sidebar.style.zIndex = '1200';
+          sidebar.style.display = 'block';
         }
         // Main section
         var main = document.querySelector('.main');
         if (main) {
-          main.style.marginLeft = '0';
+          main.style.marginLeft = '99vw';
           main.style.padding = '8px 4px 14px 4px';
+          main.style.minWidth = '0';
+          main.style.width = '100vw';
         }
         // WhatsApp
         var whatsapp = document.querySelector('.whatsapp');
         if (whatsapp) {
-          whatsapp.style.width = '44px';
-          whatsapp.style.height = '44px';
-          whatsapp.style.bottom = '14px';
-          whatsapp.style.left = '14px';
+          whatsapp.style.width = '42px';
+          whatsapp.style.height = '42px';
+          whatsapp.style.left = '12px';
+          whatsapp.style.bottom = '12px';
         }
+        // Section
+        var section = document.querySelector('.section');
+        if (section) {
+          section.style.padding = '8px';
+          section.style.borderRadius = '7px';
+        }
+        // Ajusta product cards
+        var cards = document.querySelectorAll('.product-card');
+        cards.forEach(function(card) {
+          card.style.width = '96vw';
+          card.style.margin = '6px 1vw';
+          card.style.padding = '7px';
+        });
+        // Ajusta imágenes de productos
+        var imgs = document.querySelectorAll('.product-card img');
+        imgs.forEach(function(img) {
+          img.style.height = '100px';
+        });
       }
     }
     window.addEventListener('DOMContentLoaded', forceMobileAppLook);
