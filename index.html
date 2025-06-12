@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>JS Technology</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
       margin: 0;
@@ -180,9 +181,9 @@
         flex-direction: row;
       }
       .sidebar {
-        width: 34vw !important;
-        max-width: 140px;
-        min-width: 90px;
+        width: 260px !important;
+        min-width: 200px;
+        max-width: 100vw;
         height: 100vh !important;
         padding: 10px 4px 10px 4px !important;
         position: fixed !important;
@@ -191,46 +192,12 @@
         z-index: 1200;
         display: block !important;
       }
-      .logo-container {
-        margin-bottom: 3px;
-      }
-      .logo-img {
-        width: 30px;
-        height: 30px;
-        margin-right: 4px;
-      }
-      .sidebar h2 {
-        font-size: 15px;
-      }
-      .refran {
-        font-size: 8px;
-        margin-top: 1px;
-        margin-left: 24px;
-        margin-bottom: 18px;
-      }
-      .menu-item {
-        margin-bottom: 7px;
-      }
-      .menu-button {
-        font-size: 13px;
-        padding: 7px 6px;
-        border-radius: 3px;
-      }
-      .submenu {
-        margin-left: 2px;
-        margin-top: 4px;
-      }
-      .submenu button {
-        font-size: 12px;
-        padding: 6px 5px;
-        border-radius: 3px;
-      }
       .main {
-        margin-left: 34vw !important;
-        width: 66vw !important;
+        margin-left: 260px !important;
+        width: calc(100vw - 260px) !important;
         min-width: 0 !important;
         max-width: 100vw !important;
-        padding: 8px 4px 14px 4px !important;
+        padding: 8px 2vw 14px 2vw !important;
         box-sizing: border-box !important;
       }
       .section {
@@ -274,7 +241,7 @@
     }
   </style>
   <script>
-    // Ajuste extra para forzar modo "app móvil" cuando es móvil,
+    // Ajuste extra para forzar modo "app móvil" cuando es móvil
     function isMobileDevice() {
       return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase());
     }
@@ -283,9 +250,9 @@
         // Sidebar
         var sidebar = document.querySelector('.sidebar');
         if (sidebar) {
-          sidebar.style.width = '34vw';
-          sidebar.style.maxWidth = '140px';
-          sidebar.style.minWidth = '90px';
+          sidebar.style.width = '260px';
+          sidebar.style.minWidth = '200px';
+          sidebar.style.maxWidth = '100vw';
           sidebar.style.height = '100vh';
           sidebar.style.padding = '10px 4px 10px 4px';
           sidebar.style.position = 'fixed';
@@ -294,14 +261,14 @@
           sidebar.style.zIndex = '1200';
           sidebar.style.display = 'block';
         }
-        // Main section:
+        // Main section: justo al lado del menú, llena el resto de la pantalla
         var main = document.querySelector('.main');
         if (main) {
-          main.style.marginLeft = '34vw';
-          main.style.width = '66vw';
+          main.style.marginLeft = '260px';
+          main.style.width = 'calc(100vw - 260px)';
           main.style.minWidth = '0';
           main.style.maxWidth = '100vw';
-          main.style.padding = '8px 4px 14px 4px';
+          main.style.padding = '8px 2vw 14px 2vw';
           main.style.boxSizing = 'border-box';
         }
         // WhatsApp
