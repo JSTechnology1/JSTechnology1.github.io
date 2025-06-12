@@ -17,7 +17,7 @@
       overflow-x: hidden;
     }
     .sidebar {
-      width: 260px;
+      width: 230px;
       background: #1b1b2f;
       color: white;
       padding: 20px;
@@ -25,7 +25,7 @@
       height: 100%;
       overflow-y: auto;
       z-index: 1000;
-      transition: left 0.3s;
+      transition: left 0.3s, width 0.3s;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -47,6 +47,7 @@
       font-size: 24px;
       color: #00aaff;
       display: inline-block;
+      word-break: normal;
     }
     .refran {
       font-size: 10px;
@@ -54,6 +55,7 @@
       margin-top: 2px;
       margin-left: 36px;
       margin-bottom: 30px;
+      word-break: normal;
     }
     .menu-item {
       margin-bottom: 10px;
@@ -69,6 +71,16 @@
       cursor: pointer;
       transition: background 0.3s;
       border-radius: 4px;
+      font-size: 1.04rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .menu-button .text {
+      font-size: 0.90rem;
     }
     .menu-button:hover {
       background: #3f3f5f;
@@ -87,12 +99,16 @@
       width: 100%;
       text-align: left;
       border-radius: 4px;
+      font-size: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .submenu button:hover {
       background: #555571;
     }
     .main {
-      margin-left: 280px;
+      margin-left: 250px;
       padding: 30px 30px 20px 10px;
       flex: 1;
       transition: margin-left 0.3s;
@@ -171,53 +187,122 @@
     /* --- Responsive Design --- */
     @media (max-width: 900px) {
       .sidebar {
-        position: static;
-        width: 100vw;
-        height: auto;
-        flex-direction: column;
+        width: 215px;
+        min-width: 200px;
+        max-width: 230px;
+        padding: 15px 10px 15px 10px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
         align-items: flex-start;
-        padding: 10px 8px;
+        z-index: 1000;
+        border-radius: 0;
       }
-      .main {
+      .logo-container {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+      .logo-img {
+        width: 32px;
+        height: 32px;
+        margin-right: 8px;
+        margin-bottom: 0;
+      }
+      .sidebar h2 {
+        font-size: 18px;
+        margin-bottom: 6px;
         margin-left: 0;
-        padding: 70px 5vw 20px 5vw;
+        word-break: normal;
       }
-      .section {padding: 14px;}
-      .menu-item, .sidebar h2, .refran {
-        margin: 0 6px;
-        font-size: 1rem;
+      .refran {
+        font-size: 9px;
+        margin-bottom: 10px;
+        margin-left: 0;
+        word-break: normal;
+      }
+      .menu-item {
+        width: 100%;
+      }
+      .menu-button {
+        font-size: 1.00rem;
+        padding: 11px 10px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .menu-button .text {
+        font-size: 0.86rem;
       }
       .submenu {
         position: static;
-        width: 100%;
-        border-radius: 0 0 10px 10px;
+        min-width: 0;
         background: #23234d;
+        border-radius: 0 0 10px 10px;
+        z-index: 1100;
         margin: 0;
+        padding: 4px 0;
       }
+      .submenu button {
+        font-size: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .main {
+        margin-left: 215px;
+        padding: 17px 2vw 13px 2vw;
+        width: calc(100vw - 215px);
+        min-width: 0;
+      }
+      .section {padding: 12px;}
     }
     @media (max-width: 600px) {
       .sidebar {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100vw;
-        padding: 8px 3px 8px 3px;
+        width: 175px;
+        min-width: 165px;
+        max-width: 185px;
+        padding: 10px 5px 10px 5px;
       }
-      .main {padding: 90px 2vw 15px 2vw;}
+      .main {
+        margin-left: 175px;
+        padding: 11px 1vw 11px 1vw;
+        width: calc(100vw - 175px);
+        min-width: 0;
+      }
+      .logo-img {
+        width: 26px;
+        height: 26px;
+        margin-right: 6px;
+      }
+      .sidebar h2 {
+        font-size: 15px;
+        margin-bottom: 6px;
+      }
+      .refran {
+        font-size: 9px;
+        margin-bottom: 4px;
+      }
+      .menu-button {
+        font-size: 0.93rem;
+        padding: 10px 8px;
+      }
+      .menu-button .text {
+        font-size: 0.74rem;
+      }
       .section {padding: 8px;}
-      .logo-img { width: 30px; height: 30px;}
-      .sidebar h2 {font-size: 17px;}
-      .refran {font-size: 8px;}
-      .whatsapp {left: 10px; bottom: 10px; width: 38px; height: 38px;}
-      .whatsapp-icon {width: 22px; height: 22px;}
-      .menu-item {width: 100%;}
     }
     /* --- Fin Responsive --- */
-    /* Estilos del botón de toggle de vista - AHORA EN ESQUINA INFERIOR DERECHA */
+    /* Estilos del botón de toggle de vista - ESQUINA INFERIOR DERECHA */
     .toggle-view-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 2001;
+      position: fixed !important;
+      bottom: 20px !important;
+      right: 20px !important;
+      z-index: 2001 !important;
       background: #fff;
       border: 1.5px solid #00aaff;
       border-radius: 28px;
@@ -244,10 +329,10 @@
     }
     @media (max-width: 600px) {
       .toggle-view-btn {
-        bottom: 13px;
-        right: 13px;
-        padding: 5px 12px 5px 7px;
-        font-size: 15px;
+        bottom: 13px !important;
+        right: 13px !important;
+        padding: 5px 12px 5px 7px !important;
+        font-size: 15px !important;
       }
     }
     /* --- Notificación Modal de confirmación toggle --- */
@@ -307,7 +392,7 @@
 </head>
 <body>
   <!-- Botón de switch vista ordenador/móvil abajo derecha -->
-  <button class="toggle-view-btn" id="toggleViewBtn" title="Cambiar vista">
+  <button class="toggle-view-btn" id="toggleViewBtn" title="Cambiar vista" style="position: fixed !important; right: 20px !important; bottom: 20px !important;">
     <svg id="pcIcon" viewBox="0 0 24 24" fill="none">
       <rect x="2" y="4" width="20" height="14" rx="2" stroke="#0ea5e9" stroke-width="2" fill="none"/>
       <rect x="9" y="19" width="6" height="2" rx="1" fill="#0ea5e9"/>
@@ -336,7 +421,7 @@
     <div class="refran">La calidad está en nuestro servicio</div>
     <!-- Servicio Técnico -->
     <div class="menu-item">
-      <button class="menu-button" onclick="toggleSubmenu('st')" ontouchstart="toggleSubmenu('st')">🛠 Servicio Técnico</button>
+      <button class="menu-button" onclick="toggleSubmenu('st')" ontouchstart="toggleSubmenu('st')">🛠 <span class="text">Servicio Técnico</span></button>
       <div class="submenu" id="st">
         <button onclick="showContent('PC')" ontouchstart="showContent('PC')">🖥 PC </button>
         <button onclick="showContent('Laptop')" ontouchstart="showContent('Laptop')">💻 Laptop </button>
@@ -348,7 +433,7 @@
     </div>
     <!-- Cámaras -->
     <div class="menu-item">
-      <button class="menu-button" onclick="toggleSubmenu('cs')" ontouchstart="toggleSubmenu('cs')">📷 Cámaras de Seguridad</button>
+      <button class="menu-button" onclick="toggleSubmenu('cs')" ontouchstart="toggleSubmenu('cs')">📷 <span class="text">Cámaras de Seguridad</span></button>
       <div class="submenu" id="cs">
         <button onclick="showContent('CamaraHogar')" ontouchstart="showContent('CamaraHogar')">🏠 Hogar</button>
         <button onclick="showContent('CamaraHD')" ontouchstart="showContent('CamaraHD')">🏢 HD Empresa</button>
@@ -357,7 +442,7 @@
     </div>
     <!-- Tienda -->
     <div class="menu-item">
-      <button class="menu-button" onclick="showContent('Tienda')" ontouchstart="showContent('Tienda')">🛒 Tienda Online</button>
+      <button class="menu-button" onclick="showContent('Tienda')" ontouchstart="showContent('Tienda')">🛒 <span class="text">Tienda Online</span></button>
     </div>
   </div>
   <!-- Main -->
@@ -374,15 +459,14 @@
   <!-- Scripts -->
   <script>
     function toggleSubmenu(id) {
+      // Cierra otros submenus en móvil
+      if (window.innerWidth <= 900) {
+        document.querySelectorAll('.submenu').forEach(el => {
+          if (el.id !== id) el.style.display = 'none';
+        });
+      }
       const submenu = document.getElementById(id);
       submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-    }
-    function attachDualEvent(id, handler) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.addEventListener('click', handler);
-        element.addEventListener('touchstart', handler);
-      }
     }
     // --- Detección automática de dispositivo ---
     function isMobile() {
@@ -451,34 +535,69 @@
     const styleTag = document.createElement('style');
     styleTag.innerHTML = `
     body[data-view="mobile"] .sidebar {
-      width: 100vw !important;
-      height: auto !important;
-      position: static !important;
-      display: flex !important;
-      flex-direction: column !important;
+      width: 175px !important;
+      min-width: 165px !important;
+      max-width: 185px !important;
+      padding: 10px 5px 10px 5px !important;
+      position: fixed !important;
+      left: 0 !important;
+      top: 0 !important;
+      height: 100vh !important;
       align-items: flex-start !important;
-      padding: 10px 8px !important;
+      z-index: 1000 !important;
+      border-radius: 0 !important;
     }
-    body[data-view="mobile"] .main {margin-left: 0 !important; padding: 70px 5vw 20px 5vw !important;}
-    body[data-view="mobile"] .section {padding: 14px !important;}
-    body[data-view="mobile"] .menu-item, 
-    body[data-view="mobile"] .sidebar h2, 
-    body[data-view="mobile"] .refran {margin: 0 6px !important;}
+    body[data-view="mobile"] .main {
+      margin-left: 175px !important;
+      padding: 11px 1vw 11px 1vw !important;
+      width: calc(100vw - 175px) !important;
+      min-width: 0 !important;
+    }
+    body[data-view="mobile"] .logo-img { width: 26px !important; height: 26px !important; margin-right: 6px !important; }
+    body[data-view="mobile"] .sidebar h2 {
+      font-size: 15px !important;
+      margin-bottom: 6px !important;
+      display: block !important;
+    }
+    body[data-view="mobile"] .refran {
+      font-size: 9px !important;
+      margin-bottom: 4px !important;
+      display: block !important;
+    }
+    body[data-view="mobile"] .menu-button {
+      font-size: 0.93rem !important;
+      padding: 10px 8px !important;
+      display: flex !important;
+      justify-content: flex-start !important;
+      align-items: center !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    body[data-view="mobile"] .menu-button .text {
+      font-size: 0.74rem !important;
+    }
+    body[data-view="mobile"] .menu-button span {
+      display: inline !important;
+    }
     body[data-view="mobile"] .submenu {
       position: static !important;
-      width: 100% !important;
-      border-radius: 0 0 10px 10px !important;
+      min-width: 0 !important;
       background: #23234d !important;
+      border-radius: 0 0 10px 10px !important;
+      z-index: 1100 !important;
       margin: 0 !important;
+      padding: 4px 0 !important;
     }
-    body[data-view="mobile"] .logo-img { width: 30px !important; height: 30px !important;}
-    body[data-view="mobile"] .sidebar h2 {font-size: 17px !important;}
-    body[data-view="mobile"] .refran {font-size: 8px !important;}
-    body[data-view="mobile"] .whatsapp {left: 10px !important; bottom: 10px !important; width: 38px !important; height: 38px !important;}
-    body[data-view="mobile"] .whatsapp-icon {width: 22px !important; height: 22px !important;}
-    body[data-view="mobile"] .menu-item {width: 100% !important;}
+    body[data-view="mobile"] .submenu button {
+      font-size: 1rem !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    body[data-view="mobile"] .section {padding: 8px !important;}
     body[data-view="pc"] .sidebar {
-      width: 260px !important;
+      width: 230px !important;
       background: #1b1b2f !important;
       color: white !important;
       padding: 20px !important;
@@ -491,7 +610,7 @@
       left: 0 !important;
     }
     body[data-view="pc"] .main {
-      margin-left: 280px !important;
+      margin-left: 250px !important;
       padding: 30px 30px 20px 10px !important;
     }
     body[data-view="pc"] .section {padding: 20px !important;}
