@@ -161,7 +161,146 @@
     ul li {
       margin-bottom: 5px;
     }
+
+    /* MOBILE STYLES */
+    @media (max-width: 800px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100vw !important;
+        height: auto !important;
+        position: relative !important;
+        padding: 12px 6px 10px 6px !important;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        overflow-x: auto;
+        overflow-y: visible;
+        z-index: 1000;
+      }
+      .logo-container {
+        margin-bottom: 0;
+        margin-right: 8px;
+      }
+      .logo-img {
+        width: 32px;
+        height: 32px;
+        margin-right: 3px;
+      }
+      .sidebar h2 {
+        font-size: 16px;
+      }
+      .refran {
+        font-size: 8px;
+        margin: 0 8px 0 0;
+      }
+      .menu-item {
+        margin: 0 3px 0 0;
+        flex: 1 1 auto;
+      }
+      .menu-button {
+        font-size: 13px;
+        padding: 7px 6px;
+        border-radius: 3px;
+      }
+      .submenu {
+        margin-left: 0;
+        margin-top: 4px;
+        position: absolute;
+        left: 0;
+        width: 100vw;
+        background: #23234d;
+        z-index: 2000;
+        border-radius: 0 0 8px 8px;
+      }
+      .submenu button {
+        font-size: 13px;
+        padding: 7px 6px;
+        border-radius: 3px;
+      }
+      .main {
+        margin-left: 0;
+        padding: 8px 4px 14px 4px;
+      }
+      .section {
+        padding: 10px;
+        border-radius: 7px;
+      }
+      .product-card {
+        width: 98vw;
+        margin: 7px 1vw;
+        padding: 7px;
+      }
+      .product-card img {
+        height: 110px;
+      }
+      .whatsapp {
+        position: fixed;
+        bottom: 14px;
+        left: 14px;
+        width: 44px;
+        height: 44px;
+      }
+      .whatsapp-icon {
+        width: 24px;
+        height: 24px;
+      }
+      textarea {
+        font-size: 15px;
+      }
+      .enviar-btn {
+        padding: 7px 10px;
+        font-size: 15px;
+      }
+      ul {
+        margin-left: 10px;
+        margin-top: 7px;
+        margin-bottom: 7px;
+      }
+      ul li {
+        margin-bottom: 4px;
+      }
+    }
   </style>
+  <script>
+    // Ajuste extra para forzar modo "app móvil" cuando es móvil 
+    function isMobileDevice() {
+      return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase());
+    }
+    function forceMobileAppLook() {
+      if (isMobileDevice()) {
+        // Cambios adicionales JS 
+        document.body.style.flexDirection = 'column';
+        // Sidebar
+        var sidebar = document.querySelector('.sidebar');
+        if (sidebar) {
+          sidebar.style.width = '100vw';
+          sidebar.style.height = 'auto';
+          sidebar.style.position = 'relative';
+          sidebar.style.padding = '12px 6px 10px 6px';
+          sidebar.style.display = 'flex';
+          sidebar.style.flexDirection = 'row';
+          sidebar.style.alignItems = 'flex-start';
+        }
+        // Main section
+        var main = document.querySelector('.main');
+        if (main) {
+          main.style.marginLeft = '0';
+          main.style.padding = '8px 4px 14px 4px';
+        }
+        // WhatsApp
+        var whatsapp = document.querySelector('.whatsapp');
+        if (whatsapp) {
+          whatsapp.style.width = '44px';
+          whatsapp.style.height = '44px';
+          whatsapp.style.bottom = '14px';
+          whatsapp.style.left = '14px';
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', forceMobileAppLook);
+  </script>
 </head>
 <body>
   <!-- Sidebar -->
@@ -213,7 +352,7 @@
     function toggleSubmenu(id) {
       const submenu = document.getElementById(id);
       submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-    } 
+    }
     function attachDualEvent(id, handler) {
       const element = document.getElementById(id);
       if (element) {
@@ -221,13 +360,13 @@
         element.addEventListener('touchstart', handler);
       }
     }
-   function showContent(option) {
-  const content = document.getElementById('content');
-  let servicio = '';
-  let texto = '';
-  let mensaje = '';
+    function showContent(option) {
+      const content = document.getElementById('content');
+      let servicio = '';
+      let texto = '';
+      let mensaje = '';
 
-switch(option) {
+      switch(option) {
   case 'PC':
     servicio = 'Reparación de PC';
     texto = `
