@@ -177,7 +177,7 @@
       margin-bottom: 5px;
     }
 
-    /* MOBILE STYLES: Reduce tamaño de textos e imágenes SOLO en móvil */
+    /* MOBILE STYLES: Reduce aún más el tamaño de texto e imágenes SOLO en móvil */
     @media (max-width: 800px) {
       html, body {
         width: 100vw;
@@ -190,10 +190,10 @@
       }
       .sidebar {
         width: 33vw !important;
-        min-width: 90px !important;
-        max-width: 120px !important;
+        min-width: 80px !important;
+        max-width: 105px !important;
         height: 100vh !important;
-        padding: 10px 3px 10px 3px !important;
+        padding: 8px 2px 8px 2px !important;
         position: fixed !important;
         left: 0 !important;
         top: 0 !important;
@@ -201,33 +201,33 @@
         display: block !important;
       }
       .logo-img {
-        width: 20px;
-        height: 20px;
+        width: 17px;
+        height: 17px;
         margin-right: 2px;
       }
       .sidebar h2 {
-        font-size: 9px;
+        font-size: 8px;
       }
       .refran {
-        font-size: 6px;
+        font-size: 5px;
         margin-top: 1px;
-        margin-left: 8px;
-        margin-bottom: 10px;
+        margin-left: 6px;
+        margin-bottom: 6px;
       }
       .menu-item {
-        margin-bottom: 4px;
+        margin-bottom: 3px;
       }
       .menu-button {
-        font-size: 9px;
-        padding: 3px 2px;
+        font-size: 8px;
+        padding: 2px 1px;
         border-radius: 3px;
       }
       .submenu {
         margin-left: 1px;
-        margin-top: 3px;
+        margin-top: 2px;
       }
       .submenu button {
-        font-size: 8px;
+        font-size: 7px;
         padding: 2px 1px;
         border-radius: 3px;
       }
@@ -236,54 +236,54 @@
         width: 67vw !important;
         min-width: 0 !important;
         max-width: 100vw !important;
-        padding: 4px 1vw 8px 1vw !important;
+        padding: 2px 1vw 5px 1vw !important;
         box-sizing: border-box !important;
       }
       .section {
-        padding: 4px;
+        padding: 2px;
         border-radius: 7px;
-        font-size: 0.83rem;
+        font-size: 0.75rem;
       }
       .product-card {
-        width: 88vw;
-        min-width: 90px;
-        margin: 4px 1vw;
-        padding: 4px;
+        width: 84vw;
+        min-width: 70px;
+        margin: 3px 1vw;
+        padding: 3px;
       }
       .product-card img {
-        height: 40px;
+        height: 28px;
       }
       .whatsapp {
-        width: 26px;
-        height: 26px;
-        left: 6px;
-        bottom: 6px;
+        width: 20px;
+        height: 20px;
+        left: 4px;
+        bottom: 4px;
       }
       .whatsapp-icon {
-        width: 12px;
-        height: 12px;
+        width: 9px;
+        height: 9px;
       }
       textarea {
-        font-size: 11px;
+        font-size: 9px;
       }
       .enviar-btn {
-        padding: 3px 5px;
-        font-size: 11px;
+        padding: 2px 4px;
+        font-size: 9px;
       }
       ul {
-        margin-left: 4px;
-        margin-top: 3px;
-        margin-bottom: 3px;
-        font-size: 0.83rem;
+        margin-left: 3px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        font-size: 0.75rem;
       }
       ul li {
-        margin-bottom: 2px;
+        margin-bottom: 1px;
       }
       h3, h2, h1 {
-        font-size: 1em !important;
+        font-size: 0.85em !important;
       }
       p, span, label, div, .section, .main, .sidebar, button, input {
-        font-size: 0.85em !important;
+        font-size: 0.75em !important;
       }
     }
   </style>
@@ -297,10 +297,10 @@
         var sidebar = document.querySelector('.sidebar');
         if (sidebar) {
           sidebar.style.width = '33vw';
-          sidebar.style.minWidth = '90px';
-          sidebar.style.maxWidth = '120px';
+          sidebar.style.minWidth = '80px';
+          sidebar.style.maxWidth = '105px';
           sidebar.style.height = '100vh';
-          sidebar.style.padding = '10px 3px 10px 3px';
+          sidebar.style.padding = '8px 2px 8px 2px';
           sidebar.style.position = 'fixed';
           sidebar.style.left = '0';
           sidebar.style.top = '0';
@@ -314,40 +314,40 @@
           main.style.width = '67vw';
           main.style.minWidth = '0';
           main.style.maxWidth = '100vw';
-          main.style.padding = '4px 1vw 8px 1vw';
+          main.style.padding = '2px 1vw 5px 1vw';
           main.style.boxSizing = 'border-box';
         }
         // WhatsApp
         var whatsapp = document.querySelector('.whatsapp');
         if (whatsapp) {
-          whatsapp.style.width = '26px';
-          whatsapp.style.height = '26px';
-          whatsapp.style.left = '6px';
-          whatsapp.style.bottom = '6px';
+          whatsapp.style.width = '20px';
+          whatsapp.style.height = '20px';
+          whatsapp.style.left = '4px';
+          whatsapp.style.bottom = '4px';
         }
         // Section
         var section = document.querySelector('.section');
         if (section) {
-          section.style.padding = '4px';
+          section.style.padding = '2px';
           section.style.borderRadius = '7px';
-          section.style.fontSize = '0.83rem';
+          section.style.fontSize = '0.75rem';
         }
         // Ajusta product cards
         var cards = document.querySelectorAll('.product-card');
         cards.forEach(function(card) {
-          card.style.width = '88vw';
-          card.style.margin = '4px 1vw';
-          card.style.padding = '4px';
+          card.style.width = '84vw';
+          card.style.margin = '3px 1vw';
+          card.style.padding = '3px';
         });
         // Ajusta imágenes de productos
         var imgs = document.querySelectorAll('.product-card img');
         imgs.forEach(function(img) {
-          img.style.height = '40px';
+          img.style.height = '28px';
         });
         // Ajusta texto de lista
         var uls = document.querySelectorAll('ul');
         uls.forEach(function(ul) {
-          ul.style.fontSize = '0.83rem';
+          ul.style.fontSize = '0.75rem';
         });
       }
     }
@@ -422,12 +422,21 @@
   case 'PC':
     servicio = 'Reparación de PC';
     texto = `
+      <style>
+        @media (max-width: 800px) {
+          .servicio-header img { width: 80px !important; height: 60px !important; }
+          .servicio-header h2 { font-size: 1.1rem !important; }
+          .servicio-detalle-mini img { width: 38px !important; height: 28px !important; }
+          ul, p, li, .servicio-header h2, .adquirir-btn, .precio-txt { font-size: 0.82rem !important; }
+          .precio-img { width: 18px !important; }
+        }
+      </style>
       <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
         <img src="ServicioTecnico/ReparacionPC.png" alt="Reparación de PC" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #94a3b8;">
         <h2 style="color: #1e293b; font-weight: 800; font-size: 2.1rem;">Reparación de PC</h2>
       </div>
       <p class="slide-up" style="font-size: 1.15rem;">En nuestro servicio de <strong>Reparación de PC</strong> te ofrecemos una solución integral para cualquier problema que pueda estar afectando el funcionamiento de tu computador, ya sea de escritorio o portátil.</p>
-      <div style="display: flex; gap: 32px; margin: 22px 0;">
+      <div class="servicio-detalle-mini" style="display: flex; gap: 32px; margin: 22px 0;">
         <img src="ServicioTecnico/Hardware.png" alt="Hardware" style="width: 120px; height: 90px; border-radius: 14px;">
         <img src="ServicioTecnico/Windows.png" alt="Sistema Operativo" style="width: 120px; height: 90px; border-radius: 14px;">
         <img src="ServicioTecnico/Virus.png" alt="Virus" style="width: 120px; height: 90px; border-radius: 14px;">
@@ -441,28 +450,37 @@
         <li>Optimización general del sistema para mejorar velocidad y estabilidad.</li>
       </ul>
       <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
-        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
-        <span style="font-size:1.25rem;color:#0ea5e9;"><strong>Precio:</strong> $80.000 COP</span>
+        <img class="precio-img" src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span class="precio-txt" style="font-size:1.25rem;color:#0ea5e9;"><strong>Precio:</strong> $80.000 COP</span>
       </div>
       <a 
         href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20reparaci%C3%B3n%20de%20PC."
         class="adquirir-btn pulse"
-        style="background: linear-gradient(90deg, #06b6d4 60%, #0ea5e9 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #38bdf8;">
+        style="background: linear-gradient(90deg, #06b6d4 60%, #0ea5e9 100%); color: #fff; padding: 8px 16px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #38bdf8;">
         Quiero adquirir este servicio
       </a>
-      <p style="font-size: 1.02rem; color: #64748b; margin-top: 36px;">* Incluye diagnóstico, reparación básica y pruebas funcionales. Si se requieren repuestos, se notificará previamente.</p>
+      <p style="font-size: 1.02rem; color: #64748b; margin-top: 18px;">* Incluye diagnóstico, reparación básica y pruebas funcionales. Si se requieren repuestos, se notificará previamente.</p>
     `;
     break;
 
-  case 'Laptop':
+case 'Laptop':
     servicio = 'Servicio a Laptops';
     texto = `
+      <style>
+        @media (max-width: 800px) {
+          .servicio-header img { width: 80px !important; height: 60px !important; }
+          .servicio-header h2 { font-size: 1.1rem !important; }
+          .servicio-detalle-mini img { width: 38px !important; height: 28px !important; }
+          ul, p, li, .servicio-header h2, .adquirir-btn, .precio-txt { font-size: 0.82rem !important; }
+          .precio-img { width: 18px !important; }
+        }
+      </style>
       <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
         <img src="ServicioTecnico/Laptop.png" alt="Servicio a Laptops" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #94a3b8;">
         <h2 style="color: #0f172a; font-weight: 800; font-size: 2.1rem;">Servicio a Laptops</h2>
       </div>
       <p class="slide-up" style="font-size: 1.15rem;">En <strong>JS Technology</strong>, entendemos que tu laptop es una herramienta esencial para tu vida diaria, ya sea para estudiar, trabajar o mantenerte conectado con el mundo. Por eso, ofrecemos un <strong>servicio técnico integral para laptops</strong> que combina calidad, eficiencia y atención personalizada a un precio accesible.</p>
-      <div style="display: flex; gap: 32px; margin: 22px 0;">
+      <div class="servicio-detalle-mini" style="display: flex; gap: 32px; margin: 22px 0;">
         <img src="ServicioTecnico/Pantalla.png" alt="Reparación pantalla" style="width: 120px; height: 90px; border-radius: 14px;">
         <img src="ServicioTecnico/Teclado.png" alt="Teclado" style="width: 120px; height: 90px; border-radius: 14px;">
         <img src="ServicioTecnico/Bateria.png" alt="Batería" style="width: 120px; height: 90px; border-radius: 14px;">
@@ -476,28 +494,37 @@
         <li><strong>Asesoría técnica personalizada:</strong> Te informamos sobre el estado general de tu equipo y brindamos recomendaciones para su cuidado.</li>
       </ul>
       <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
-        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
-        <span style="font-size:1.25rem;color:#0ea5e9;"><strong>Precio:</strong> $100.000 COP</span>
+        <img class="precio-img" src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span class="precio-txt" style="font-size:1.25rem;color:#0ea5e9;"><strong>Precio:</strong> $100.000 COP</span>
       </div>
       <a 
         href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20reparaci%C3%B3n%20de%20Laptop."
         class="adquirir-btn pulse"
-        style="background: linear-gradient(90deg, #14b8a6 60%, #06b6d4 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #2dd4bf;">
+        style="background: linear-gradient(90deg, #14b8a6 60%, #06b6d4 100%); color: #fff; padding: 8px 16px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #2dd4bf;">
         Quiero adquirir este servicio
       </a>
-      <p style="font-size: 1.02rem; color: #64748b; margin-top: 36px;">* Incluye diagnóstico, mano de obra, limpieza interna y la reparación o reemplazo de un componente: pantalla, teclado o batería. En caso de necesitar piezas adicionales, se presentará un presupuesto previo sin compromiso.</p>
+      <p style="font-size: 1.02rem; color: #64748b; margin-top: 18px;">* Incluye diagnóstico, mano de obra, limpieza interna y la reparación o reemplazo de un componente: pantalla, teclado o batería. En caso de necesitar piezas adicionales, se presentará un presupuesto previo sin compromiso.</p>
     `;
     break;
 
-  case 'Formateo':
+case 'Formateo':
     servicio = 'Formateo de PC';
     texto = `
+      <style>
+        @media (max-width: 800px) {
+          .servicio-header img { width: 80px !important; height: 60px !important; }
+          .servicio-header h2 { font-size: 1.1rem !important; }
+          .servicio-detalle-mini img { width: 38px !important; height: 28px !important; }
+          ul, p, li, .servicio-header h2, .adquirir-btn, .precio-txt { font-size: 0.82rem !important; }
+          .precio-img { width: 18px !important; }
+        }
+      </style>
       <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
         <img src="ServicioTecnico/Formateo.png" alt="Formateo de PC" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #fbbf24;">
         <h2 style="color: #78350f; font-weight: 800; font-size: 2.1rem;">Formateo de PC</h2>
       </div>
       <p class="slide-up" style="font-size: 1.15rem;">¿Tu computador está lento, presenta errores frecuentes o necesita una limpieza total del sistema? En <strong>JS Technology</strong> ofrecemos un <strong>formateo profesional de PC</strong> que garantiza velocidad, estabilidad y seguridad para tu equipo, cuidando al máximo tu información personal.</p>
-      <div style="display: flex; gap: 32px; margin: 22px 0;">
+      <div class="servicio-detalle-mini" style="display: flex; gap: 32px; margin: 22px 0;">
         <img src="ServicioTecnico/Backup.png" alt="Respaldo" style="width: 120px; height: 90px; border-radius: 14px;">
         <img src="ServicioTecnico/ReparacionPC.png" alt="Reinstalación" style="width: 120px; height: 90px; border-radius: 14px;">
       </div>
@@ -511,28 +538,37 @@
         <li><strong>Pruebas finales de rendimiento:</strong> Revisión completa del equipo para asegurar un funcionamiento fluido antes de la entrega.</li>
       </ul>
       <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
-        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
-        <span style="font-size:1.25rem;color:#f59e42;"><strong>Precio:</strong> $70.000 COP</span>
+        <img class="precio-img" src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span class="precio-txt" style="font-size:1.25rem;color:#f59e42;"><strong>Precio:</strong> $70.000 COP</span>
       </div>
       <a 
         href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20formateo."
         class="adquirir-btn pulse"
-        style="background: linear-gradient(90deg, #fbbf24 60%, #a3e635 100%); color: #78350f; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #fde68a;">
+        style="background: linear-gradient(90deg, #fbbf24 60%, #a3e635 100%); color: #78350f; padding: 8px 16px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #fde68a;">
         Quiero adquirir este servicio
       </a>
-      <p style="font-size: 1.02rem; color: #b45309; margin-top: 36px;">* Incluye respaldo, formateo, reinstalación de sistema operativo, drivers y software básico. Si se requieren licencias específicas o respaldo de más de 100 GB, se cotizará por separado.</p>
+      <p style="font-size: 1.02rem; color: #b45309; margin-top: 18px;">* Incluye respaldo, formateo, reinstalación de sistema operativo, drivers y software básico. Si se requieren licencias específicas o respaldo de más de 100 GB, se cotizará por separado.</p>
     `;
     break;
 
-  case 'Software':
+case 'Software':
     servicio = 'Instalación de Software';
     texto = `
+      <style>
+        @media (max-width: 800px) {
+          .servicio-header img { width: 80px !important; height: 60px !important; }
+          .servicio-header h2 { font-size: 1.1rem !important; }
+          .servicio-detalle-mini img { width: 38px !important; height: 28px !important; }
+          ul, p, li, .servicio-header h2, .adquirir-btn, .precio-txt { font-size: 0.82rem !important; }
+          .precio-img { width: 18px !important; }
+        }
+      </style>
       <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
         <img src="ServicioTecnico/Software.png" alt="Instalación de Software" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #a78bfa;">
         <h2 style="color: #4c1d95; font-weight: 800; font-size: 2.1rem;">Instalación de Software</h2>
       </div>
       <p class="slide-up" style="font-size: 1.15rem;">En <strong>JS Technology</strong>, ofrecemos un servicio profesional de <strong>instalación de software</strong> para que tu computador esté equipado con las herramientas necesarias para trabajar, estudiar o navegar con total seguridad y eficiencia.</p>
-      <div style="display: flex; gap: 32px; margin: 22px 0;">
+      <div class="servicio-detalle-mini" style="display: flex; gap: 32px; margin: 22px 0;">
         <img src="ServicioTecnico/Oficce.png" alt="Office" style="width: 120px; height: 90px; border-radius: 14px;">
         <img src="ServicioTecnico/Antivirus.png" alt="Antivirus" style="width: 120px; height: 90px; border-radius: 14px;">
         <img src="ServicioTecnico/Multimedia.png" alt="Multimedia" style="width: 120px; height: 90px; border-radius: 14px;">
@@ -546,28 +582,37 @@
         <li><strong>Verificación de funcionamiento:</strong> Comprobación de que todos los programas estén correctamente instalados, activados y operativos.</li>
       </ul>
       <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
-        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
-        <span style="font-size:1.25rem;color:#6366f1;"><strong>Precio:</strong> $60.000 COP</span>
+        <img class="precio-img" src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span class="precio-txt" style="font-size:1.25rem;color:#6366f1;"><strong>Precio:</strong> $60.000 COP</span>
       </div>
       <a 
         href="https://wa.me/573244973675?text=Me%20interesa%20la%20instalaci%C3%B3n%20de%20software."
         class="adquirir-btn pulse"
-        style="background: linear-gradient(90deg, #6366f1 60%, #a21caf 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #d1fae5;">
+        style="background: linear-gradient(90deg, #6366f1 60%, #a21caf 100%); color: #fff; padding: 8px 16px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #d1fae5;">
         Quiero adquirir este servicio
       </a>
-      <p style="font-size: 1.02rem; color: #6d28d9; margin-top: 36px;">* Incluye instalación de hasta 10 programas esenciales, configuración básica y verificación completa del sistema. Programas adicionales o especializados pueden tener un costo adicional previo acuerdo.</p>
+      <p style="font-size: 1.02rem; color: #6d28d9; margin-top: 18px;">* Incluye instalación de hasta 10 programas esenciales, configuración básica y verificación completa del sistema. Programas adicionales o especializados pueden tener un costo adicional previo acuerdo.</p>
     `;
     break;
 
-  case 'Optimizacion':
+case 'Optimizacion':
     servicio = 'Optimización';
     texto = `
+      <style>
+        @media (max-width: 800px) {
+          .servicio-header img { width: 80px !important; height: 60px !important; }
+          .servicio-header h2 { font-size: 1.1rem !important; }
+          .servicio-detalle-mini img { width: 38px !important; height: 28px !important; }
+          ul, p, li, .servicio-header h2, .adquirir-btn, .precio-txt { font-size: 0.82rem !important; }
+          .precio-img { width: 18px !important; }
+        }
+      </style>
       <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
         <img src="ServicioTecnico/Optimizacion.png" alt="Optimización" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #f472b6;">
         <h2 style="color: #be185d; font-weight: 800; font-size: 2.1rem;">Optimización</h2>
       </div>
       <p class="slide-up" style="font-size: 1.15rem;">¿Tu computador se ha vuelto lento o tarda en ejecutar tareas básicas? En <strong>JS Technology</strong> te ofrecemos un servicio completo de <strong>optimización de equipos</strong> para mejorar significativamente el rendimiento sin perder tus archivos ni programas.</p>
-      <div style="display: flex; gap: 32px; margin: 22px 0;">
+      <div class="servicio-detalle-mini" style="display: flex; gap: 32px; margin: 22px 0;">
         <img src="ServicioTecnico/Performance.png" alt="Rendimiento" style="width: 120px; height: 90px; border-radius: 14px;">
         <img src="ServicioTecnico/Malware.png" alt="Malware" style="width: 120px; height: 90px; border-radius: 14px;">
         <img src="ServicioTecnico/Hardware2.png" alt="Check hardware" style="width: 120px; height: 90px; border-radius: 14px;">
@@ -582,16 +627,16 @@
         <li><strong>Revisión de hardware:</strong> Verificamos el estado del disco duro, RAM y temperatura para descartar problemas físicos.</li>
       </ul>
       <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
-        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
-        <span style="font-size:1.25rem;color:#f472b6;"><strong>Precio:</strong> $50.000 COP</span>
+        <img class="precio-img" src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span class="precio-txt" style="font-size:1.25rem;color:#f472b6;"><strong>Precio:</strong> $50.000 COP</span>
       </div>
       <a 
         href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20optimizaci%C3%B3n."
         class="adquirir-btn pulse"
-        style="background: linear-gradient(90deg, #f472b6 60%, #fcd34d 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #fbcfe8;">
+        style="background: linear-gradient(90deg, #f472b6 60%, #fcd34d 100%); color: #fff; padding: 8px 16px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #fbcfe8;">
         Quiero adquirir este servicio
       </a>
-      <p style="font-size: 1.02rem; color: #e11d48; margin-top: 36px;">* Incluye diagnóstico, limpieza del sistema, optimización del arranque, eliminación de amenazas y ajustes de rendimiento. Si se detecta que el equipo requiere un servicio mayor como formateo, se notificará previamente.</p>
+      <p style="font-size: 1.02rem; color: #e11d48; margin-top: 18px;">* Incluye diagnóstico, limpieza del sistema, optimización del arranque, eliminación de amenazas y ajustes de rendimiento. Si se detecta que el equipo requiere un servicio mayor como formateo, se notificará previamente.</p>
     `;
     break;
 
