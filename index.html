@@ -184,34 +184,7 @@
     ul li {
       margin-bottom: 5px;
     }
-    /* ---- CORRECCIÓN PARA BOTONES DE CÁMARAS EN HORIZONTAL ---- */
-    .camera-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 22px;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
-    .camera-item {
-      flex: 0 1 220px;
-      max-width: 240px;
-      min-width: 180px;
-      background: #fafbff;
-      border-radius: 18px;
-      padding: 21px 9px 11px 9px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 0 2px 12px #b6eaff44;
-      margin-bottom: 18px;
-    }
-    @media (max-width: 900px), body[data-view="mobile"] {
-      .camera-item {
-        flex: 1 1 28vw;
-        max-width: 31vw;
-        min-width: 100px;
-      }
-    }
+
     /* ---- MOBILE "APP-LIKE" VIEW ---- */
     body[data-view="mobile"] {
       background: #f6fbff !important;
@@ -343,6 +316,8 @@
       padding: 14px 22px !important;
       border-radius: 12px !important;
     }
+
+    /* ORGANIZACIÓN DE BOTONES DE CÁMARAS Y TIENDA EN MÓVIL */
     body[data-view="mobile"] .camera-grid,
     body[data-view="mobile"] .store-grid {
       display: flex !important;
@@ -398,6 +373,8 @@
       font-size: 1.12rem;
       margin-bottom: 8px;
     }
+
+    /* --- DESKTOP/TABLET RESPONSIVE --- */
     @media (max-width: 900px) {
       .sidebar {
         width: 215px;
@@ -509,6 +486,8 @@
       }
       .section {padding: 8px;}
     }
+    /* --- Fin Responsive --- */
+    /* Estilos del botón de toggle de vista - ESQUINA INFERIOR DERECHA */
     .toggle-view-btn {
       position: fixed !important;
       bottom: 20px !important;
@@ -546,6 +525,7 @@
         font-size: 15px !important;
       }
     }
+    /* --- Notificación Modal de confirmación toggle --- */
     #viewConfirmModal {
       display: none;
       position: fixed;
@@ -1030,67 +1010,65 @@
          <textarea id="userRequest" rows="4" placeholder="Escribe aquí..." style="width:100%; border-radius: 10px; border: 1px solid #bae6fd; padding: 12px; resize: vertical;"></textarea>
          <button class="enviar-btn pulse" onclick="enviarWhatsApp()" ontouchstart="enviarWhatsApp()" style="margin-top: 12px; background: linear-gradient(90deg, #06b6d4 60%, #0ea5e9 100%); color: #fff; padding: 12px 22px; border-radius: 10px; font-weight: bold; font-size: 1rem; box-shadow: 0 2px 10px #38bdf8;">Enviar</button>`;
       return;
-case 'CamaraHogar':
-          servicio = 'Cámara para Hogar';
-          texto = `
-            <div class="camera-grid">
-              <div class="camera-item">
-                <button onclick="mostrarDetalleCamaraHogar('hogar1')" style="border: none; background: none;">
-                  <img src="Camaras/CH1.png" style="width:100px; height:100px; object-fit:cover; border-radius:10px;">
-                  <div class="price" style="margin-top:8px;">$120.000</div>
-                </button>
-                <div class="title">Cámara Mini Interior</div>
-              </div>
-              <div class="camera-item">
-                <button onclick="mostrarDetalleCamaraHogar('hogar2')" style="border: none; background: none;">
-                  <img src="Camaras/CH2.png" style="width:100px; height:100px; object-fit:cover; border-radius:10px;">
-                  <div class="price" style="margin-top:8px;">$180.000</div>
-                </button>
-                <div class="title">Cámara Panorámica 360°</div>
-              </div>
-              <div class="camera-item">
-                <button onclick="mostrarDetalleCamaraHogar('hogar3')" style="border: none; background: none;">
-                  <img src="Camaras/CH3.png" style="width:100px; height:100px; object-fit:cover; border-radius:10px;">
-                  <div class="price" style="margin-top:8px;">$210.000</div>
-                </button>
-                <div class="title">Cámara Exterior WiFi</div>
-              </div>
-            </div>
-          `;
-          mensaje = 'Me interesa instalar cámara para hogar.';
-          content.innerHTML = texto;
-          break;
+ case 'CamaraHogar':
+  servicio = 'Cámara para Hogar';
+  texto = `
+    <div class="camera-grid">
+      <div class="camera-item">
+        <button onclick="mostrarDetalleCamaraHogar('hogar1')" style="border: none; background: none;">
+          <img src='Camaras/CH1.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div class="price" style="margin-top:8px;">$120.000</div>
+        </button>
+        <div class="title">Cámara Mini Interior</div>
+      </div>
+      <div class="camera-item">
+        <button onclick="mostrarDetalleCamaraHogar('hogar2')" style="border: none; background: none;">
+          <img src='Camaras/CH2.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div class="price" style="margin-top:8px;">$180.000</div>
+        </button>
+        <div class="title">Cámara Panorámica 360°</div>
+      </div>
+      <div class="camera-item">
+        <button onclick="mostrarDetalleCamaraHogar('hogar3')" style="border: none; background: none;">
+          <img src='Camaras/CH3.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div class="price" style="margin-top:8px;">$210.000</div>
+        </button>
+        <div class="title">Cámara Exterior WiFi</div>
+      </div>
+    </div>
+  `;
+  mensaje = 'Me interesa instalar cámara para hogar.';
+  break;
 
-        case 'CamaraHD':
-          servicio = 'Cámara HD Empresa';
-          texto = `
-            <div class="camera-grid">
-              <div class="camera-item">
-                <button onclick="mostrarDetalleCamaraEmpresa('empresa1')" style="border: none; background: none;">
-                  <img src="Camaras/CE1.png" style="width:100px; height:100px; object-fit:cover; border-radius:10px;">
-                  <div class="price" style="margin-top:8px;">$320.000</div>
-                </button>
-                <div class="title">Cámara Domo HD</div>
-              </div>
-              <div class="camera-item">
-                <button onclick="mostrarDetalleCamaraEmpresa('empresa2')" style="border: none; background: none;">
-                  <img src="Camaras/CE2.png" style="width:100px; height:100px; object-fit:cover; border-radius:10px;">
-                  <div class="price" style="margin-top:8px;">$390.000</div>
-                </button>
-                <div class="title">Cámara Bullet IR</div>
-              </div>
-              <div class="camera-item">
-                <button onclick="mostrarDetalleCamaraEmpresa('empresa3')" style="border: none; background: none;">
-                  <img src="Camaras/CE3.png" style="width:100px; height:100px; object-fit:cover; border-radius:10px;">
-                  <div class="price" style="margin-top:8px;">$750.000</div>
-                </button>
-                <div class="title">Cámara PTZ Motorizada</div>
-              </div>
-            </div>
-          `;
-          mensaje = 'Me interesa instalar cámara HD para empresa.';
-          content.innerHTML = texto;
-          break;
+case 'CamaraHD':
+  servicio = 'Cámara HD Empresa';
+  texto = `
+    <div class="camera-grid">
+      <div class="camera-item">
+        <button onclick="mostrarDetalleCamaraEmpresa('empresa1')" style="border: none; background: none;">
+          <img src='Camaras/CE1.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div class="price" style="margin-top:8px;">$320.000</div>
+        </button>
+        <div class="title">Cámara Domo HD</div>
+      </div>
+      <div class="camera-item">
+        <button onclick="mostrarDetalleCamaraEmpresa('empresa2')" style="border: none; background: none;">
+          <img src='Camaras/CE2.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div class="price" style="margin-top:8px;">$390.000</div>
+        </button>
+        <div class="title">Cámara Bullet IR</div>
+      </div>
+      <div class="camera-item">
+        <button onclick="mostrarDetalleCamaraEmpresa('empresa3')" style="border: none; background: none;">
+          <img src='Camaras/CE3.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div class="price" style="margin-top:8px;">$750.000</div>
+        </button>
+        <div class="title">Cámara PTZ Motorizada</div>
+      </div>
+    </div>
+  `;
+  mensaje = 'Me interesa instalar cámara HD para empresa.';
+  break;
 
 case 'KitCamaras':
   servicio = 'Kit de 4 Cámaras';
@@ -1147,110 +1125,109 @@ case 'KitCamaras':
         let img = document.getElementById('modal-img-full-el');
         if (!img.contains(e.target)) cerrarModalImg();
       });
-
+    
   `;
   break;
-
 case 'Tienda':
-  texto = `
+  content.innerHTML = `
     <h3>Tienda Online</h3>
-    <div class="store-grid">
-      <div class="store-item">
+    <div class="productos-container">
+      <div class="product-card">
         <button class="openModalBtn" data-product="1" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/M1.png" alt="Motorola G85 512GB" style="width:200px;">
-          <div class="title">Motorola G85 512GB</div>
-          <div class="price">$1'050.000 COP</div>
+          <h4>Motorola G85 512GB</h4>
+          <p>$1'050.000 COP</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="2" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/S1.png" alt="Samsung A16 5G" style="width:200px;">
-          <div class="title">Samsung A16 5G</div>
-          <div class="price">$740.000 COP</div>
+          <h4>Samsung A16 5G</h4>
+          <p>$740.000 COP</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="3" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/S2.png" alt="Samsung A05s 128gb" style="width:200px;">
-          <div class="title">Samsung A05s 128gb</div>
-          <div class="price">$450.000</div>
+          <h4>Samsung A05s 128gb</h4>
+          <p>$450.000</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="4" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/S3.png" alt="Samsung a36 5G 256GB" style="width:200px;">
-          <div class="title">Samsung a36 5G 256GB</div>
-          <div class="price">$1.170.000</div>
+          <h4>Samsung a36 5G 256GB</h4>
+          <p>$1.170.000</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="5" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/S4.png" alt="Samsung A55 5g 256gb" style="width:200px;">
-          <div class="title">Samsung A55 5g 256gb</div>
-          <div class="price">$1.510.000</div>
+          <h4>Samsung A55 5g 256gb</h4>
+          <p>$1.510.000</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="6" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/S5.png" alt="Samsung a 56 5g 256GB" style="width:200px;">
-          <div class="title">Samsung a 56 5g 256GB</div>
-          <div class="price">$1.650.000</div>
+          <h4>Samsung a 56 5g 256GB</h4>
+          <p>$1.650.000</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="7" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/X1.png" alt="Xiaomi 14t 512 GB" style="width:200px;">
-          <div class="title">Xiaomi 14t 512 GB</div>
-          <div class="price">$1.870.000</div>
+          <h4>Xiaomi 14t 512 GB</h4>
+          <p>$1.870.000</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="8" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/X2.png" alt="Xiaomi 14t pro 512gb" style="width:200px;">
-          <div class="title">Xiaomi 14t pro 512gb</div>
-          <div class="price">$2.530.000</div>
+          <h4>Xiaomi 14t pro 512gb</h4>
+          <p>$2.530.000</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="9" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/X3.png" alt="Redmi note 14 256gb + buds 6 play" style="width:200px;">
-          <div class="title">Redmi note 14 256gb + buds 6 play</div>
-          <div class="price">$720.000 COP</div>
+          <h4>Redmi note 14 256gb + buds 6 play</h4>
+          <p>$720.000 COP</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="10" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/X4.png" alt="Redmi note 14 pro" style="width:200px;">
-          <div class="title">Redmi note 14 pro</div>
-          <div class="price">$910.000</div>
+          <h4>Redmi note 14 pro</h4>
+          <p>$910.000</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="11" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/X5.png" alt="Redmi A3 64gb" style="width:200px;">
-          <div class="title">Redmi A3 64gb</div>
-          <div class="price">$399.000</div>
+          <h4>Redmi A3 64gb</h4>
+          <p>$399.000</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="12" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/X6.png" alt="redmi 14c 128 GB" style="width:200px;">
-          <div class="title">redmi 14c 128 GB</div>
-          <div class="price">399.000</div>
+          <h4>redmi 14c 128 GB</h4>
+          <p>399.000</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="13" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/X7.png" alt="Redmi 14c 256gb" style="width:200px;">
-          <div class="title">Redmi 14c 256gb</div>
-          <div class="price">$460.000</div>
+          <h4>Redmi 14c 256gb</h4>
+          <p>$460.000</p>
         </button>
       </div>
-      <div class="store-item">
+      <div class="product-card">
         <button class="openModalBtn" data-product="14" style="border:none; background:none; padding:0; cursor:pointer;">
           <img src="TiendaOnline/Z1.png" alt="Zte A75 128 gb" style="width:200px;">
-          <div class="title">Zte A75 128 gb</div>
-          <div class="price">$340.000</div>
+          <h4>Zte A75 128 gb</h4>
+          <p>$340.000</p>
         </button>
       </div>
     </div>
@@ -1277,35 +1254,23 @@ case 'Tienda':
       </div>
     </div>
     <style>
-      .store-grid, .camera-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 22px;
-        justify-content: center;
-      }
-      .store-item, .camera-item {
-        flex: 0 1 220px;
-        max-width: 240px;
-        min-width: 180px;
-        background: #fafbff;
-        border-radius: 18px;
-        padding: 21px 9px 11px 9px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        box-shadow: 0 2px 12px #b6eaff44;
-        margin-bottom: 18px;
-      }
-      @media (max-width: 900px), body[data-view="mobile"] {
-        .store-item, .camera-item {
-          flex: 1 1 28vw;
-          max-width: 31vw;
-          min-width: 100px;
-        }
-      }
+      .productos-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+      .product-card { display: inline-block; margin: 15px; text-align: center; }
+      .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); animation: fadeIn 0.3s ease-in-out; }
+      .modal.fade-out { animation: fadeOut 0.4s forwards; }
+      .modal-container { display: flex; width: 80%; height: 80%; margin: 5% auto; background-color: #fff; border-radius: 10px; overflow: hidden; animation: slideIn 0.4s ease-in-out; position: relative; }
+      .close-btn { position: absolute; top: 10px; right: 20px; font-size: 24px; cursor: pointer; color: #444; z-index: 10; }
+      .modal-left { flex: 1; position: relative; background-color: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+      .modal-left img { max-width: 100%; max-height: 100%; object-fit: contain; display: none; }
+      .modal-left img.active { display: block; }
+      .modal-right { flex: 1; padding: 20px; overflow-y: auto; text-align: left; }
+      .slider-controls { position: absolute; width: 100%; bottom: 10px; display: flex; justify-content: space-between; padding: 0 10px; }
+      .slider-controls button { background-color: rgba(255,255,255,0.5); border: none; font-size: 24px; cursor: pointer; padding: 5px 10px; border-radius: 5px; }
+      @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+      @keyframes fadeOut { from {opacity: 1;} to {opacity: 0;} }
+      @keyframes slideIn { from {transform: scale(0.9); opacity: 0;} to {transform: scale(1); opacity: 1;} }
     </style>
   `;
-  break;
 
   const productsInfo = {
     1: {
