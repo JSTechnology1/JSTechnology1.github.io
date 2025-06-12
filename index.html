@@ -80,7 +80,7 @@
       gap: 7px;
     }
     .menu-button .text {
-      font-size: 0.90rem;
+      font-size: 1.09rem;
     }
     .menu-button:hover {
       background: #3f3f5f;
@@ -184,118 +184,132 @@
     ul li {
       margin-bottom: 5px;
     }
-    /* --- Responsive Design --- */
+
+    /* --- Responsive Design: Solo cuando se activa modo móvil --- */
+    body[data-view="mobile"] .sidebar {
+      width: 100vw !important;
+      min-width: 100vw !important;
+      max-width: 100vw !important;
+      padding: 38px 10vw 38px 10vw !important;
+      position: static !important;
+      left: 0 !important;
+      top: 0 !important;
+      height: auto !important;
+      align-items: flex-start !important;
+      z-index: 1000 !important;
+      border-radius: 0 !important;
+      box-sizing: border-box !important;
+      background: #1b1b2f !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    body[data-view="mobile"] .logo-container {
+      flex-direction: row !important;
+      align-items: center !important;
+      margin-bottom: 28px !important;
+    }
+    body[data-view="mobile"] .logo-img { 
+      width: 64px !important; 
+      height: 64px !important; 
+      margin-right: 20px !important; 
+    }
+    body[data-view="mobile"] .sidebar h2 {
+      font-size: 2.7rem !important;
+      margin-bottom: 12px !important;
+      margin-left: 0 !important;
+      display: block !important;
+    }
+    body[data-view="mobile"] .refran {
+      font-size: 1.28rem !important;
+      margin-bottom: 16px !important;
+      margin-left: 0 !important;
+      display: block !important;
+    }
+    body[data-view="mobile"] .menu-item {
+      width: 100% !important;
+    }
+    body[data-view="mobile"] .menu-button {
+      font-size: 2.1rem !important;
+      padding: 21px 32px !important;
+      min-height: 62px !important;
+      display: flex !important;
+      justify-content: flex-start !important;
+      align-items: center !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      gap: 16px !important;
+    }
+    body[data-view="mobile"] .menu-button .text {
+      font-size: 2.05rem !important;
+    }
+    body[data-view="mobile"] .submenu {
+      position: static !important;
+      min-width: 0 !important;
+      background: #23234d !important;
+      border-radius: 0 0 18px 18px !important;
+      z-index: 1100 !important;
+      margin: 0 !important;
+      padding: 8px 0 !important;
+    }
+    body[data-view="mobile"] .submenu button {
+      font-size: 1.3rem !important;
+      padding: 14px 26px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    body[data-view="mobile"] .main {
+      margin-left: 0 !important;
+      padding: 40px 3vw 40px 3vw !important;
+      width: 100vw !important;
+      min-width: 0 !important;
+      box-sizing: border-box !important;
+    }
+    body[data-view="mobile"] .section {padding: 25px !important;}
+
     @media (max-width: 900px) {
+      /* Solo afecta al modo escritorio/tablet, modo mobile usa [data-view="mobile"] */
       .sidebar {
-        width: 215px;
-        min-width: 200px;
-        max-width: 230px;
-        padding: 15px 10px 15px 10px;
-        position: fixed;
-        left: 0;
-        top: 0;
-        height: 100vh;
-        align-items: flex-start;
-        z-index: 1000;
-        border-radius: 0;
-      }
-      .logo-container {
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 8px;
-      }
-      .logo-img {
-        width: 32px;
-        height: 32px;
-        margin-right: 8px;
-        margin-bottom: 0;
-      }
-      .sidebar h2 {
-        font-size: 18px;
-        margin-bottom: 6px;
-        margin-left: 0;
-        word-break: normal;
-      }
-      .refran {
-        font-size: 9px;
-        margin-bottom: 10px;
-        margin-left: 0;
-        word-break: normal;
-      }
-      .menu-item {
-        width: 100%;
-      }
-      .menu-button {
-        font-size: 1.00rem;
-        padding: 11px 10px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .menu-button .text {
-        font-size: 0.86rem;
-      }
-      .submenu {
-        position: static;
-        min-width: 0;
-        background: #23234d;
-        border-radius: 0 0 10px 10px;
-        z-index: 1100;
-        margin: 0;
-        padding: 4px 0;
-      }
-      .submenu button {
-        font-size: 1rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        width: 230px;
+        min-width: 210px;
+        max-width: 250px;
+        padding: 18px 14px 18px 14px;
       }
       .main {
-        margin-left: 215px;
-        padding: 17px 2vw 13px 2vw;
-        width: calc(100vw - 215px);
+        margin-left: 230px;
+        padding: 23px 3vw 15px 3vw;
+        width: calc(100vw - 230px);
         min-width: 0;
       }
-      .section {padding: 12px;}
+      .menu-button {
+        font-size: 1.17rem;
+      }
+      .menu-button .text {
+        font-size: 1.09rem;
+      }
     }
     @media (max-width: 600px) {
       .sidebar {
-        width: 175px;
-        min-width: 165px;
-        max-width: 185px;
-        padding: 10px 5px 10px 5px;
+        width: 230px;
+        min-width: 200px;
+        max-width: 250px;
+        padding: 13px 8px 13px 8px;
       }
       .main {
-        margin-left: 175px;
-        padding: 11px 1vw 11px 1vw;
-        width: calc(100vw - 175px);
+        margin-left: 230px;
+        padding: 17px 2vw 17px 2vw;
+        width: calc(100vw - 230px);
         min-width: 0;
       }
-      .logo-img {
-        width: 26px;
-        height: 26px;
-        margin-right: 6px;
-      }
-      .sidebar h2 {
-        font-size: 15px;
-        margin-bottom: 6px;
-      }
-      .refran {
-        font-size: 9px;
-        margin-bottom: 4px;
-      }
       .menu-button {
-        font-size: 0.93rem;
-        padding: 10px 8px;
+        font-size: 1.09rem;
       }
       .menu-button .text {
-        font-size: 0.74rem;
+        font-size: 0.97rem;
       }
-      .section {padding: 8px;}
     }
+
     /* --- Fin Responsive --- */
     /* Estilos del botón de toggle de vista - ESQUINA INFERIOR DERECHA */
     .toggle-view-btn {
@@ -531,96 +545,6 @@
         viewConfirmModal.style.display = "none";
       }
     });
-    // CSS manual para forzar el modo mobile o pc
-    const styleTag = document.createElement('style');
-    styleTag.innerHTML = `
-    body[data-view="mobile"] .sidebar {
-      width: 175px !important;
-      min-width: 165px !important;
-      max-width: 185px !important;
-      padding: 10px 5px 10px 5px !important;
-      position: fixed !important;
-      left: 0 !important;
-      top: 0 !important;
-      height: 100vh !important;
-      align-items: flex-start !important;
-      z-index: 1000 !important;
-      border-radius: 0 !important;
-    }
-    body[data-view="mobile"] .main {
-      margin-left: 175px !important;
-      padding: 11px 1vw 11px 1vw !important;
-      width: calc(100vw - 175px) !important;
-      min-width: 0 !important;
-    }
-    body[data-view="mobile"] .logo-img { width: 26px !important; height: 26px !important; margin-right: 6px !important; }
-    body[data-view="mobile"] .sidebar h2 {
-      font-size: 15px !important;
-      margin-bottom: 6px !important;
-      display: block !important;
-    }
-    body[data-view="mobile"] .refran {
-      font-size: 9px !important;
-      margin-bottom: 4px !important;
-      display: block !important;
-    }
-    body[data-view="mobile"] .menu-button {
-      font-size: 0.93rem !important;
-      padding: 10px 8px !important;
-      display: flex !important;
-      justify-content: flex-start !important;
-      align-items: center !important;
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-    }
-    body[data-view="mobile"] .menu-button .text {
-      font-size: 0.74rem !important;
-    }
-    body[data-view="mobile"] .menu-button span {
-      display: inline !important;
-    }
-    body[data-view="mobile"] .submenu {
-      position: static !important;
-      min-width: 0 !important;
-      background: #23234d !important;
-      border-radius: 0 0 10px 10px !important;
-      z-index: 1100 !important;
-      margin: 0 !important;
-      padding: 4px 0 !important;
-    }
-    body[data-view="mobile"] .submenu button {
-      font-size: 1rem !important;
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-    }
-    body[data-view="mobile"] .section {padding: 8px !important;}
-    body[data-view="pc"] .sidebar {
-      width: 230px !important;
-      background: #1b1b2f !important;
-      color: white !important;
-      padding: 20px !important;
-      position: fixed !important;
-      height: 100% !important;
-      overflow-y: auto !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: flex-start !important;
-      left: 0 !important;
-    }
-    body[data-view="pc"] .main {
-      margin-left: 250px !important;
-      padding: 30px 30px 20px 10px !important;
-    }
-    body[data-view="pc"] .section {padding: 20px !important;}
-    body[data-view="pc"] .logo-img { width: 38px !important; height: 38px !important;}
-    body[data-view="pc"] .sidebar h2 {font-size: 24px !important;}
-    body[data-view="pc"] .refran {font-size: 10px !important;}
-    body[data-view="pc"] .whatsapp {left: 20px !important; bottom: 20px !important; width: 50px !important; height: 50px !important;}
-    body[data-view="pc"] .whatsapp-icon {width: 30px !important; height: 30px !important;}
-    `;
-    document.head.appendChild(styleTag);
     // --- Detectar dispositivo al cargar y establecer la vista automáticamente ---
     window.addEventListener("DOMContentLoaded", function() {
       if (isMobile()) {
