@@ -96,6 +96,8 @@
       padding: 30px 30px 20px 10px;
       flex: 1;
       transition: margin-left 0.3s, padding 0.3s;
+      min-width: 0;
+      width: auto;
     }
     .section {
       background: white;
@@ -172,15 +174,15 @@
       margin-bottom: 5px;
     }
 
-    /* MOBILE STYLES*/
+    /* MOBILE STYLES: */
     @media (max-width: 800px) {
       body {
         flex-direction: row;
       }
       .sidebar {
-        width: 97vw !important;
-        max-width: 330px;
-        min-width: 110px;
+        width: 34vw !important;
+        max-width: 140px;
+        min-width: 90px;
         height: 100vh !important;
         padding: 10px 4px 10px 4px !important;
         position: fixed !important;
@@ -224,18 +226,20 @@
         border-radius: 3px;
       }
       .main {
-        margin-left: 99vw;
-        padding: 8px 4px 14px 4px;
-        min-width: 0;
-        width: 100vw;
+        margin-left: 34vw !important;
+        width: 66vw !important;
+        min-width: 0 !important;
+        max-width: 100vw !important;
+        padding: 8px 4px 14px 4px !important;
+        box-sizing: border-box !important;
       }
       .section {
         padding: 8px;
         border-radius: 7px;
       }
       .product-card {
-        width: 96vw;
-        min-width: 150px;
+        width: 95vw;
+        min-width: 120px;
         margin: 6px 1vw;
         padding: 7px;
       }
@@ -270,7 +274,7 @@
     }
   </style>
   <script>
-    // Ajuste extra para forzar modo "app móvil" cuando es móvil
+    // Ajuste extra para forzar modo "app móvil" cuando es móvil,
     function isMobileDevice() {
       return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase());
     }
@@ -279,9 +283,9 @@
         // Sidebar
         var sidebar = document.querySelector('.sidebar');
         if (sidebar) {
-          sidebar.style.width = '97vw';
-          sidebar.style.maxWidth = '330px';
-          sidebar.style.minWidth = '110px';
+          sidebar.style.width = '34vw';
+          sidebar.style.maxWidth = '140px';
+          sidebar.style.minWidth = '90px';
           sidebar.style.height = '100vh';
           sidebar.style.padding = '10px 4px 10px 4px';
           sidebar.style.position = 'fixed';
@@ -290,13 +294,15 @@
           sidebar.style.zIndex = '1200';
           sidebar.style.display = 'block';
         }
-        // Main section
+        // Main section:
         var main = document.querySelector('.main');
         if (main) {
-          main.style.marginLeft = '99vw';
-          main.style.padding = '8px 4px 14px 4px';
+          main.style.marginLeft = '34vw';
+          main.style.width = '66vw';
           main.style.minWidth = '0';
-          main.style.width = '100vw';
+          main.style.maxWidth = '100vw';
+          main.style.padding = '8px 4px 14px 4px';
+          main.style.boxSizing = 'border-box';
         }
         // WhatsApp
         var whatsapp = document.querySelector('.whatsapp');
@@ -315,7 +321,7 @@
         // Ajusta product cards
         var cards = document.querySelectorAll('.product-card');
         cards.forEach(function(card) {
-          card.style.width = '96vw';
+          card.style.width = '95vw';
           card.style.margin = '6px 1vw';
           card.style.padding = '7px';
         });
