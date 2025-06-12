@@ -17,18 +17,13 @@
       overflow-x: hidden;
     }
     .sidebar {
-      width: 230px;
+      width: 260px;
       background: #1b1b2f;
       color: white;
       padding: 20px;
       position: fixed;
       height: 100%;
       overflow-y: auto;
-      z-index: 1000;
-      transition: left 0.3s, width 0.3s;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
     }
     .logo-container {
       display: flex;
@@ -47,7 +42,6 @@
       font-size: 24px;
       color: #00aaff;
       display: inline-block;
-      word-break: normal;
     }
     .refran {
       font-size: 10px;
@@ -55,11 +49,9 @@
       margin-top: 2px;
       margin-left: 36px;
       margin-bottom: 30px;
-      word-break: normal;
     }
     .menu-item {
       margin-bottom: 10px;
-      width: 100%;
     }
     .menu-button {
       width: 100%;
@@ -71,16 +63,6 @@
       cursor: pointer;
       transition: background 0.3s;
       border-radius: 4px;
-      font-size: 1.04rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .menu-button .text {
-      font-size: 0.90rem;
     }
     .menu-button:hover {
       background: #3f3f5f;
@@ -99,19 +81,14 @@
       width: 100%;
       text-align: left;
       border-radius: 4px;
-      font-size: 1rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
     .submenu button:hover {
       background: #555571;
     }
     .main {
-      margin-left: 250px;
+      margin-left: 280px;
       padding: 30px 30px 20px 10px;
       flex: 1;
-      transition: margin-left 0.3s;
     }
     .section {
       background: white;
@@ -184,424 +161,9 @@
     ul li {
       margin-bottom: 5px;
     }
-
-    /* ---- MOBILE "APP-LIKE" VIEW ---- */
-    body[data-view="mobile"] {
-      background: #f6fbff !important;
-    }
-    body[data-view="mobile"] .sidebar {
-      width: 58vw !important;
-      min-width: 170px !important;
-      max-width: 270px !important;
-      padding: 32px 10px 32px 10px !important;
-      position: fixed !important;
-      left: 0 !important;
-      top: 0 !important;
-      height: 100vh !important;
-      align-items: flex-start !important;
-      z-index: 1000 !important;
-      border-radius: 0 !important;
-      box-sizing: border-box !important;
-      background: #1b1b2f !important;
-      display: flex !important;
-      flex-direction: column !important;
-    }
-    body[data-view="mobile"] .logo-container {
-      flex-direction: row !important;
-      align-items: center !important;
-      margin-bottom: 35px !important;
-    }
-    body[data-view="mobile"] .logo-img {
-      width: 60px !important;
-      height: 60px !important;
-      margin-right: 16px !important;
-    }
-    body[data-view="mobile"] .sidebar h2 {
-      font-size: 2.5rem !important;
-      margin-bottom: 8px !important;
-      margin-left: 0 !important;
-      display: block !important;
-    }
-    body[data-view="mobile"] .refran {
-      font-size: 1.25rem !important;
-      margin-bottom: 20px !important;
-      margin-left: 0 !important;
-      display: block !important;
-    }
-    body[data-view="mobile"] .menu-item {
-      width: 100% !important;
-    }
-    body[data-view="mobile"] .menu-button {
-      font-size: 2.1rem !important;
-      padding: 19px 28px !important;
-      min-height: 50px !important;
-      display: flex !important;
-      justify-content: flex-start !important;
-      align-items: center !important;
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-      gap: 16px !important;
-      border-radius: 10px !important;
-    }
-    body[data-view="mobile"] .menu-button .text {
-      font-size: 2.06rem !important;
-    }
-    body[data-view="mobile"] .submenu {
-      position: static !important;
-      min-width: 0 !important;
-      background: #23234d !important;
-      border-radius: 0 0 18px 18px !important;
-      z-index: 1100 !important;
-      margin: 0 !important;
-      padding: 8px 0 !important;
-    }
-    body[data-view="mobile"] .submenu button {
-      font-size: 1.4rem !important;
-      padding: 15px 30px !important;
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-      border-radius: 9px !important;
-      margin-top: 6px !important;
-    }
-    body[data-view="mobile"] .main {
-      margin-left: 58vw !important;
-      padding: 48px 5vw 48px 5vw !important;
-      width: calc(100vw - 58vw) !important;
-      min-width: 0 !important;
-      box-sizing: border-box !important;
-    }
-    body[data-view="mobile"] .section {
-      padding: 38px !important;
-      border-radius: 22px !important;
-      font-size: 2.03rem !important;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.08) !important;
-    }
-    body[data-view="mobile"] h3,
-    body[data-view="mobile"] h4,
-    body[data-view="mobile"] h2 {
-      font-size: 2.3rem !important;
-    }
-    body[data-view="mobile"] ul,
-    body[data-view="mobile"] li {
-      font-size: 1.5rem !important;
-    }
-    body[data-view="mobile"] .product-card {
-      width: 340px !important;
-      min-height: 370px !important;
-      margin: 20px !important;
-      padding: 26px !important;
-      font-size: 1.7rem !important;
-    }
-    body[data-view="mobile"] .product-card img {
-      width: 100% !important;
-      height: 210px !important;
-      border-radius: 14px !important;
-    }
-    body[data-view="mobile"] .whatsapp {
-      left: 25px !important;
-      bottom: 25px !important;
-      width: 85px !important;
-      height: 85px !important;
-    }
-    body[data-view="mobile"] .whatsapp-icon {
-      width: 54px !important;
-      height: 54px !important;
-    }
-    body[data-view="mobile"] textarea,
-    body[data-view="mobile"] input,
-    body[data-view="mobile"] .enviar-btn {
-      font-size: 1.4rem !important;
-      padding: 14px 22px !important;
-      border-radius: 12px !important;
-    }
-
-    /* ORGANIZACIÓN DE BOTONES DE CÁMARAS Y TIENDA EN MÓVIL */
-    body[data-view="mobile"] .camera-grid,
-    body[data-view="mobile"] .store-grid {
-      display: flex !important;
-      flex-wrap: wrap !important;
-      justify-content: center !important;
-      gap: 22px !important;
-    }
-    body[data-view="mobile"] .camera-grid .camera-item,
-    body[data-view="mobile"] .store-grid .store-item {
-      flex: 1 1 27vw !important;
-      max-width: 28vw !important;
-      min-width: 150px !important;
-      background: #fafbff;
-      border-radius: 18px;
-      padding: 21px 9px 11px 9px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 0 2px 12px #b6eaff44;
-    }
-    body[data-view="mobile"] .camera-grid .camera-item img,
-    body[data-view="mobile"] .store-grid .store-item img {
-      width: 76px !important;
-      height: 76px !important;
-      object-fit: cover;
-      border-radius: 11px;
-      margin-bottom: 8px;
-    }
-    body[data-view="mobile"] .camera-grid .camera-item button,
-    body[data-view="mobile"] .store-grid .store-item button {
-      font-size: 1.3rem !important;
-      padding: 10px 2px !important;
-      width: 100%;
-      border-radius: 8px;
-      background: #e0f7fa;
-      color: #1b1b2f;
-      border: none;
-      margin-bottom: 2px;
-      font-weight: bold;
-    }
-    body[data-view="mobile"] .camera-grid .camera-item .title,
-    body[data-view="mobile"] .store-grid .store-item .title {
-      font-size: 1.02rem;
-      margin-top: 5px;
-      color: #334155;
-      text-align: center;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    body[data-view="mobile"] .camera-grid .camera-item .price,
-    body[data-view="mobile"] .store-grid .store-item .price {
-      color: #178f3b;
-      font-size: 1.12rem;
-      margin-bottom: 8px;
-    }
-
-    /* --- DESKTOP/TABLET RESPONSIVE --- */
-    @media (max-width: 900px) {
-      .sidebar {
-        width: 215px;
-        min-width: 200px;
-        max-width: 230px;
-        padding: 15px 10px 15px 10px;
-        position: fixed;
-        left: 0;
-        top: 0;
-        height: 100vh;
-        align-items: flex-start;
-        z-index: 1000;
-        border-radius: 0;
-      }
-      .logo-container {
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 8px;
-      }
-      .logo-img {
-        width: 32px;
-        height: 32px;
-        margin-right: 8px;
-        margin-bottom: 0;
-      }
-      .sidebar h2 {
-        font-size: 18px;
-        margin-bottom: 6px;
-        margin-left: 0;
-        word-break: normal;
-      }
-      .refran {
-        font-size: 9px;
-        margin-bottom: 10px;
-        margin-left: 0;
-        word-break: normal;
-      }
-      .menu-item {
-        width: 100%;
-      }
-      .menu-button {
-        font-size: 1.00rem;
-        padding: 11px 10px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .menu-button .text {
-        font-size: 0.86rem;
-      }
-      .submenu {
-        position: static;
-        min-width: 0;
-        background: #23234d;
-        border-radius: 0 0 10px 10px;
-        z-index: 1100;
-        margin: 0;
-        padding: 4px 0;
-      }
-      .submenu button {
-        font-size: 1rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .main {
-        margin-left: 215px;
-        padding: 17px 2vw 13px 2vw;
-        width: calc(100vw - 215px);
-        min-width: 0;
-      }
-      .section {padding: 12px;}
-    }
-    @media (max-width: 600px) {
-      .sidebar {
-        width: 175px;
-        min-width: 165px;
-        max-width: 185px;
-        padding: 10px 5px 10px 5px;
-      }
-      .main {
-        margin-left: 175px;
-        padding: 11px 1vw 11px 1vw;
-        width: calc(100vw - 175px);
-        min-width: 0;
-      }
-      .logo-img {
-        width: 26px;
-        height: 26px;
-        margin-right: 6px;
-      }
-      .sidebar h2 {
-        font-size: 15px;
-        margin-bottom: 6px;
-      }
-      .refran {
-        font-size: 9px;
-        margin-bottom: 4px;
-      }
-      .menu-button {
-        font-size: 0.93rem;
-        padding: 10px 8px;
-      }
-      .menu-button .text {
-        font-size: 0.74rem;
-      }
-      .section {padding: 8px;}
-    }
-    /* --- Fin Responsive --- */
-    /* Estilos del botón de toggle de vista - ESQUINA INFERIOR DERECHA */
-    .toggle-view-btn {
-      position: fixed !important;
-      bottom: 20px !important;
-      right: 20px !important;
-      z-index: 2001 !important;
-      background: #fff;
-      border: 1.5px solid #00aaff;
-      border-radius: 28px;
-      padding: 7px 17px 7px 10px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,170,255,0.12);
-      transition: background .18s;
-      font-size: 17px;
-      gap: 10px;
-    }
-    .toggle-view-btn:hover {
-      background: #e6f7ff;
-    }
-    .toggle-view-btn svg {
-      width: 25px;
-      height: 25px;
-      vertical-align: middle;
-      margin: 0 2px;
-    }
-    .toggle-view-btn .active {
-      filter: drop-shadow(0 0 5px #00aaff);
-    }
-    @media (max-width: 600px) {
-      .toggle-view-btn {
-        bottom: 13px !important;
-        right: 13px !important;
-        padding: 5px 12px 5px 7px !important;
-        font-size: 15px !important;
-      }
-    }
-    /* --- Notificación Modal de confirmación toggle --- */
-    #viewConfirmModal {
-      display: none;
-      position: fixed;
-      z-index: 3000;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(18,29,48,0.33);
-      align-items: center;
-      justify-content: center;
-    }
-    #viewConfirmModal .confirm-content {
-      background: #fff;
-      min-width: 280px;
-      max-width: 95vw;
-      padding: 32px 24px 20px 24px;
-      border-radius: 15px;
-      box-shadow: 0 4px 30px #0005;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 22px;
-      animation: fadeIn .2s;
-    }
-    #viewConfirmModal .confirm-title {
-      font-size: 1.17rem;
-      color: #0ea5e9;
-      font-weight: bold;
-      margin-bottom: 7px;
-      text-align: center;
-    }
-    #viewConfirmModal .confirm-buttons {
-      display: flex;
-      gap: 18px;
-      justify-content: center;
-    }
-    #viewConfirmModal button {
-      font-size: 1.06rem;
-      padding: 9px 18px;
-      border-radius: 7px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      min-width: 85px;
-    }
-    #viewConfirmModal .accept-btn {
-      background: linear-gradient(90deg,#0ea5e9 70%,#06b6d4 100%);
-      color: #fff;
-    }
-    #viewConfirmModal .cancel-btn {
-      background: #e0e7ef;
-      color: #222;
-      border: 1px solid #b6c3d3;
-    }
   </style>
 </head>
 <body>
-  <!-- Botón de switch vista ordenador/móvil abajo derecha -->
-  <button class="toggle-view-btn" id="toggleViewBtn" title="Cambiar vista" style="position: fixed !important; right: 20px !important; bottom: 20px !important;">
-    <svg id="pcIcon" viewBox="0 0 24 24" fill="none">
-      <rect x="2" y="4" width="20" height="14" rx="2" stroke="#0ea5e9" stroke-width="2" fill="none"/>
-      <rect x="9" y="19" width="6" height="2" rx="1" fill="#0ea5e9"/>
-    </svg>
-    <svg id="mobileIcon" viewBox="0 0 24 24" fill="none">
-      <rect x="6" y="2" width="12" height="20" rx="3" stroke="#aaa" stroke-width="2" fill="none"/>
-      <circle cx="12" cy="19" r="1.5" fill="#aaa"/>
-    </svg>
-  </button>
-  <!-- Confirmación modal del cambio de vista -->
-  <div id="viewConfirmModal">
-    <div class="confirm-content">
-      <div class="confirm-title" id="viewConfirmText"></div>
-      <div class="confirm-buttons">
-        <button class="accept-btn" id="viewConfirmAccept">Aceptar</button>
-        <button class="cancel-btn" id="viewConfirmCancel">Cancelar</button>
-      </div>
-    </div>
-  </div>
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="logo-container">
@@ -611,7 +173,7 @@
     <div class="refran">La calidad está en nuestro servicio</div>
     <!-- Servicio Técnico -->
     <div class="menu-item">
-      <button class="menu-button" onclick="toggleSubmenu('st')" ontouchstart="toggleSubmenu('st')">🛠 <span class="text">Servicio Técnico</span></button>
+      <button class="menu-button" onclick="toggleSubmenu('st')" ontouchstart="toggleSubmenu('st')">🛠 Servicio Técnico</button>
       <div class="submenu" id="st">
         <button onclick="showContent('PC')" ontouchstart="showContent('PC')">🖥 PC </button>
         <button onclick="showContent('Laptop')" ontouchstart="showContent('Laptop')">💻 Laptop </button>
@@ -623,7 +185,7 @@
     </div>
     <!-- Cámaras -->
     <div class="menu-item">
-      <button class="menu-button" onclick="toggleSubmenu('cs')" ontouchstart="toggleSubmenu('cs')">📷 <span class="text">Cámaras de Seguridad</span></button>
+      <button class="menu-button" onclick="toggleSubmenu('cs')" ontouchstart="toggleSubmenu('cs')">📷 Cámaras de Seguridad</button>
       <div class="submenu" id="cs">
         <button onclick="showContent('CamaraHogar')" ontouchstart="showContent('CamaraHogar')">🏠 Hogar</button>
         <button onclick="showContent('CamaraHD')" ontouchstart="showContent('CamaraHD')">🏢 HD Empresa</button>
@@ -632,7 +194,7 @@
     </div>
     <!-- Tienda -->
     <div class="menu-item">
-      <button class="menu-button" onclick="showContent('Tienda')" ontouchstart="showContent('Tienda')">🛒 <span class="text">Tienda Online</span></button>
+      <button class="menu-button" onclick="showContent('Tienda')" ontouchstart="showContent('Tienda')">🛒 Tienda Online</button>
     </div>
   </div>
   <!-- Main -->
@@ -646,223 +208,62 @@
   <a class="whatsapp" href="https://wa.me/573244973675" target="_blank">
     <div class="whatsapp-icon"></div>
   </a>
-<!-- Scripts -->
+  <!-- Scripts -->
   <script>
     function toggleSubmenu(id) {
-      // Cierra otros submenus en móvil
-      if (window.innerWidth <= 900) {
-        document.querySelectorAll('.submenu').forEach(el => {
-          if (el.id !== id) el.style.display = 'none';
-        });
-      }
       const submenu = document.getElementById(id);
       submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-    }
-    // --- Detección automática de dispositivo ---
-    function isMobile() {
-      return window.matchMedia("(pointer:coarse)").matches ||
-             /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-    }
-    // Toggle de vista con confirmación
-    let currentView = 'auto'; // valores: 'auto', 'pc', 'mobile'
-    const btn = document.getElementById('toggleViewBtn');
-    const pcIcon = document.getElementById('pcIcon');
-    const mobileIcon = document.getElementById('mobileIcon');
-    const viewConfirmModal = document.getElementById('viewConfirmModal');
-    const viewConfirmText = document.getElementById('viewConfirmText');
-    const viewConfirmAccept = document.getElementById('viewConfirmAccept');
-    const viewConfirmCancel = document.getElementById('viewConfirmCancel');
-    let pendingView = null;
-    function setView(mode) {
-      document.body.setAttribute('data-view', mode);
-      if (mode === 'pc') {
-        pcIcon.classList.add('active');
-        mobileIcon.classList.remove('active');
-      } else if (mode === 'mobile') {
-        pcIcon.classList.remove('active');
-        mobileIcon.classList.add('active');
-      } else {
-        pcIcon.classList.remove('active');
-        mobileIcon.classList.remove('active');
+    } 
+    function attachDualEvent(id, handler) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.addEventListener('click', handler);
+        element.addEventListener('touchstart', handler);
       }
     }
-    function showViewConfirm(nextView) {
-      let texto = "";
-      if(nextView === "mobile") texto = "¿Seguro que quieres cambiar a la vista de <b>celular</b>?";
-      else if(nextView === "pc") texto = "¿Seguro que quieres cambiar a la vista de <b>ordenador</b>?";
-      else texto = "¿Seguro que quieres volver a la vista automática?";
-      viewConfirmText.innerHTML = texto;
-      viewConfirmModal.style.display = "flex";
-    }
-    btn.addEventListener('click', function() {
-      let nextView;
-      if (currentView === 'auto') nextView = 'mobile';
-      else if (currentView === 'mobile') nextView = 'pc';
-      else nextView = 'auto';
-      pendingView = nextView;
-      showViewConfirm(nextView);
-    });
-    viewConfirmAccept.addEventListener('click', function() {
-      if(pendingView) {
-        setView(pendingView);
-        currentView = pendingView;
-        pendingView = null;
-      }
-      viewConfirmModal.style.display = "none";
-    });
-    viewConfirmCancel.addEventListener('click', function() {
-      pendingView = null;
-      viewConfirmModal.style.display = "none";
-    });
-    // Permite cerrar el modal al hacer click afuera
-    viewConfirmModal.addEventListener('mousedown', (e)=>{
-      if(!e.target.closest('.confirm-content')) {
-        pendingView = null;
-        viewConfirmModal.style.display = "none";
-      }
-    });
-    // CSS manual para forzar el modo mobile o pc
-    const styleTag = document.createElement('style');
-    styleTag.innerHTML = `
-    body[data-view="mobile"] .sidebar {
-      width: 175px !important;
-      min-width: 165px !important;
-      max-width: 185px !important;
-      padding: 10px 5px 10px 5px !important;
-      position: fixed !important;
-      left: 0 !important;
-      top: 0 !important;
-      height: 100vh !important;
-      align-items: flex-start !important;
-      z-index: 1000 !important;
-      border-radius: 0 !important;
-    }
-    body[data-view="mobile"] .main {
-      margin-left: 175px !important;
-      padding: 11px 1vw 11px 1vw !important;
-      width: calc(100vw - 175px) !important;
-      min-width: 0 !important;
-    }
-    body[data-view="mobile"] .logo-img { width: 26px !important; height: 26px !important; margin-right: 6px !important; }
-    body[data-view="mobile"] .sidebar h2 {
-      font-size: 15px !important;
-      margin-bottom: 6px !important;
-      display: block !important;
-    }
-    body[data-view="mobile"] .refran {
-      font-size: 9px !important;
-      margin-bottom: 4px !important;
-      display: block !important;
-    }
-    body[data-view="mobile"] .menu-button {
-      font-size: 0.93rem !important;
-      padding: 10px 8px !important;
-      display: flex !important;
-      justify-content: flex-start !important;
-      align-items: center !important;
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-    }
-    body[data-view="mobile"] .menu-button .text {
-      font-size: 0.74rem !important;
-    }
-    body[data-view="mobile"] .menu-button span {
-      display: inline !important;
-    }
-    body[data-view="mobile"] .submenu {
-      position: static !important;
-      min-width: 0 !important;
-      background: #23234d !important;
-      border-radius: 0 0 10px 10px !important;
-      z-index: 1100 !important;
-      margin: 0 !important;
-      padding: 4px 0 !important;
-    }
-    body[data-view="mobile"] .submenu button {
-      font-size: 1rem !important;
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-    }
-    body[data-view="mobile"] .section {padding: 8px !important;}
-    body[data-view="pc"] .sidebar {
-      width: 230px !important;
-      background: #1b1b2f !important;
-      color: white !important;
-      padding: 20px !important;
-      position: fixed !important;
-      height: 100% !important;
-      overflow-y: auto !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: flex-start !important;
-      left: 0 !important;
-    }
-    body[data-view="pc"] .main {
-      margin-left: 250px !important;
-      padding: 30px 30px 20px 10px !important;
-    }
-    body[data-view="pc"] .section {padding: 20px !important;}
-    body[data-view="pc"] .logo-img { width: 38px !important; height: 38px !important;}
-    body[data-view="pc"] .sidebar h2 {font-size: 24px !important;}
-    body[data-view="pc"] .refran {font-size: 10px !important;}
-    body[data-view="pc"] .whatsapp {left: 20px !important; bottom: 20px !important; width: 50px !important; height: 50px !important;}
-    body[data-view="pc"] .whatsapp-icon {width: 30px !important; height: 30px !important;}
-    `;
-    document.head.appendChild(styleTag);
-    // --- Detectar dispositivo al cargar y establecer la vista automáticamente ---
-    window.addEventListener("DOMContentLoaded", function() {
-      if (isMobile()) {
-        setView('mobile');
-        currentView = 'mobile';
-      } else {
-        setView('pc');
-        currentView = 'pc';
-      }
-    });
+   function showContent(option) {
+  const content = document.getElementById('content');
+  let servicio = '';
+  let texto = '';
+  let mensaje = '';
 
-    function showContent(option) {
-      const content = document.getElementById('content');
-      let servicio = '';
-      let texto = '';
-      let mensaje = '';
-      switch(option) {
-        case 'PC':
-          servicio = 'Reparación de PC';
-          texto = `
-            <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
-              <img src="ServicioTecnico/ReparacionPC.png" alt="Reparación de PC" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #94a3b8;">
-              <h2 style="color: #1e293b; font-weight: 800; font-size: 2.1rem;">Reparación de PC</h2>
-            </div>
-            <p class="slide-up" style="font-size: 1.15rem;">En nuestro servicio de <strong>Reparación de PC</strong> te ofrecemos una solución integral para cualquier problema que pueda estar afectando el funcionamiento de tu computador, ya sea de escritorio o portátil.</p>
-            <div style="display: flex; gap: 32px; margin: 22px 0;">
-              <img src="ServicioTecnico/Hardware.png" alt="Hardware" style="width: 120px; height: 90px; border-radius: 14px;">
-              <img src="ServicioTecnico/Windows.png" alt="Sistema Operativo" style="width: 120px; height: 90px; border-radius: 14px;">
-              <img src="ServicioTecnico/Virus.png" alt="Virus" style="width: 120px; height: 90px; border-radius: 14px;">
-            </div>
-            <ul style="color: #334155; font-size: 1.07rem;">
-              <li>Revisión y prueba de componentes físicos (disco duro, memoria RAM, placa madre, procesador, fuente de poder, entre otros).</li>
-              <li>Verificación y solución de fallos en el sistema operativo (Windows, Linux, etc.).</li>
-              <li>Eliminación de virus, malware y software no deseado que afecte el rendimiento del equipo.</li>
-              <li>Reparación o reinstalación del sistema operativo si es necesario.</li>
-              <li>Limpieza interna del equipo para evitar sobrecalentamientos.</li>
-              <li>Optimización general del sistema para mejorar velocidad y estabilidad.</li>
-            </ul>
-            <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
-              <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
-              <span style="font-size:1.25rem;color:#0ea5e9;"><strong>Precio:</strong> $80.000 COP</span>
-            </div>
-            <a 
-              href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20reparaci%C3%B3n%20de%20PC."
-              class="adquirir-btn pulse"
-              style="background: linear-gradient(90deg, #06b6d4 60%, #0ea5e9 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #38bdf8;">
-              Quiero adquirir este servicio
-            </a>
-            <p style="font-size: 1.02rem; color: #64748b; margin-top: 36px;">* Incluye diagnóstico, reparación básica y pruebas funcionales. Si se requieren repuestos, se notificará previamente.</p>
-          `;
-          break;
- case 'Laptop':
+switch(option) {
+  case 'PC':
+    servicio = 'Reparación de PC';
+    texto = `
+      <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
+        <img src="ServicioTecnico/ReparacionPC.png" alt="Reparación de PC" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #94a3b8;">
+        <h2 style="color: #1e293b; font-weight: 800; font-size: 2.1rem;">Reparación de PC</h2>
+      </div>
+      <p class="slide-up" style="font-size: 1.15rem;">En nuestro servicio de <strong>Reparación de PC</strong> te ofrecemos una solución integral para cualquier problema que pueda estar afectando el funcionamiento de tu computador, ya sea de escritorio o portátil.</p>
+      <div style="display: flex; gap: 32px; margin: 22px 0;">
+        <img src="ServicioTecnico/Hardware.png" alt="Hardware" style="width: 120px; height: 90px; border-radius: 14px;">
+        <img src="ServicioTecnico/Windows.png" alt="Sistema Operativo" style="width: 120px; height: 90px; border-radius: 14px;">
+        <img src="ServicioTecnico/Virus.png" alt="Virus" style="width: 120px; height: 90px; border-radius: 14px;">
+      </div>
+      <ul style="color: #334155; font-size: 1.07rem;">
+        <li>Revisión y prueba de componentes físicos (disco duro, memoria RAM, placa madre, procesador, fuente de poder, entre otros).</li>
+        <li>Verificación y solución de fallos en el sistema operativo (Windows, Linux, etc.).</li>
+        <li>Eliminación de virus, malware y software no deseado que afecte el rendimiento del equipo.</li>
+        <li>Reparación o reinstalación del sistema operativo si es necesario.</li>
+        <li>Limpieza interna del equipo para evitar sobrecalentamientos.</li>
+        <li>Optimización general del sistema para mejorar velocidad y estabilidad.</li>
+      </ul>
+      <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
+        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span style="font-size:1.25rem;color:#0ea5e9;"><strong>Precio:</strong> $80.000 COP</span>
+      </div>
+      <a 
+        href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20reparaci%C3%B3n%20de%20PC."
+        class="adquirir-btn pulse"
+        style="background: linear-gradient(90deg, #06b6d4 60%, #0ea5e9 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #38bdf8;">
+        Quiero adquirir este servicio
+      </a>
+      <p style="font-size: 1.02rem; color: #64748b; margin-top: 36px;">* Incluye diagnóstico, reparación básica y pruebas funcionales. Si se requieren repuestos, se notificará previamente.</p>
+    `;
+    break;
+
+  case 'Laptop':
     servicio = 'Servicio a Laptops';
     texto = `
       <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
@@ -1013,27 +414,27 @@
  case 'CamaraHogar':
   servicio = 'Cámara para Hogar';
   texto = `
-    <div class="camera-grid">
-      <div class="camera-item">
+    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <div style="text-align: center;">
         <button onclick="mostrarDetalleCamaraHogar('hogar1')" style="border: none; background: none;">
           <img src='Camaras/CH1.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
-          <div class="price" style="margin-top:8px;">$120.000</div>
+          <div style="margin-top:8px;">$120.000</div>
         </button>
-        <div class="title">Cámara Mini Interior</div>
+        <div>Cámara Mini Interior</div>
       </div>
-      <div class="camera-item">
+      <div style="text-align: center;">
         <button onclick="mostrarDetalleCamaraHogar('hogar2')" style="border: none; background: none;">
           <img src='Camaras/CH2.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
-          <div class="price" style="margin-top:8px;">$180.000</div>
+          <div style="margin-top:8px;">$180.000</div>
         </button>
-        <div class="title">Cámara Panorámica 360°</div>
+        <div>Cámara Panorámica 360°</div>
       </div>
-      <div class="camera-item">
+      <div style="text-align: center;">
         <button onclick="mostrarDetalleCamaraHogar('hogar3')" style="border: none; background: none;">
           <img src='Camaras/CH3.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
-          <div class="price" style="margin-top:8px;">$210.000</div>
+          <div style="margin-top:8px;">$210.000</div>
         </button>
-        <div class="title">Cámara Exterior WiFi</div>
+        <div>Cámara Exterior WiFi</div>
       </div>
     </div>
   `;
@@ -1043,27 +444,27 @@
 case 'CamaraHD':
   servicio = 'Cámara HD Empresa';
   texto = `
-    <div class="camera-grid">
-      <div class="camera-item">
+    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <div style="text-align: center;">
         <button onclick="mostrarDetalleCamaraEmpresa('empresa1')" style="border: none; background: none;">
           <img src='Camaras/CE1.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
-          <div class="price" style="margin-top:8px;">$320.000</div>
+          <div style="margin-top:8px;">$320.000</div>
         </button>
-        <div class="title">Cámara Domo HD</div>
+        <div>Cámara Domo HD</div>
       </div>
-      <div class="camera-item">
+      <div style="text-align: center;">
         <button onclick="mostrarDetalleCamaraEmpresa('empresa2')" style="border: none; background: none;">
           <img src='Camaras/CE2.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
-          <div class="price" style="margin-top:8px;">$390.000</div>
+          <div style="margin-top:8px;">$390.000</div>
         </button>
-        <div class="title">Cámara Bullet IR</div>
+        <div>Cámara Bullet IR</div>
       </div>
-      <div class="camera-item">
+      <div style="text-align: center;">
         <button onclick="mostrarDetalleCamaraEmpresa('empresa3')" style="border: none; background: none;">
           <img src='Camaras/CE3.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
-          <div class="price" style="margin-top:8px;">$750.000</div>
+          <div style="margin-top:8px;">$750.000</div>
         </button>
-        <div class="title">Cámara PTZ Motorizada</div>
+        <div>Cámara PTZ Motorizada</div>
       </div>
     </div>
   `;
