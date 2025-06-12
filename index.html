@@ -24,13 +24,18 @@
       position: fixed;
       height: 100%;
       overflow-y: auto;
+      z-index: 1000;
+      transition: left 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
     .logo-container {
       display: flex;
       align-items: center;
       margin-bottom: 5px;
     }
-     .logo-img {
+    .logo-img {
       width: 38px;
       height: 38px;
       background-image: url("ImgesJS/jstech_logo.png");
@@ -52,6 +57,7 @@
     }
     .menu-item {
       margin-bottom: 10px;
+      width: 100%;
     }
     .menu-button {
       width: 100%;
@@ -89,6 +95,7 @@
       margin-left: 280px;
       padding: 30px 30px 20px 10px;
       flex: 1;
+      transition: margin-left 0.3s;
     }
     .section {
       background: white;
@@ -161,9 +168,165 @@
     ul li {
       margin-bottom: 5px;
     }
+    /* --- Responsive Design --- */
+    @media (max-width: 900px) {
+      .sidebar {
+        position: static;
+        width: 100vw;
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 8px;
+      }
+      .main {
+        margin-left: 0;
+        padding: 70px 5vw 20px 5vw;
+      }
+      .section {padding: 14px;}
+      .menu-item, .sidebar h2, .refran {
+        margin: 0 6px;
+        font-size: 1rem;
+      }
+      .submenu {
+        position: static;
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+        background: #23234d;
+        margin: 0;
+      }
+    }
+    @media (max-width: 600px) {
+      .sidebar {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100vw;
+        padding: 8px 3px 8px 3px;
+      }
+      .main {padding: 90px 2vw 15px 2vw;}
+      .section {padding: 8px;}
+      .logo-img { width: 30px; height: 30px;}
+      .sidebar h2 {font-size: 17px;}
+      .refran {font-size: 8px;}
+      .whatsapp {left: 10px; bottom: 10px; width: 38px; height: 38px;}
+      .whatsapp-icon {width: 22px; height: 22px;}
+      .menu-item {width: 100%;}
+    }
+    /* --- Fin Responsive --- */
+    /* Estilos del botón de toggle de vista - AHORA EN ESQUINA INFERIOR DERECHA */
+    .toggle-view-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 2001;
+      background: #fff;
+      border: 1.5px solid #00aaff;
+      border-radius: 28px;
+      padding: 7px 17px 7px 10px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,170,255,0.12);
+      transition: background .18s;
+      font-size: 17px;
+      gap: 10px;
+    }
+    .toggle-view-btn:hover {
+      background: #e6f7ff;
+    }
+    .toggle-view-btn svg {
+      width: 25px;
+      height: 25px;
+      vertical-align: middle;
+      margin: 0 2px;
+    }
+    .toggle-view-btn .active {
+      filter: drop-shadow(0 0 5px #00aaff);
+    }
+    @media (max-width: 600px) {
+      .toggle-view-btn {
+        bottom: 13px;
+        right: 13px;
+        padding: 5px 12px 5px 7px;
+        font-size: 15px;
+      }
+    }
+    /* --- Notificación Modal de confirmación toggle --- */
+    #viewConfirmModal {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(18,29,48,0.33);
+      align-items: center;
+      justify-content: center;
+    }
+    #viewConfirmModal .confirm-content {
+      background: #fff;
+      min-width: 280px;
+      max-width: 95vw;
+      padding: 32px 24px 20px 24px;
+      border-radius: 15px;
+      box-shadow: 0 4px 30px #0005;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      animation: fadeIn .2s;
+    }
+    #viewConfirmModal .confirm-title {
+      font-size: 1.17rem;
+      color: #0ea5e9;
+      font-weight: bold;
+      margin-bottom: 7px;
+      text-align: center;
+    }
+    #viewConfirmModal .confirm-buttons {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+    }
+    #viewConfirmModal button {
+      font-size: 1.06rem;
+      padding: 9px 18px;
+      border-radius: 7px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      min-width: 85px;
+    }
+    #viewConfirmModal .accept-btn {
+      background: linear-gradient(90deg,#0ea5e9 70%,#06b6d4 100%);
+      color: #fff;
+    }
+    #viewConfirmModal .cancel-btn {
+      background: #e0e7ef;
+      color: #222;
+      border: 1px solid #b6c3d3;
+    }
   </style>
 </head>
 <body>
+  <!-- Botón de switch vista ordenador/móvil abajo derecha -->
+  <button class="toggle-view-btn" id="toggleViewBtn" title="Cambiar vista">
+    <svg id="pcIcon" viewBox="0 0 24 24" fill="none">
+      <rect x="2" y="4" width="20" height="14" rx="2" stroke="#0ea5e9" stroke-width="2" fill="none"/>
+      <rect x="9" y="19" width="6" height="2" rx="1" fill="#0ea5e9"/>
+    </svg>
+    <svg id="mobileIcon" viewBox="0 0 24 24" fill="none">
+      <rect x="6" y="2" width="12" height="20" rx="3" stroke="#aaa" stroke-width="2" fill="none"/>
+      <circle cx="12" cy="19" r="1.5" fill="#aaa"/>
+    </svg>
+  </button>
+  <!-- Confirmación modal del cambio de vista -->
+  <div id="viewConfirmModal">
+    <div class="confirm-content">
+      <div class="confirm-title" id="viewConfirmText"></div>
+      <div class="confirm-buttons">
+        <button class="accept-btn" id="viewConfirmAccept">Aceptar</button>
+        <button class="cancel-btn" id="viewConfirmCancel">Cancelar</button>
+      </div>
+    </div>
+  </div>
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="logo-container">
@@ -221,49 +384,176 @@
         element.addEventListener('touchstart', handler);
       }
     }
-   function showContent(option) {
-  const content = document.getElementById('content');
-  let servicio = '';
-  let texto = '';
-  let mensaje = '';
-
-switch(option) {
-  case 'PC':
-    servicio = 'Reparación de PC';
-    texto = `
-      <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
-        <img src="ServicioTecnico/ReparacionPC.png" alt="Reparación de PC" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #94a3b8;">
-        <h2 style="color: #1e293b; font-weight: 800; font-size: 2.1rem;">Reparación de PC</h2>
-      </div>
-      <p class="slide-up" style="font-size: 1.15rem;">En nuestro servicio de <strong>Reparación de PC</strong> te ofrecemos una solución integral para cualquier problema que pueda estar afectando el funcionamiento de tu computador, ya sea de escritorio o portátil.</p>
-      <div style="display: flex; gap: 32px; margin: 22px 0;">
-        <img src="ServicioTecnico/Hardware.png" alt="Hardware" style="width: 120px; height: 90px; border-radius: 14px;">
-        <img src="ServicioTecnico/Windows.png" alt="Sistema Operativo" style="width: 120px; height: 90px; border-radius: 14px;">
-        <img src="ServicioTecnico/Virus.png" alt="Virus" style="width: 120px; height: 90px; border-radius: 14px;">
-      </div>
-      <ul style="color: #334155; font-size: 1.07rem;">
-        <li>Revisión y prueba de componentes físicos (disco duro, memoria RAM, placa madre, procesador, fuente de poder, entre otros).</li>
-        <li>Verificación y solución de fallos en el sistema operativo (Windows, Linux, etc.).</li>
-        <li>Eliminación de virus, malware y software no deseado que afecte el rendimiento del equipo.</li>
-        <li>Reparación o reinstalación del sistema operativo si es necesario.</li>
-        <li>Limpieza interna del equipo para evitar sobrecalentamientos.</li>
-        <li>Optimización general del sistema para mejorar velocidad y estabilidad.</li>
-      </ul>
-      <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
-        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
-        <span style="font-size:1.25rem;color:#0ea5e9;"><strong>Precio:</strong> $80.000 COP</span>
-      </div>
-      <a 
-        href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20reparaci%C3%B3n%20de%20PC."
-        class="adquirir-btn pulse"
-        style="background: linear-gradient(90deg, #06b6d4 60%, #0ea5e9 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #38bdf8;">
-        Quiero adquirir este servicio
-      </a>
-      <p style="font-size: 1.02rem; color: #64748b; margin-top: 36px;">* Incluye diagnóstico, reparación básica y pruebas funcionales. Si se requieren repuestos, se notificará previamente.</p>
+    // --- Detección automática de dispositivo ---
+    function isMobile() {
+      return window.matchMedia("(pointer:coarse)").matches ||
+             /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+    }
+    // Toggle de vista con confirmación
+    let currentView = 'auto'; // valores: 'auto', 'pc', 'mobile'
+    const btn = document.getElementById('toggleViewBtn');
+    const pcIcon = document.getElementById('pcIcon');
+    const mobileIcon = document.getElementById('mobileIcon');
+    const viewConfirmModal = document.getElementById('viewConfirmModal');
+    const viewConfirmText = document.getElementById('viewConfirmText');
+    const viewConfirmAccept = document.getElementById('viewConfirmAccept');
+    const viewConfirmCancel = document.getElementById('viewConfirmCancel');
+    let pendingView = null;
+    function setView(mode) {
+      document.body.setAttribute('data-view', mode);
+      if (mode === 'pc') {
+        pcIcon.classList.add('active');
+        mobileIcon.classList.remove('active');
+      } else if (mode === 'mobile') {
+        pcIcon.classList.remove('active');
+        mobileIcon.classList.add('active');
+      } else {
+        pcIcon.classList.remove('active');
+        mobileIcon.classList.remove('active');
+      }
+    }
+    function showViewConfirm(nextView) {
+      let texto = "";
+      if(nextView === "mobile") texto = "¿Seguro que quieres cambiar a la vista de <b>celular</b>?";
+      else if(nextView === "pc") texto = "¿Seguro que quieres cambiar a la vista de <b>ordenador</b>?";
+      else texto = "¿Seguro que quieres volver a la vista automática?";
+      viewConfirmText.innerHTML = texto;
+      viewConfirmModal.style.display = "flex";
+    }
+    btn.addEventListener('click', function() {
+      let nextView;
+      if (currentView === 'auto') nextView = 'mobile';
+      else if (currentView === 'mobile') nextView = 'pc';
+      else nextView = 'auto';
+      pendingView = nextView;
+      showViewConfirm(nextView);
+    });
+    viewConfirmAccept.addEventListener('click', function() {
+      if(pendingView) {
+        setView(pendingView);
+        currentView = pendingView;
+        pendingView = null;
+      }
+      viewConfirmModal.style.display = "none";
+    });
+    viewConfirmCancel.addEventListener('click', function() {
+      pendingView = null;
+      viewConfirmModal.style.display = "none";
+    });
+    // Permite cerrar el modal al hacer click afuera
+    viewConfirmModal.addEventListener('mousedown', (e)=>{
+      if(!e.target.closest('.confirm-content')) {
+        pendingView = null;
+        viewConfirmModal.style.display = "none";
+      }
+    });
+    // CSS manual para forzar el modo mobile o pc
+    const styleTag = document.createElement('style');
+    styleTag.innerHTML = `
+    body[data-view="mobile"] .sidebar {
+      width: 100vw !important;
+      height: auto !important;
+      position: static !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      padding: 10px 8px !important;
+    }
+    body[data-view="mobile"] .main {margin-left: 0 !important; padding: 70px 5vw 20px 5vw !important;}
+    body[data-view="mobile"] .section {padding: 14px !important;}
+    body[data-view="mobile"] .menu-item, 
+    body[data-view="mobile"] .sidebar h2, 
+    body[data-view="mobile"] .refran {margin: 0 6px !important;}
+    body[data-view="mobile"] .submenu {
+      position: static !important;
+      width: 100% !important;
+      border-radius: 0 0 10px 10px !important;
+      background: #23234d !important;
+      margin: 0 !important;
+    }
+    body[data-view="mobile"] .logo-img { width: 30px !important; height: 30px !important;}
+    body[data-view="mobile"] .sidebar h2 {font-size: 17px !important;}
+    body[data-view="mobile"] .refran {font-size: 8px !important;}
+    body[data-view="mobile"] .whatsapp {left: 10px !important; bottom: 10px !important; width: 38px !important; height: 38px !important;}
+    body[data-view="mobile"] .whatsapp-icon {width: 22px !important; height: 22px !important;}
+    body[data-view="mobile"] .menu-item {width: 100% !important;}
+    body[data-view="pc"] .sidebar {
+      width: 260px !important;
+      background: #1b1b2f !important;
+      color: white !important;
+      padding: 20px !important;
+      position: fixed !important;
+      height: 100% !important;
+      overflow-y: auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      left: 0 !important;
+    }
+    body[data-view="pc"] .main {
+      margin-left: 280px !important;
+      padding: 30px 30px 20px 10px !important;
+    }
+    body[data-view="pc"] .section {padding: 20px !important;}
+    body[data-view="pc"] .logo-img { width: 38px !important; height: 38px !important;}
+    body[data-view="pc"] .sidebar h2 {font-size: 24px !important;}
+    body[data-view="pc"] .refran {font-size: 10px !important;}
+    body[data-view="pc"] .whatsapp {left: 20px !important; bottom: 20px !important; width: 50px !important; height: 50px !important;}
+    body[data-view="pc"] .whatsapp-icon {width: 30px !important; height: 30px !important;}
     `;
-    break;
+    document.head.appendChild(styleTag);
+    // --- Detectar dispositivo al cargar y establecer la vista automáticamente ---
+    window.addEventListener("DOMContentLoaded", function() {
+      if (isMobile()) {
+        setView('mobile');
+        currentView = 'mobile';
+      } else {
+        setView('pc');
+        currentView = 'pc';
+      }
+    });
 
-  case 'Laptop':
+    function showContent(option) {
+      const content = document.getElementById('content');
+      let servicio = '';
+      let texto = '';
+      let mensaje = '';
+      switch(option) {
+        case 'PC':
+          servicio = 'Reparación de PC';
+          texto = `
+            <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
+              <img src="ServicioTecnico/ReparacionPC.png" alt="Reparación de PC" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #94a3b8;">
+              <h2 style="color: #1e293b; font-weight: 800; font-size: 2.1rem;">Reparación de PC</h2>
+            </div>
+            <p class="slide-up" style="font-size: 1.15rem;">En nuestro servicio de <strong>Reparación de PC</strong> te ofrecemos una solución integral para cualquier problema que pueda estar afectando el funcionamiento de tu computador, ya sea de escritorio o portátil.</p>
+            <div style="display: flex; gap: 32px; margin: 22px 0;">
+              <img src="ServicioTecnico/Hardware.png" alt="Hardware" style="width: 120px; height: 90px; border-radius: 14px;">
+              <img src="ServicioTecnico/Windows.png" alt="Sistema Operativo" style="width: 120px; height: 90px; border-radius: 14px;">
+              <img src="ServicioTecnico/Virus.png" alt="Virus" style="width: 120px; height: 90px; border-radius: 14px;">
+            </div>
+            <ul style="color: #334155; font-size: 1.07rem;">
+              <li>Revisión y prueba de componentes físicos (disco duro, memoria RAM, placa madre, procesador, fuente de poder, entre otros).</li>
+              <li>Verificación y solución de fallos en el sistema operativo (Windows, Linux, etc.).</li>
+              <li>Eliminación de virus, malware y software no deseado que afecte el rendimiento del equipo.</li>
+              <li>Reparación o reinstalación del sistema operativo si es necesario.</li>
+              <li>Limpieza interna del equipo para evitar sobrecalentamientos.</li>
+              <li>Optimización general del sistema para mejorar velocidad y estabilidad.</li>
+            </ul>
+            <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
+              <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+              <span style="font-size:1.25rem;color:#0ea5e9;"><strong>Precio:</strong> $80.000 COP</span>
+            </div>
+            <a 
+              href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20reparaci%C3%B3n%20de%20PC."
+              class="adquirir-btn pulse"
+              style="background: linear-gradient(90deg, #06b6d4 60%, #0ea5e9 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #38bdf8;">
+              Quiero adquirir este servicio
+            </a>
+            <p style="font-size: 1.02rem; color: #64748b; margin-top: 36px;">* Incluye diagnóstico, reparación básica y pruebas funcionales. Si se requieren repuestos, se notificará previamente.</p>
+          `;
+          break;
+ case 'Laptop':
     servicio = 'Servicio a Laptops';
     texto = `
       <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
