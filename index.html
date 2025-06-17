@@ -1,1414 +1,1125 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JS Technology - Tecnología, Servicio Técnico e Instalación</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>JS Technology</title>
   <style>
-  :root {
-    --primary: #312e81;
-    --secondary: #f43f5e;
-    --accent: #06b6d4;
-    --bg: #f1f5f9;
-    --card: #fff;
-    --shadow: 0 2px 12px rgba(0,0,0,0.08);
-    --tutorialBg: rgba(49,46,129,0.8);
-    --tutorialAccent: #fff;
-    --highlight: 0 0 0 4px #06b6d488, 0 0 10px 8px #25d4c6aa;
-  }
-  body {
-    font-family: 'Montserrat', Arial, sans-serif;
-    background: var(--bg);
-    margin: 0;
-    padding: 0;
-    color: var(--primary);
-  }
-  .header {
-    background: var(--primary);
-    box-shadow: var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  .header-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 2vw;
-  }
-  .logo {
-    height: 48px;
-    filter: drop-shadow(1px 2px 0px var(--accent));
-  }
-  .search-bar {
-    flex: 1;
-    margin: 0 24px;
-    display: flex;
-    border-radius: 30px;
-    overflow: hidden;
-    background: #fff;
-    box-shadow: var(--shadow);
-  }
-  .search-bar input {
-    border: none;
-    padding: 12px;
-    outline: none;
-    flex: 1;
-    font-size: 1rem;
-  }
-  .search-bar button {
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    padding: 0 20px;
-    cursor: pointer;
-    font-size: 1.2rem;
-  }
-  .cart-btn {
-    background: #fff;
-    border-radius: 50%;
-    width: 46px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow);
-    cursor: pointer;
-    position: relative;
-    border: 2px solid var(--accent);
-  }
-  #cartCount {
-    position: absolute;
-    top: 2px;
-    right: 6px;
-    background: var(--secondary);
-    color: #fff;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    padding: 2px 6px;
-  }
-  .main-nav {
-    display: flex;
-    justify-content: center;
-    background: var(--accent);
-    box-shadow: var(--shadow);
-  }
-  .main-nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 16px 24px;
-    font-weight: 700;
-    transition: color 0.2s, background 0.2s;
-    border-bottom: 4px solid transparent;
-  }
-  .main-nav a:hover {
-    color: var(--secondary);
-    background: #e0f2fe;
-    border-bottom: 4px solid var(--secondary);
-  }
-  .hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(90deg, var(--secondary) 55%, var(--accent) 100%);
-    padding: 40px 2vw;
-    min-height: 320px;
-    overflow: hidden;
-    flex-wrap: wrap;
-    color: #fff;
-  }
-  .hero-content {
-    max-width: 440px;
-    z-index: 1;
-  }
-  .hero h1 {
-    font-size: 2.4rem;
-    margin: 0 0 8px;
-    letter-spacing: 2px;
-  }
-  .highlight {
-    color: var(--primary);
-    background: var(--accent);
-    border-radius: 12px;
-    padding: 0 8px;
-  }
-  .hero p {
-    font-size: 1.1rem;
-    margin-bottom: 18px;
-  }
-  .cta, .cta2 {
-    display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    padding: 12px 28px;
-    border-radius: 40px;
-    font-weight: 700;
-    text-decoration: none;
-    margin-top: 6px;
-    transition: background 0.2s, transform 0.2s;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  .cta:hover, .cta2:hover {
-    background: var(--secondary);
-    transform: translateY(-2px) scale(1.04);
-    color: #fff;
-  }
-  .hero-img {
-    width: 320px;
-    max-width: 45vw;
-    border-radius: 16px;
-    box-shadow: var(--shadow);
-    animation: float 3s infinite alternate ease-in-out;
-    border: 4px solid var(--primary);
-  }
-  @keyframes float {
-    to { transform: translateY(-14px) scale(1.02);}
-  }
-  .section {
-    padding: 48px 2vw 32px 2vw;
-    margin: 0 auto;
-    max-width: 1300px;
-  }
-  .section h2 {
-    font-size: 2rem;
-    margin-bottom: 24px;
-    color: var(--secondary);
-    letter-spacing: 1px;
-  }
-  /* Productos */
-  .productos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
-    gap: 28px;
-    margin-top: 18px;
-  }
-  .product-card {
-    background: var(--card);
-    border-radius: 18px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.15s;
-    position: relative;
-    min-height: 350px;
-    border: 2px solid var(--accent);
-    cursor: pointer;
-  }
-  .product-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.14);
-  }
-  .product-card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    background: #e0f2fe;
-    border-bottom: 1px solid #eee;
-  }
-  .product-info {
-    padding: 18px 14px 10px 14px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .product-info h3 {
-    margin: 0 0 6px 0;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--primary);
-  }
-  .product-info p {
-    margin: 0 0 10px 0;
-    font-size: 0.98rem;
-    color: #444;
-  }
-  .product-price {
-    color: var(--secondary);
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  .add-cart-btn {
-    background: var(--secondary);
-    color: #fff;
-    border: none;
-    border-radius: 24px;
-    padding: 8px 18px;
-    margin-top: 6px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
-  .add-cart-btn:hover {
-    background: var(--primary);
-    color: var(--secondary);
-  }
-  /* Servicio Técnico Moderno */
-  .servicio-opciones, .camaras-opciones {
-    display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 32px;
-  }
-  .servicio-btn {
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 14px;
-    padding: 14px 30px;
-    font-size: 1.15rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 2px 12px #06b6d42a;
-    transition: background 0.18s, box-shadow 0.18s, color 0.18s;
-  }
-  .servicio-btn:hover, .servicio-btn.active {
-    background: var(--secondary);
-    color: #fff;
-    box-shadow: 0 4px 24px #f43f5e30;
-  }
-  .servicio-detalle {
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: var(--shadow);
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 28px 24px 16px 24px;
-    border: 2px solid var(--accent);
-    font-size: 1.08rem;
-    animation: fadeInCart 0.44s;
-    margin-bottom: 18px;
-  }
-  .servicio-header img { box-shadow: 0 6px 24px #94a3b8; }
-  .adquirir-btn.pulse {
-    animation: pulseGlow 2s infinite;
-  }
-  @keyframes pulseGlow {
-    0% { box-shadow: 0 0 0 0 #38bdf8; }
-    70% { box-shadow: 0 0 0 15px #06b6d400; }
-    100% { box-shadow: 0 0 0 0 #38bdf8; }
-  }
-  .cart-modal {
-    display: none;
-    position: fixed;
-    left: 0; top: 0; right: 0; bottom: 0;
-    background: rgba(49,46,129,0.19);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-  }
-  .cart-modal.active {
-    display: flex;
-    animation: fadeInCart 0.3s ease;
-  }
-  @keyframes fadeInCart {
-    from { opacity: 0;}
-    to { opacity: 1;}
-  }
-  .cart-content {
-    background: #fff;
-    border-radius: 16px;
-    max-width: 400px;
-    width: 90vw;
-    padding: 32px 20px 22px 20px;
-    box-shadow: var(--shadow);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border: 2px solid var(--accent);
-  }
-  .cart-content h3 { margin: 0 0 10px;}
-  .cart-total { font-weight: bold; margin-top: 12px;}
-  .close-cart {
-    background: #eee;
-    color: #222;
-    border: none;
-    border-radius: 18px;
-    padding: 6px 18px;
-    margin-top: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    align-self: flex-end;
-    transition: background 0.2s;
-  }
-  .close-cart:hover { background: #ddd;}
-  #cartItems {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-height: 220px;
-    overflow-y: auto;
-  }
-  #cartItems li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    border-bottom: 1px solid #eee;
-    padding: 2px 0 4px 0;
-  }
-  .remove-cart-item {
-    background: none;
-    border: none;
-    color: #d32f2f;
-    font-size: 1.3rem;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  .modal-producto {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0; top: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.7);
-    align-items: center;
-    justify-content: center;
-    animation: fadeInCart 0.3s;
-  }
-  .modal-producto.active {
-    display: flex;
-  }
-  .modal-producto-contenido {
-    background: #fff;
-    border-radius: 18px;
-    max-width: 440px;
-    width: 96vw;
-    box-shadow: var(--shadow);
-    padding: 28px 18px 18px 18px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: slideIn 0.35s;
-  }
-  .modal-producto-imgs {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 12px;
-  }
-  .modal-producto-imgs img {
-    width: 210px;
-    height: 210px;
-    object-fit: contain;
-    border-radius: 10px;
-    margin: 0 2px;
-    background: #f0f9fa;
-  }
-  .modal-producto-titulo {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: var(--primary);
-    margin-bottom: 8px;
-    text-align: center;
-  }
-  .modal-producto-desc {
-    font-size: 1rem;
-    color: #444;
-    margin-bottom: 6px;
-    text-align: center;
-  }
-  .modal-producto-precio {
-    color: var(--secondary);
-    font-size: 1.18rem;
-    font-weight: bold;
-    margin-bottom: 8px;
-    text-align: center;
-  }
-  .modal-producto-caract {
-    font-size: 0.97rem;
-    color: #555;
-    margin: 0 0 9px 0;
-    padding-left: 18px;
-    text-align: left;
-  }
-  .close-modal-producto {
-    position: absolute;
-    right: 18px;
-    top: 12px;
-    color: #888;
-    font-size: 1.6rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: color 0.2s;
-  }
-  .close-modal-producto:hover { color: var(--secondary);}
-  .modal-producto-controles {
-    margin: 9px 0 0 0;
-    text-align: center;
-  }
-  .modal-producto-controles button {
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    padding: 7px 18px;
-    font-weight: 700;
-    margin: 0 6px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .modal-producto-controles button:hover {
-    background: var(--primary);
-    color: var(--secondary);
-  }
-  @keyframes slideIn { from {transform: scale(0.93); opacity: 0;} to {transform: scale(1); opacity: 1;} }
-  .user-modal {
-    display: none;
-    position: fixed;
-    left: 0; top: 0; right: 0; bottom: 0;
-    background: rgba(49,46,129,0.19);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-  }
-  .user-modal.active {
-    display: flex;
-    animation: fadeInCart 0.3s ease;
-  }
-  .user-content {
-    background: #fff;
-    border-radius: 16px;
-    max-width: 350px;
-    width: 88vw;
-    padding: 26px 20px 18px 20px;
-    box-shadow: var(--shadow);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    border: 2px solid var(--secondary);
-    color: var(--primary);
-  }
-  .user-content h4 { margin: 0 0 10px;}
-  .user-content input {
-    border: 1px solid #ccc;
-    border-radius: 9px;
-    padding: 10px;
-    font-size: 1rem;
-  }
-  .user-content button {
-    background: var(--secondary);
-    color: #fff;
-    border: none;
-    border-radius: 18px;
-    padding: 10px 22px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: background 0.2s;
-    font-size: 1rem;
-  }
-  .user-content button:hover {
-    background: var(--primary);
-    color: var(--secondary);
-  }
-  .user-content .close-user-modal {
-    background: #eee;
-    color: #222;
-    border-radius: 9px;
-    margin-top: 8px;
-    padding: 6px 15px;
-    font-size: 0.96rem;
-    align-self: flex-end;
-  }
-  .user-content .close-user-modal:hover { background: #ddd; }
-  .tutorial-highlight {
-    position: relative !important;
-    z-index: 4500 !important;
-    box-shadow: var(--highlight) !important;
-    outline: 3px solid var(--accent) !important;
-    transition: box-shadow 0.3s, outline 0.3s;
-  }
-  .tutorial-tooltip {
-    position: fixed;
-    z-index: 4502;
-    background: #fff;
-    color: var(--primary);
-    border-radius: 12px;
-    box-shadow: 0 4px 32px #0006;
-    padding: 20px 18px;
-    font-size: 1.08rem;
-    max-width: 340px;
-    min-width: 190px;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s;
-    font-weight: 500;
-  }
-  .tutorial-tooltip.active { opacity: 1; pointer-events: auto;}
-  .tutorial-tooltip .tutorial-btn {
-    display: block;
-    margin: 18px auto 4px auto;
-    padding: 9px 22px;
-    border-radius: 18px;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    font-weight: 700;
-    font-size: 1.05rem;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .tutorial-tooltip .tutorial-btn:hover { background: var(--secondary);}
-  .tutorial-overlay {
-    position: fixed;
-    left: 0; top: 0; right: 0; bottom: 0;
-    background: var(--tutorialBg);
-    z-index: 4400;
-    pointer-events: auto;
-    animation: fadeInCart 0.3s;
-  }
-  @media (max-width:700px){
-    .tutorial-tooltip {
-      max-width: 97vw;
-      min-width: 0;
-      padding: 14px 6vw;
-      font-size: 0.98rem;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
     }
-  }
-  .contacto-section {
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: var(--shadow);
-    max-width: 750px;
-    margin: 38px auto 0 auto;
-    padding: 36px 28px 24px 28px;
-    border: 2px solid var(--primary);
-  }
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 14px;
-  }
-  .contact-form input,
-  .contact-form textarea {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 1rem;
-    font-family: inherit;
-    resize: none;
-  }
-  .contact-form textarea { min-height: 68px;}
-  .contact-info {
-    color: #444;
-    font-size: 1rem;
-    margin-top: 9px;
-  }
-  .contact-info a { color: var(--secondary); text-decoration: none;}
-  .footer {
-    background: var(--primary);
-    color: #fff;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 4vw 14px 4vw;
-    font-size: 1rem;
-    margin-top: 32px;
-    letter-spacing: 0.5px;
-  }
-  .footer a img {
-    height: 22px;
-    margin-left: 9px;
-    vertical-align: middle;
-    filter: grayscale(1) brightness(2.3);
-    transition: filter 0.2s;
-  }
-  .footer a:hover img {
-    filter: none;
-  }
-
-  /* ----------- RESPONSIVE MOBILE ----------- */
-  @media (max-width: 900px) {
-    .hero {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 30px 4vw 20px 4vw;
-      min-height: unset;
-      gap: 20px;
-      text-align: left;
+    body {
+      display: flex;
+      min-height: 100vh;
+      background: #f0f0f0;
+      overflow-x: hidden;
     }
-    .hero-content {
-      max-width: 100%;
+    .sidebar {
+      width: 260px;
+      background: #1b1b2f;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      height: 100%;
+      overflow-y: auto;
     }
-    .hero-img {
-      width: 90vw;
-      max-width: 330px;
-      margin: 0 auto;
-      display: block;
+    .logo-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
     }
-    .header-top {
-      flex-direction: column;
-      gap: 14px;
-      padding: 10px 4vw;
+    .logo-img {
+      width: 38px;
+      height: 38px;
+      background-image: url("ImgesJS/jstech_logo.png");
+      background-size: cover;
+      background-position: center;
+      margin-right: 8px;
     }
-    .search-bar {
-      margin: 8px 0;
-      width: 100%;
+    .sidebar h2 {
+      font-size: 24px;
+      color: #00aaff;
+      display: inline-block;
     }
-    .main-nav a {
-      padding: 12px 10px;
-      font-size: 1rem;
+    .refran {
+      font-size: 10px;
+      color: white;
+      margin-top: 2px;
+      margin-left: 36px;
+      margin-bottom: 30px;
     }
-    .section {
-      padding: 32px 4vw 20px 4vw;
-      max-width: 100vw;
-    }
-    .productos-grid {
-      gap: 16px;
-    }
-    .product-card {
-      min-height: 300px;
-    }
-    .servicio-detalle {
-      padding: 18px 6vw 10px 6vw;
-      font-size: 1rem;
-    }
-    .contacto-section {
-      max-width: 98vw;
-      padding: 24px 3vw 14px 3vw;
-    }
-    .footer {
-      flex-direction: column;
-      gap: 8px;
-      padding: 14px 4vw;
-      font-size: 0.95rem;
-    }
-  }
-  @media (max-width: 600px) {
-    .logo { height: 36px; }
-    .header-top {
-      flex-direction: column;
-      gap: 10px;
-      padding: 6px 2vw;
-    }
-    .main-nav {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .main-nav a {
-      font-size: 0.98rem;
-      padding: 10px 4vw;
-      border-bottom: 2px solid transparent;
-      border-radius: 6px;
-    }
-    .hero {
-      padding: 16px 2vw 14px 2vw;
-      min-height: unset;
-      gap: 12px;
-    }
-    .hero h1 {
-      font-size: 1.28rem;
-    }
-    .hero-img {
-      width: 94vw;
-      max-width: 250px;
-      border-width: 2px;
+    .menu-item {
       margin-bottom: 10px;
     }
-    .cta, .cta2 {
-      font-size: 0.95rem;
-      padding: 10px 18px;
-      margin-top: 4px;
+    .menu-button {
+      width: 100%;
+      text-align: left;
+      padding: 10px;
+      background: #2e2e42;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+      border-radius: 4px;
+    }
+    .menu-button:hover {
+      background: #3f3f5f;
+    }
+    .submenu {
+      display: none;
+      margin-left: 10px;
+      margin-top: 5px;
+    }
+    .submenu button {
+      background: #3c3c52;
+      margin-top: 5px;
+      color: white;
+      border: none;
+      padding: 8px;
+      width: 100%;
+      text-align: left;
+      border-radius: 4px;
+    }
+    .submenu button:hover {
+      background: #555571;
+    }
+    .main {
+      margin-left: 280px;
+      padding: 30px 30px 20px 10px;
+      flex: 1;
     }
     .section {
-      padding: 20px 3vw 10px 3vw;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      animation: fadeIn 0.5s ease;
     }
-    .section h2 {
-      font-size: 1.22rem;
-      margin-bottom: 12px;
-    }
-    .productos-grid {
-      grid-template-columns: 1fr;
-      gap: 12px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .product-card {
-      min-height: 220px;
+      width: 200px;
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      background: #fafafa;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
     .product-card img {
-      height: 100px;
-    }
-    .product-info {
-      padding: 10px 8px 6px 8px;
-    }
-    .product-info h3 {
-      font-size: 1rem;
-    }
-    .product-info p {
-      font-size: 0.93rem;
-    }
-    .product-price {
-      font-size: 1.05rem;
-      margin-bottom: 6px;
-    }
-    .add-cart-btn {
-      font-size: 0.98rem;
-      padding: 7px 10px;
-      margin-top: 4px;
-    }
-    .servicio-opciones, .camaras-opciones {
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-    .servicio-btn {
-      padding: 10px 10vw;
-      font-size: 0.98rem;
-      border-radius: 9px;
-    }
-    .servicio-detalle {
-      padding: 10px 3vw 8px 3vw;
-      font-size: 0.94rem;
-    }
-    .cart-content {
-      max-width: 98vw;
-      padding: 18px 4vw 12px 4vw;
-    }
-    .modal-producto-contenido {
-      padding: 10px 2vw 10px 2vw;
-      max-width: 99vw;
-    }
-    .modal-producto-imgs img {
-      width: 90vw;
-      max-width: 150px;
+      width: 100%;
       height: 120px;
+      object-fit: cover;
+      border-radius: 6px;
     }
-    .modal-producto-titulo,
-    .modal-producto-precio,
-    .modal-producto-desc {
-      font-size: 1rem;
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #25D366;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      z-index: 999;
     }
-    .user-content {
-      max-width: 99vw;
-      padding: 12px 3vw 10px 3vw;
+    .whatsapp-icon {
+      width: 30px;
+      height: 30px;
+      background-image: url("ImgesJS/Whasapimage1.png");
+      background-size: cover;
+      background-position: center;
     }
-    .contacto-section {
-      max-width: 99vw;
-      padding: 10px 3vw 8px 3vw;
+    textarea {
+      width: 100%;
+      margin-top: 10px;
     }
-    .footer {
-      padding: 10px 2vw 6px 2vw;
-      font-size: 0.91rem;
-      gap: 5px;
+    .enviar-btn {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
-    .footer a img {
-      height: 18px;
-      margin-left: 5px;
+    .enviar-btn:hover {
+      background-color: #0077cc;
     }
-  }
+    ul {
+      margin-left: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    ul li {
+      margin-bottom: 5px;
+    }
   </style>
 </head>
 <body>
-<header class="header" id="tutorial-header">
-  <div class="header-top">
-    <img src="ImgesJS/jstech_logo.png" alt="Logo JS Technology" class="logo" id="tutorial-logo"/>
-    <form class="search-bar" onsubmit="return false;" id="tutorial-search">
-      <input type="text" placeholder="Buscar productos, servicios, marcas..." />
-      <button type="submit"><span>🔍</span></button>
-    </form>
-    <div class="cart-btn" id="cartBtn">
-      <span>🛒</span>
-      <span id="cartCount">0</span>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo-img"></div>
+      <h2>JS Technology</h2>
+    </div>
+    <div class="refran">La calidad está en nuestro servicio</div>
+    <!-- Servicio Técnico -->
+    <div class="menu-item">
+      <button class="menu-button" onclick="toggleSubmenu('st')" ontouchstart="toggleSubmenu('st')">🛠 Servicio Técnico</button>
+      <div class="submenu" id="st">
+        <button onclick="showContent('PC')" ontouchstart="showContent('PC')">🖥 PC </button>
+        <button onclick="showContent('Laptop')" ontouchstart="showContent('Laptop')">💻 Laptop </button>
+        <button onclick="showContent('Formateo')" ontouchstart="showContent('Formateo')">💾 Formateo </button>
+        <button onclick="showContent('Software')" ontouchstart="showContent('Software')">📦 Instalación Software </button>
+        <button onclick="showContent('Optimizacion')" ontouchstart="showContent('Optimizacion')">⚙️ Optimización </button>
+        <button onclick="showContent('Otro')" ontouchstart="showContent('Otro')">🔍 ¿Buscas otro servicio?</button>
+      </div>
+    </div>
+    <!-- Cámaras -->
+    <div class="menu-item">
+      <button class="menu-button" onclick="toggleSubmenu('cs')" ontouchstart="toggleSubmenu('cs')">📷 Cámaras de Seguridad</button>
+      <div class="submenu" id="cs">
+        <button onclick="showContent('CamaraHogar')" ontouchstart="showContent('CamaraHogar')">🏠 Hogar</button>
+        <button onclick="showContent('CamaraHD')" ontouchstart="showContent('CamaraHD')">🏢 HD Empresa</button>
+        <button onclick="showContent('KitCamaras')" ontouchstart="showContent('KitCamaras')">🎥 Kit 4 Cámaras </button>
+      </div>
+    </div>
+    <!-- Tienda -->
+    <div class="menu-item">
+      <button class="menu-button" onclick="showContent('Tienda')" ontouchstart="showContent('Tienda')">🛒 Tienda Online</button>
     </div>
   </div>
-  <nav class="main-nav" id="tutorial-nav">
-    <a href="#productos">Productos</a>
-    <a href="#servicios">Servicios Técnicos</a>
-    <a href="#camaras">Cámaras de Seguridad</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-</header>
-<section class="hero" id="tutorial-hero">
-  <div class="hero-content">
-    <h1>Bienvenido a <span class="highlight">JS Technology</span></h1>
-    <p>Tu centro nacional para tecnología, servicio técnico y soluciones de seguridad.</p>
-    <a href="#productos" class="cta">Ver productos</a>
-  </div>
-  <img src="ImgesJS/Banner.png" alt="Banner Tecnología" class="hero-img"/>
-</section>
-<section id="productos" class="section productos-section">
-  <h2>Productos Destacados</h2>
-  <div class="productos-grid" id="productosGrid"></div>
-</section>
-<div class="modal-producto" id="modalProducto">
-  <div class="modal-producto-contenido">
-    <button class="close-modal-producto" id="closeModalProducto">&times;</button>
-    <div class="modal-producto-imgs" id="modalProductoImgs"></div>
-    <div class="modal-producto-titulo" id="modalProductoTitulo"></div>
-    <div class="modal-producto-desc" id="modalProductoDesc"></div>
-    <div class="modal-producto-precio" id="modalProductoPrecio"></div>
-    <ul class="modal-producto-caract" id="modalProductoCaract"></ul>
-    <div class="modal-producto-controles">
-      <button id="prevImgModal">Anterior</button>
-      <button id="nextImgModal">Siguiente</button>
-      <button id="addToCartModal">Agregar al carrito</button>
+  <!-- Main -->
+  <div class="main">
+    <div class="section" id="content">
+      <h3>Bienvenido a JS Technology</h3>
+      <p>Selecciona una opción del menú para ver más detalles.</p>
     </div>
   </div>
-</div>
-<!-- MODAL CÁMARAS -->
-<div class="modal-producto" id="modalCamara">
-  <div class="modal-producto-contenido">
-    <button class="close-modal-producto" id="closeModalCamara">&times;</button>
-    <div class="modal-producto-imgs" id="modalCamaraImgs"></div>
-    <div class="modal-producto-titulo" id="modalCamaraTitulo"></div>
-    <div class="modal-producto-desc" id="modalCamaraDesc"></div>
-    <div class="modal-producto-precio" id="modalCamaraPrecio"></div>
-    <div id="modalCamaraExtra"></div>
-    <div style="margin-top:12px;">
-      <a id="modalCamaraWhats" href="#" target="_blank" class="cta2">Cotizar por WhatsApp</a>
-    </div>
-  </div>
-</div>
-<section id="servicios" class="section servicios-section">
-  <h2>Servicio Técnico Especializado</h2>
-  <div class="servicio-opciones">
-    <button class="servicio-btn active" data-tipo="PC">Reparación de PC</button>
-    <button class="servicio-btn" data-tipo="Laptop">Servicio a Laptops</button>
-    <button class="servicio-btn" data-tipo="Formateo">Formateo de PC</button>
-    <button class="servicio-btn" data-tipo="Software">Instalación de Software</button>
-    <button class="servicio-btn" data-tipo="Optimizacion">Optimización</button>
-  </div>
-  <div id="servicioDetalle" class="servicio-detalle"></div>
-</section>
-<section id="camaras" class="section camaras-section">
-  <h2>Cámaras de Seguridad</h2>
-  <div class="camaras-opciones" style="display:flex; gap:18px; flex-wrap:wrap; justify-content:center; margin-bottom:32px;">
-    <button class="servicio-btn active" data-tipo="CamaraHogar">Cámaras para Hogar</button>
-    <button class="servicio-btn" data-tipo="CamaraHD">Cámaras HD Empresa</button>
-    <button class="servicio-btn" data-tipo="KitCamaras">Kit 4 Cámaras + DVR</button>
-  </div>
-  <div id="camarasDetalle" class="servicio-detalle"></div>
-  <!-- Modal para imagen grande del kit -->
-  <div id="modal-img-full" style="display:none;position:fixed;z-index:99999;top:0;left:0;width:100vw;height:100vh;background:rgba(24,28,42,0.85);justify-content:center;align-items:center;">
-    <img id="modal-img-full-el" src="" alt="Foto" style="max-width:92vw;max-height:90vh;border-radius:18px;box-shadow:0 8px 32px #0008;">
-    <span onclick="cerrarModalImg()" style="position:absolute;top:18px;right:32px;font-size:2.6rem;color:#fff;cursor:pointer;font-weight:bold;">&times;</span>
-  </div>
-</section>
-<div class="cart-modal" id="cartModal">
-  <div class="cart-content">
-    <h3>Carrito de Compras</h3>
-    <ul id="cartItems"></ul>
-    <div class="cart-total">
-      Total: <span id="cartTotal">$0</span>
-    </div>
-    <button class="cta" id="checkoutBtn">Finalizar compra</button>
-    <button class="close-cart" id="closeCartBtn">Cerrar</button>
-  </div>
-</div>
-<div class="user-modal" id="userModal">
-  <div class="user-content">
-    <h4>Datos para Contacto</h4>
-    <input type="text" id="userName" placeholder="Nombre completo" maxlength="60" required/>
-    <input type="tel" id="userPhone" placeholder="Número de celular (+57)" pattern="[0-9]+" maxlength="10" required/>
-    <button id="confirmUserBtn">Enviar pedido</button>
-    <button class="close-user-modal" id="closeUserBtn">Cancelar</button>
-  </div>
-</div>
-<div id="tutorialOverlay" class="tutorial-overlay" style="display:none"></div>
-<div id="tutorialTooltip" class="tutorial-tooltip"></div>
-<section id="contacto" class="section contacto-section">
-  <h2>Contáctanos</h2>
-  <form class="contact-form">
-    <input type="text" placeholder="Nombre" required/>
-    <input type="email" placeholder="Correo electrónico" required/>
-    <textarea placeholder="Mensaje" required></textarea>
-    <button type="submit" class="cta2">Enviar</button>
-  </form>
-  <div class="contact-info">
-    <p>📞 WhatsApp: <a href="https://wa.me/1234567890" target="_blank">1234567890</a></p>
-    <p>📧 Email: contacto@jstechnology.com.co</p>
-    <p>📍 Ubicación: Calle 123, Ciudad</p>
-  </div>
-</section>
-<footer class="footer">
-  <div>
-    © 2025 JS Technology - Todos los derechos reservados.
-  </div>
-  <div>
-    Síguenos:
-    <a href="#"><img src="facebook.svg" alt="Facebook"/></a>
-    <a href="#"><img src="instagram.svg" alt="Instagram"/></a>
-    <a href="#"><img src="x.svg" alt="X"/></a>
-  </div>
-</footer>
-<script>
-/* --- PRODUCTOS Y CARRITO --- */
-const productos = [
-  {
-    nombre: "Motorola G85 512GB",
-    desc: "Smartphone con 512GB de almacenamiento, pantalla AMOLED de 6.5\", Snapdragon 695, 8GB RAM, 64MP dual cam.",
-    precio: 1050000,
-    imagenes: ["TiendaOnline/M1.png", "TiendaOnline/M11.jpg", "TiendaOnline/M111.jpg"],
-    caracteristicas: [
-      "Pantalla AMOLED de 6.5\" FHD+ 120Hz",
-      "Procesador Snapdragon 695",
-      "8GB RAM, 512GB internos, microSD",
-      "Cámara dual 64MP+8MP / Frontal 16MP",
-      "Batería 5000mAh, carga rápida 30W",
-      "Android 13, audio Dolby Atmos"
-    ]
-  },
-  {
-    nombre: "Samsung A16 5G",
-    desc: "5G, 256GB, pantalla 6.6\" HD+, Dimensity 700, triple cámara 48MP.",
-    precio: 740000,
-    imagenes: ["TiendaOnline/S1.png", "TiendaOnline/S11.png", "TiendaOnline/S111.png"],
-    caracteristicas: [
-      "Pantalla LCD 6.6\" HD+",
-      "Procesador MediaTek Dimensity 700",
-      "6GB RAM, 256GB expandible",
-      "Cámara triple 48MP+2MP+2MP / Frontal 13MP",
-      "Batería 5000mAh carga rápida",
-      "Android 14"
-    ]
-  },
-  {
-    nombre: "Samsung A05s 128GB",
-    desc: "Económico, Snapdragon 680, 128GB, cámara 50MP, pantalla 6.7\".",
-    precio: 450000,
-    imagenes: ["TiendaOnline/S2.png", "TiendaOnline/S22.png", "TiendaOnline/S222.png"],
-    caracteristicas: [
-      "Pantalla LCD 6.7\"",
-      "Procesador Snapdragon 680",
-      "4GB RAM, 128GB almacenamiento",
-      "Cámara principal 50MP",
-      "Batería 5000mAh"
-    ]
-  },
-  {
-    nombre: "Redmi note 14 256gb + buds 6 play",
-    desc: "Incluye audífonos Buds 6 Play, 256GB, Snapdragon 680, cámara 50MP.",
-    precio: 720000,
-    imagenes: ["TiendaOnline/X3.png", "TiendaOnline/X33.png", "TiendaOnline/X333.png"],
-    caracteristicas: [
-      "Pantalla LCD 6.5\"",
-      "Procesador Snapdragon 680",
-      "6GB RAM, 256GB almacenamiento",
-      "Cámara triple 50MP",
-      "Incluye Buds 6 Play",
-      "Batería 5000mAh"
-    ]
-  },
-  {
-    nombre: "Xiaomi 14t pro 512gb",
-    desc: "Flagship, AMOLED 6.8\", Snapdragon 8 Gen 3, 512GB, 12GB RAM, 200MP cámara.",
-    precio: 2530000,
-    imagenes: ["TiendaOnline/X2.png", "TiendaOnline/X22.png", "TiendaOnline/X222.png"],
-    caracteristicas: [
-      "Pantalla AMOLED 6.8\"",
-      "Procesador Snapdragon 8 Gen 3",
-      "12GB RAM, 512GB almacenamiento",
-      "Cámara 200MP triple lente",
-      "Batería 5000mAh"
-    ]
-  },
-  {
-    nombre: "Zte A75 128 gb",
-    desc: "Económico, pantalla 6.5\", 4GB RAM, 128GB, cámara dual.",
-    precio: 340000,
-    imagenes: ["TiendaOnline/Z1.png", "TiendaOnline/Z11.png", "TiendaOnline/Z111.png"],
-    caracteristicas: [
-      "Pantalla LCD 6.5\"",
-      "Procesador Unisoc T610",
-      "4GB RAM, 128GB almacenamiento",
-      "Cámara dual 13MP",
-      "Batería 5000mAh"
-    ]
-  }
-];
+  <!-- WhatsApp -->
+  <a class="whatsapp" href="https://wa.me/573244973675" target="_blank">
+    <div class="whatsapp-icon"></div>
+  </a>
+  <!-- Scripts -->
+  <script>
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById(id);
+      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+    }
+    function attachDualEvent(id, handler) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.addEventListener('click', handler);
+        element.addEventListener('touchstart', handler);
+      }
+    }
 
-// Renderizado productos
-const productosGrid = document.getElementById('productosGrid');
-productos.forEach((p, idx) => {
-  const card = document.createElement('div');
-  card.className = 'product-card';
-  card.innerHTML = `
-    <img src="${p.imagenes[0]}" alt="${p.nombre}" />
-    <div class="product-info">
-      <h3>${p.nombre}</h3>
-      <p>${p.desc}</p>
-      <div class="product-price">$${p.precio.toLocaleString('es-CO')}</div>
-      <button class="add-cart-btn" data-idx="${idx}">Agregar al carrito</button>
+    function showContent(option) {
+      const content = document.getElementById('content');
+      let servicio = '';
+      let texto = '';
+      let mensaje = '';
+      switch(option) {
+        case 'PC':
+    servicio = 'Reparación de PC';
+    texto = `
+      <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
+        <img src="ServicioTecnico/ReparacionPC.png" alt="Reparación de PC" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #94a3b8;">
+        <h2 style="color: #1e293b; font-weight: 800; font-size: 2.1rem;">Reparación de PC</h2>
+      </div>
+      <p class="slide-up" style="font-size: 1.15rem;">En nuestro servicio de <strong>Reparación de PC</strong> te ofrecemos una solución integral para cualquier problema que pueda estar afectando el funcionamiento de tu computador, ya sea de escritorio o portátil.</p>
+      <div style="display: flex; gap: 32px; margin: 22px 0;">
+        <img src="ServicioTecnico/Hardware.png" alt="Hardware" style="width: 120px; height: 90px; border-radius: 14px;">
+        <img src="ServicioTecnico/Windows.png" alt="Sistema Operativo" style="width: 120px; height: 90px; border-radius: 14px;">
+        <img src="ServicioTecnico/Virus.png" alt="Virus" style="width: 120px; height: 90px; border-radius: 14px;">
+      </div>
+      <ul style="color: #334155; font-size: 1.07rem;">
+        <li>Revisión y prueba de componentes físicos (disco duro, memoria RAM, placa madre, procesador, fuente de poder, entre otros).</li>
+        <li>Verificación y solución de fallos en el sistema operativo (Windows, Linux, etc.).</li>
+        <li>Eliminación de virus, malware y software no deseado que afecte el rendimiento del equipo.</li>
+        <li>Reparación o reinstalación del sistema operativo si es necesario.</li>
+        <li>Limpieza interna del equipo para evitar sobrecalentamientos.</li>
+        <li>Optimización general del sistema para mejorar velocidad y estabilidad.</li>
+      </ul>
+      <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
+        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span style="font-size:1.25rem;color:#0ea5e9;"><strong>Precio:</strong> $80.000 COP</span>
+      </div>
+      <a 
+        href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20reparaci%C3%B3n%20de%20PC."
+        class="adquirir-btn pulse"
+        style="background: linear-gradient(90deg, #06b6d4 60%, #0ea5e9 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #38bdf8;">
+        Quiero adquirir este servicio
+      </a>
+      <p style="font-size: 1.02rem; color: #64748b; margin-top: 36px;">* Incluye diagnóstico, reparación básica y pruebas funcionales. Si se requieren repuestos, se notificará previamente.</p>
+    `;
+    break;
+
+  case 'Laptop':
+    servicio = 'Servicio a Laptops';
+    texto = `
+      <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
+        <img src="ServicioTecnico/Laptop.png" alt="Servicio a Laptops" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #94a3b8;">
+        <h2 style="color: #0f172a; font-weight: 800; font-size: 2.1rem;">Servicio a Laptops</h2>
+      </div>
+      <p class="slide-up" style="font-size: 1.15rem;">En <strong>JS Technology</strong>, entendemos que tu laptop es una herramienta esencial para tu vida diaria, ya sea para estudiar, trabajar o mantenerte conectado con el mundo. Por eso, ofrecemos un <strong>servicio técnico integral para laptops</strong> que combina calidad, eficiencia y atención personalizada a un precio accesible.</p>
+      <div style="display: flex; gap: 32px; margin: 22px 0;">
+        <img src="ServicioTecnico/Pantalla.png" alt="Reparación pantalla" style="width: 120px; height: 90px; border-radius: 14px;">
+        <img src="ServicioTecnico/Teclado.png" alt="Teclado" style="width: 120px; height: 90px; border-radius: 14px;">
+        <img src="ServicioTecnico/Bateria.png" alt="Batería" style="width: 120px; height: 90px; border-radius: 14px;">
+      </div>
+      <ul style="color: #334155; font-size: 1.07rem;">
+        <li><strong>Reparación de pantallas:</strong> Reemplazo de pantallas dañadas o con fallos de visualización, utilizando repuestos de alta calidad.</li>
+        <li><strong>Reemplazo de teclados:</strong> Sustitución de teclas o teclados completos que no funcionan correctamente.</li>
+        <li><strong>Cambio de baterías:</strong> Sustitución de baterías agotadas por modelos nuevos y de larga duración.</li>
+        <li><strong>Limpieza interna y mantenimiento preventivo:</strong> Eliminación de polvo, revisión de ventiladores y aplicación de pasta térmica para evitar sobrecalentamientos.</li>
+        <li><strong>Diagnóstico completo del sistema:</strong> Evaluación de hardware y software para identificar fallas y ofrecer soluciones efectivas.</li>
+        <li><strong>Asesoría técnica personalizada:</strong> Te informamos sobre el estado general de tu equipo y brindamos recomendaciones para su cuidado.</li>
+      </ul>
+      <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
+        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span style="font-size:1.25rem;color:#0ea5e9;"><strong>Precio:</strong> $100.000 COP</span>
+      </div>
+      <a 
+        href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20reparaci%C3%B3n%20de%20Laptop."
+        class="adquirir-btn pulse"
+        style="background: linear-gradient(90deg, #14b8a6 60%, #06b6d4 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #2dd4bf;">
+        Quiero adquirir este servicio
+      </a>
+      <p style="font-size: 1.02rem; color: #64748b; margin-top: 36px;">* Incluye diagnóstico, mano de obra, limpieza interna y la reparación o reemplazo de un componente: pantalla, teclado o batería. En caso de necesitar piezas adicionales, se presentará un presupuesto previo sin compromiso.</p>
+    `;
+    break;
+
+  case 'Formateo':
+    servicio = 'Formateo de PC';
+    texto = `
+      <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
+        <img src="ServicioTecnico/Formateo.png" alt="Formateo de PC" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #fbbf24;">
+        <h2 style="color: #78350f; font-weight: 800; font-size: 2.1rem;">Formateo de PC</h2>
+      </div>
+      <p class="slide-up" style="font-size: 1.15rem;">¿Tu computador está lento, presenta errores frecuentes o necesita una limpieza total del sistema? En <strong>JS Technology</strong> ofrecemos un <strong>formateo profesional de PC</strong> que garantiza velocidad, estabilidad y seguridad para tu equipo, cuidando al máximo tu información personal.</p>
+      <div style="display: flex; gap: 32px; margin: 22px 0;">
+        <img src="ServicioTecnico/Backup.png" alt="Respaldo" style="width: 120px; height: 90px; border-radius: 14px;">
+        <img src="ServicioTecnico/ReparacionPC.png" alt="Reinstalación" style="width: 120px; height: 90px; border-radius: 14px;">
+      </div>
+      <ul style="color: #92400e; font-size: 1.07rem;">
+        <li><strong>Respaldo de información personal:</strong> Hacemos copia segura de documentos, fotos, videos y demás archivos importantes antes de formatear.</li>
+        <li><strong>Formateo completo del disco duro:</strong> Eliminación total de archivos dañinos, virus, software innecesario y residuos del sistema.</li>
+        <li><strong>Reinstalación del sistema operativo:</strong> Instalamos la versión original o actualizada del sistema operativo, según disponibilidad y requerimientos del cliente.</li>
+        <li><strong>Instalación de drivers:</strong> Configuración de todos los controladores esenciales para un funcionamiento completo del equipo (audio, video, red, etc.).</li>
+        <li><strong>Optimización del sistema:</strong> Ajustes personalizados para mejorar velocidad, reducir procesos innecesarios y lograr un arranque más rápido.</li>
+        <li><strong>Instalación de software básico:</strong> Navegador web, suite ofimática, reproductores multimedia, antivirus gratuito y otras herramientas útiles, según tus necesidades.</li>
+        <li><strong>Pruebas finales de rendimiento:</strong> Revisión completa del equipo para asegurar un funcionamiento fluido antes de la entrega.</li>
+      </ul>
+      <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
+        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span style="font-size:1.25rem;color:#f59e42;"><strong>Precio:</strong> $70.000 COP</span>
+      </div>
+      <a 
+        href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20formateo."
+        class="adquirir-btn pulse"
+        style="background: linear-gradient(90deg, #fbbf24 60%, #a3e635 100%); color: #78350f; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #fde68a;">
+        Quiero adquirir este servicio
+      </a>
+      <p style="font-size: 1.02rem; color: #b45309; margin-top: 36px;">* Incluye respaldo, formateo, reinstalación de sistema operativo, drivers y software básico. Si se requieren licencias específicas o respaldo de más de 100 GB, se cotizará por separado.</p>
+    `;
+    break;
+
+  case 'Software':
+    servicio = 'Instalación de Software';
+    texto = `
+      <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
+        <img src="ServicioTecnico/Software.png" alt="Instalación de Software" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #a78bfa;">
+        <h2 style="color: #4c1d95; font-weight: 800; font-size: 2.1rem;">Instalación de Software</h2>
+      </div>
+      <p class="slide-up" style="font-size: 1.15rem;">En <strong>JS Technology</strong>, ofrecemos un servicio profesional de <strong>instalación de software</strong> para que tu computador esté equipado con las herramientas necesarias para trabajar, estudiar o navegar con total seguridad y eficiencia.</p>
+      <div style="display: flex; gap: 32px; margin: 22px 0;">
+        <img src="ServicioTecnico/Oficce.png" alt="Office" style="width: 120px; height: 90px; border-radius: 14px;">
+        <img src="ServicioTecnico/Antivirus.png" alt="Antivirus" style="width: 120px; height: 90px; border-radius: 14px;">
+        <img src="ServicioTecnico/Multimedia.png" alt="Multimedia" style="width: 120px; height: 90px; border-radius: 14px;">
+      </div>
+      <ul style="color: #4c1d95; font-size: 1.07rem;">
+        <li><strong>Instalación de sistemas operativos:</strong> Windows 7, 10, 11 o distribuciones de Linux, según la compatibilidad del equipo y la preferencia del cliente.</li>
+        <li><strong>Instalación de Microsoft Office y suites ofimáticas:</strong> Word, Excel, PowerPoint, Outlook o alternativas como LibreOffice y WPS Office.</li>
+        <li><strong>Instalación de antivirus:</strong> Protección esencial con antivirus gratuitos o de pago (el cliente debe contar con licencia si aplica).</li>
+        <li><strong>Instalación de software adicional:</strong> Navegadores, reproductores multimedia, gestores de PDF, programas de edición, herramientas de compresión, entre otros.</li>
+        <li><strong>Configuración básica:</strong> Accesos directos, ajustes personalizados, idioma, región y actualizaciones aplicadas.</li>
+        <li><strong>Verificación de funcionamiento:</strong> Comprobación de que todos los programas estén correctamente instalados, activados y operativos.</li>
+      </ul>
+      <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
+        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span style="font-size:1.25rem;color:#6366f1;"><strong>Precio:</strong> $60.000 COP</span>
+      </div>
+      <a 
+        href="https://wa.me/573244973675?text=Me%20interesa%20la%20instalaci%C3%B3n%20de%20software."
+        class="adquirir-btn pulse"
+        style="background: linear-gradient(90deg, #6366f1 60%, #a21caf 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #d1fae5;">
+        Quiero adquirir este servicio
+      </a>
+      <p style="font-size: 1.02rem; color: #6d28d9; margin-top: 36px;">* Incluye instalación de hasta 10 programas esenciales, configuración básica y verificación completa del sistema. Programas adicionales o especializados pueden tener un costo adicional previo acuerdo.</p>
+    `;
+    break;
+
+  case 'Optimizacion':
+    servicio = 'Optimización';
+    texto = `
+      <div class="servicio-header fade-in" style="display: flex; align-items: center; gap: 32px;">
+        <img src="ServicioTecnico/Optimizacion.png" alt="Optimización" style="width: 180px; height: 140px; border-radius: 18px; box-shadow: 0 6px 24px #f472b6;">
+        <h2 style="color: #be185d; font-weight: 800; font-size: 2.1rem;">Optimización</h2>
+      </div>
+      <p class="slide-up" style="font-size: 1.15rem;">¿Tu computador se ha vuelto lento o tarda en ejecutar tareas básicas? En <strong>JS Technology</strong> te ofrecemos un servicio completo de <strong>optimización de equipos</strong> para mejorar significativamente el rendimiento sin perder tus archivos ni programas.</p>
+      <div style="display: flex; gap: 32px; margin: 22px 0;">
+        <img src="ServicioTecnico/Performance.png" alt="Rendimiento" style="width: 120px; height: 90px; border-radius: 14px;">
+        <img src="ServicioTecnico/Malware.png" alt="Malware" style="width: 120px; height: 90px; border-radius: 14px;">
+        <img src="ServicioTecnico/Hardware2.png" alt="Check hardware" style="width: 120px; height: 90px; border-radius: 14px;">
+      </div>
+      <ul style="color: #be185d; font-size: 1.07rem;">
+        <li><strong>Limpieza del sistema operativo:</strong> Eliminamos archivos temporales, residuos de programas y registros innecesarios que afectan la velocidad del equipo.</li>
+        <li><strong>Optimización del inicio del sistema:</strong> Configuramos los programas que se ejecutan al encender el equipo para reducir el tiempo de arranque.</li>
+        <li><strong>Desinstalación de software innecesario:</strong> Identificamos y eliminamos programas que consumen recursos y no usas.</li>
+        <li><strong>Ajustes de rendimiento:</strong> Aplicamos configuraciones que optimizan el uso de memoria, disco y CPU.</li>
+        <li><strong>Eliminación de malware y adware:</strong> Escaneamos el sistema en busca de virus, spyware o software que disminuya el rendimiento.</li>
+        <li><strong>Optimización de navegadores:</strong> Limpiamos extensiones, cookies y archivos acumulados para mejorar la navegación web.</li>
+        <li><strong>Revisión de hardware:</strong> Verificamos el estado del disco duro, RAM y temperatura para descartar problemas físicos.</li>
+      </ul>
+      <div style="margin: 24px 0; display:flex; align-items:center; gap: 16px;">
+        <img src="ServicioTecnico/Precio.png" alt="Precio" style="width:38px;">
+        <span style="font-size:1.25rem;color:#f472b6;"><strong>Precio:</strong> $50.000 COP</span>
+      </div>
+      <a 
+        href="https://wa.me/573244973675?text=Me%20interesa%20el%20servicio%20de%20optimizaci%C3%B3n."
+        class="adquirir-btn pulse"
+        style="background: linear-gradient(90deg, #f472b6 60%, #fcd34d 100%); color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: bold; font-size: 1.15rem; text-decoration: none; box-shadow: 0 4px 16px #fbcfe8;">
+        Quiero adquirir este servicio
+      </a>
+      <p style="font-size: 1.02rem; color: #e11d48; margin-top: 36px;">* Incluye diagnóstico, limpieza del sistema, optimización del arranque, eliminación de amenazas y ajustes de rendimiento. Si se detecta que el equipo requiere un servicio mayor como formateo, se notificará previamente.</p>
+    `;
+    break;
+
+    case 'Otro':
+      content.innerHTML =
+        `<h3 style="color: #0ea5e9; font-weight: bold;">¿Qué servicio necesitas?</h3>
+         <p style="color: #334155;">Describe lo que necesitas y lo enviaremos por WhatsApp.</p>
+         <textarea id="userRequest" rows="4" placeholder="Escribe aquí..." style="width:100%; border-radius: 10px; border: 1px solid #bae6fd; padding: 12px; resize: vertical;"></textarea>
+         <button class="enviar-btn pulse" onclick="enviarWhatsApp()" ontouchstart="enviarWhatsApp()" style="margin-top: 12px; background: linear-gradient(90deg, #06b6d4 60%, #0ea5e9 100%); color: #fff; padding: 12px 22px; border-radius: 10px; font-weight: bold; font-size: 1rem; box-shadow: 0 2px 10px #38bdf8;">Enviar</button>`;
+      return;
+ case 'CamaraHogar':
+  servicio = 'Cámara para Hogar';
+  texto = `
+    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <div style="text-align: center;">
+        <button onclick="mostrarDetalleCamaraHogar('hogar1')" style="border: none; background: none;">
+          <img src='Camaras/CH1.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div style="margin-top:8px;">$120.000</div>
+        </button>
+        <div>Cámara Mini Interior</div>
+      </div>
+      <div style="text-align: center;">
+        <button onclick="mostrarDetalleCamaraHogar('hogar2')" style="border: none; background: none;">
+          <img src='Camaras/CH2.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div style="margin-top:8px;">$180.000</div>
+        </button>
+        <div>Cámara Panorámica 360°</div>
+      </div>
+      <div style="text-align: center;">
+        <button onclick="mostrarDetalleCamaraHogar('hogar3')" style="border: none; background: none;">
+          <img src='Camaras/CH3.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div style="margin-top:8px;">$210.000</div>
+        </button>
+        <div>Cámara Exterior WiFi</div>
+      </div>
     </div>
   `;
-  card.querySelector('img').onclick = () => abrirModalProducto(idx);
-  card.querySelector('h3').onclick = () => abrirModalProducto(idx);
-  card.querySelector('p').onclick = () => abrirModalProducto(idx);
-  productosGrid.appendChild(card);
-});
+  mensaje = 'Me interesa instalar cámara para hogar.';
+  break;
 
-// MODAL PRODUCTO
-const modalProducto = document.getElementById('modalProducto');
-const modalProductoImgs = document.getElementById('modalProductoImgs');
-const modalProductoTitulo = document.getElementById('modalProductoTitulo');
-const modalProductoDesc = document.getElementById('modalProductoDesc');
-const modalProductoPrecio = document.getElementById('modalProductoPrecio');
-const modalProductoCaract = document.getElementById('modalProductoCaract');
-const closeModalProducto = document.getElementById('closeModalProducto');
-const prevImgModal = document.getElementById('prevImgModal');
-const nextImgModal = document.getElementById('nextImgModal');
-const addToCartModal = document.getElementById('addToCartModal');
-let idxProductoActual = 0;
-let idxImgActual = 0;
-function abrirModalProducto(idx) {
-  idxProductoActual = idx;
-  idxImgActual = 0;
-  const prod = productos[idx];
-  modalProductoImgs.innerHTML = '';
-  prod.imagenes.forEach((img, i) => {
-    const tag = document.createElement('img');
-    tag.src = img;
-    tag.alt = prod.nombre + ' foto ' + (i + 1);
-    tag.className = i === 0 ? 'active' : '';
-    modalProductoImgs.appendChild(tag);
-  });
-  modalProductoTitulo.textContent = prod.nombre;
-  modalProductoDesc.textContent = prod.desc;
-  modalProductoPrecio.textContent = "$" + prod.precio.toLocaleString('es-CO');
-  modalProductoCaract.innerHTML = prod.caracteristicas.map(c => `<li>${c}</li>`).join('');
-  modalProducto.classList.add('active');
-}
-closeModalProducto.onclick = () => {
-  modalProducto.classList.remove('active');
-};
-prevImgModal.onclick = () => cambiarImgModal(-1);
-nextImgModal.onclick = () => cambiarImgModal(1);
-function cambiarImgModal(dir) {
-  const prod = productos[idxProductoActual];
-  idxImgActual = (idxImgActual + dir + prod.imagenes.length) % prod.imagenes.length;
-  modalProductoImgs.querySelectorAll('img').forEach((img, i) => {
-    img.classList.toggle('active', i === idxImgActual);
-  });
-}
-addToCartModal.onclick = () => {
-  addToCart(idxProductoActual);
-  modalProducto.classList.remove('active');
-};
-modalProducto.onclick = e => { if(e.target === modalProducto) modalProducto.classList.remove('active'); };
-window.addEventListener('keydown', e => {
-  if (modalProducto.classList.contains('active')) {
-    if (e.key === 'Escape') modalProducto.classList.remove('active');
-    if (e.key === 'ArrowLeft') cambiarImgModal(-1);
-    if (e.key === 'ArrowRight') cambiarImgModal(1);
-  }
-});
+case 'CamaraHD':
+  servicio = 'Cámara HD Empresa';
+  texto = `
+    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <div style="text-align: center;">
+        <button onclick="mostrarDetalleCamaraEmpresa('empresa1')" style="border: none; background: none;">
+          <img src='Camaras/CE1.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div style="margin-top:8px;">$320.000</div>
+        </button>
+        <div>Cámara Domo HD</div>
+      </div>
+      <div style="text-align: center;">
+        <button onclick="mostrarDetalleCamaraEmpresa('empresa2')" style="border: none; background: none;">
+          <img src='Camaras/CE2.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div style="margin-top:8px;">$390.000</div>
+        </button>
+        <div>Cámara Bullet IR</div>
+      </div>
+      <div style="text-align: center;">
+        <button onclick="mostrarDetalleCamaraEmpresa('empresa3')" style="border: none; background: none;">
+          <img src='Camaras/CE3.png' style='width:100px; height:100px; object-fit:cover; border-radius:10px;'>
+          <div style="margin-top:8px;">$750.000</div>
+        </button>
+        <div>Cámara PTZ Motorizada</div>
+      </div>
+    </div>
+  `;
+  mensaje = 'Me interesa instalar cámara HD para empresa.';
+  break;
 
-// CARRITO DE COMPRAS
-let carrito = [];
-const cartBtn = document.getElementById('cartBtn');
-const cartModal = document.getElementById('cartModal');
-const cartItems = document.getElementById('cartItems');
-const cartTotal = document.getElementById('cartTotal');
-const cartCount = document.getElementById('cartCount');
-const closeCartBtn = document.getElementById('closeCartBtn');
-const checkoutBtn = document.getElementById('checkoutBtn');
-document.body.addEventListener('click', function(e) {
-  if(e.target.classList.contains('add-cart-btn')) {
-    const idx = +e.target.dataset.idx;
-    addToCart(idx);
-  }
-});
-cartBtn.onclick = () => {
-  cartModal.classList.add('active');
-  renderCart();
-};
-closeCartBtn.onclick = () => {
-  cartModal.classList.remove('active');
-};
-function addToCart(idx) {
-  const prod = productos[idx];
-  const existing = carrito.find(item => item.nombre === prod.nombre);
-  if(existing) {
-    existing.cant += 1;
-  } else {
-    carrito.push({ ...prod, cant: 1 });
-  }
-  updateCartCount();
-}
-function renderCart() {
-  cartItems.innerHTML = '';
-  let total = 0;
-  carrito.forEach((item, i) => {
-    total += item.precio * item.cant;
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <span>${item.nombre} <b>x${item.cant}</b></span>
-      <span>
-        $${(item.precio * item.cant).toLocaleString('es-CO')}
-        <button class="remove-cart-item" data-i="${i}" title="Quitar">×</button>
-      </span>
-    `;
-    cartItems.appendChild(li);
-  });
-  cartTotal.textContent = `$${total.toLocaleString('es-CO')}`;
-  if(carrito.length === 0) {
-    cartItems.innerHTML = `<li>El carrito está vacío.</li>`;
-  }
-}
-cartItems.onclick = function(e) {
-  if(e.target.classList.contains('remove-cart-item')) {
-    const i = +e.target.dataset.i;
-    carrito.splice(i, 1);
-    renderCart();
-    updateCartCount();
-  }
-}
-function updateCartCount() {
-  let count = carrito.reduce((acc, item) => acc + item.cant, 0);
-  cartCount.textContent = count;
-}
+case 'KitCamaras':
+  servicio = 'Kit de 4 Cámaras';
+  texto = `
+    <div style="display:flex; flex-wrap:wrap; align-items: flex-start; gap: 30px;">
+      <div style="flex:1; min-width:220px; max-width:340px;">
+        <div style="width:100%; overflow-x:auto; white-space:nowrap; padding-bottom:10px;">
+          <div id="sliderKit" style="display:flex; gap:12px;">
+            <img src="Camaras/KC1.png" alt="Kit cámara 1" style="height:180px; border-radius:10px; box-shadow:0 2px 8px #d1d5db; cursor:pointer;" onclick="abrirModalImg('Camaras/KC1.png')">
+            <img src="Camaras/KC2.png" alt="Kit cámara 2" style="height:180px; border-radius:10px; box-shadow:0 2px 8px #d1d5db; cursor:pointer;" onclick="abrirModalImg('Camaras/KC2.png')">
+            <img src="Camaras/KC3.png" alt="Kit cámara 3" style="height:180px; border-radius:10px; box-shadow:0 2px 8px #d1d5db; cursor:pointer;" onclick="abrirModalImg('Camaras/KC3.png')">
+            <img src="Camaras/KC4.png" alt="Kit cámara 4" style="height:180px; border-radius:10px; box-shadow:0 2px 8px #d1d5db; cursor:pointer;" onclick="abrirModalImg('Camaras/KC4.png')">
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:8px; color:#64748b; font-size:0.95rem;">Desliza para ver más imágenes</div>
+      </div>
+      <div style="flex:2; min-width:260px;">
+        <h4 style="color:#0ea5e9; margin-bottom:6px;">Kit de 4 Cámaras HD + DVR + Instalación</h4>
+        <ul>
+          <li>Incluye 4 cámaras HD (interior/exterior)</li>
+          <li>DVR de 4 canales con disco duro 500GB</li>
+          <li>Fuente de poder y todos los cables</li>
+          <li>Visualización remota desde app móvil</li>
+          <li>Instalación profesional incluida</li>
+          <li>Soporte técnico y garantía</li>
+        </ul>
+        <div style="margin:10px 0 20px 0; color:#64748b; font-size:0.98rem;">
+          Puedes monitorear tu propiedad desde cualquier lugar mediante tu celular. El sistema soporta grabación continua, detección de movimiento y alertas automáticas.
+        </div>
+        <div style="color:#16a34a; font-size:1.18rem; font-weight:bold;">$1.800.000 COP <span style="color:#64748b; font-weight:normal; font-size:0.95rem;">(Todo incluido)</span></div>
+        <a href="https://wa.me/573244973675?text=Me%20interesa%20adquirir%20el%20Kit%20de%204%20c%C3%A1maras%20con%20instalaci%C3%B3n" target="_blank" style="display:inline-block; margin-top:16px; padding:12px 24px; background:linear-gradient(90deg,#06b6d4 60%,#0ea5e9 100%);color:#fff;border-radius:10px;font-weight:bold;text-decoration:none;box-shadow:0 2px 10px #38bdf8;">Comprar Kit de 4 Cámaras</a>
+      </div>
+    </div>
+    <style>
+      #sliderKit::-webkit-scrollbar { display: none; }
+    </style>
+    <div id="modal-img-full" style="display:none;position:fixed;z-index:99999;top:0;left:0;width:100vw;height:100vh;background:rgba(24,28,42,0.85);justify-content:center;align-items:center;">
+      <img id="modal-img-full-el" src="" alt="Foto" style="max-width:92vw;max-height:90vh;border-radius:18px;box-shadow:0 8px 32px #0008;">
+      <span onclick="cerrarModalImg()" style="position:absolute;top:18px;right:32px;font-size:2.6rem;color:#fff;cursor:pointer;font-weight:bold;">&times;</span>
+    </div>
+    <script>
+      function abrirModalImg(src) {
+        var modal = document.getElementById('modal-img-full');
+        var img = document.getElementById('modal-img-full-el');
+        img.src = src;
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+      function cerrarModalImg() {
+        document.getElementById('modal-img-full').style.display = "none";
+        document.body.style.overflow = "";
+      }
+      document.getElementById('modal-img-full').addEventListener('mousedown', function(e) {
+        let img = document.getElementById('modal-img-full-el');
+        if (!img.contains(e.target)) cerrarModalImg();
+      });
+    
+  `;
+  break;
+case 'Tienda':
+  content.innerHTML = `
+    <h3>Tienda Online</h3>
+    <div class="productos-container">
+      <div class="product-card">
+        <button class="openModalBtn" data-product="1" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/M1.png" alt="Motorola G85 512GB" style="width:200px;">
+          <h4>Motorola G85 512GB</h4>
+          <p>$1'050.000 COP</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="2" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/S1.png" alt="Samsung A16 5G" style="width:200px;">
+          <h4>Samsung A16 5G</h4>
+          <p>$740.000 COP</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="3" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/S2.png" alt="Samsung A05s 128gb" style="width:200px;">
+          <h4>Samsung A05s 128gb</h4>
+          <p>$450.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="4" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/S3.png" alt="Samsung a36 5G 256GB" style="width:200px;">
+          <h4>Samsung a36 5G 256GB</h4>
+          <p>$1.170.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="5" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/S4.png" alt="Samsung A55 5g 256gb" style="width:200px;">
+          <h4>Samsung A55 5g 256gb</h4>
+          <p>$1.510.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="6" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/S5.png" alt="Samsung a 56 5g 256GB" style="width:200px;">
+          <h4>Samsung a 56 5g 256GB</h4>
+          <p>$1.650.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="7" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X1.png" alt="Xiaomi 14t 512 GB" style="width:200px;">
+          <h4>Xiaomi 14t 512 GB</h4>
+          <p>$1.870.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="8" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X2.png" alt="Xiaomi 14t pro 512gb" style="width:200px;">
+          <h4>Xiaomi 14t pro 512gb</h4>
+          <p>$2.530.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="9" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X3.png" alt="Redmi note 14 256gb + buds 6 play" style="width:200px;">
+          <h4>Redmi note 14 256gb + buds 6 play</h4>
+          <p>$720.000 COP</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="10" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X4.png" alt="Redmi note 14 pro" style="width:200px;">
+          <h4>Redmi note 14 pro</h4>
+          <p>$910.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="11" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X5.png" alt="Redmi A3 64gb" style="width:200px;">
+          <h4>Redmi A3 64gb</h4>
+          <p>$399.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="12" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X6.png" alt="redmi 14c 128 GB" style="width:200px;">
+          <h4>redmi 14c 128 GB</h4>
+          <p>399.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="13" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/X7.png" alt="Redmi 14c 256gb" style="width:200px;">
+          <h4>Redmi 14c 256gb</h4>
+          <p>$460.000</p>
+        </button>
+      </div>
+      <div class="product-card">
+        <button class="openModalBtn" data-product="14" style="border:none; background:none; padding:0; cursor:pointer;">
+          <img src="TiendaOnline/Z1.png" alt="Zte A75 128 gb" style="width:200px;">
+          <h4>Zte A75 128 gb</h4>
+          <p>$340.000</p>
+        </button>
+      </div>
+    </div>
+    <div id="modal" class="modal">
+      <div class="modal-container">
+        <span class="close-btn">&times;</span>
+        <div class="modal-left">
+          <img class="slide active" id="modalImg1" src="TiendaOnline/M1.png" alt="Imagen 1">
+          <img class="slide" id="modalImg2" src="TiendaOnline/M11.jpg" alt="Imagen 2">
+          <img class="slide" id="modalImg3" src="TiendaOnline/M111.jpg" alt="Imagen 3">
+          <div class="slider-controls">
+            <button id="prevBtn">&#10094;</button>
+            <button id="nextBtn">&#10095;</button>
+          </div>
+        </div>
+        <div class="modal-right">
+          <h4 id="modalTitle">Motorola G85 512GB</h4>
+          <p id="modalDescription"></p>
+          <ul id="modalSpecs"></ul>
+          <p id="modalPrice"></p>
+          <p style="color: green; font-weight: bold;">Pago 100% contraentrega en todo el país.</p>
+          <a id="modalBuyLink" href="#" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background-color:#25D366; color:white; text-decoration:none; border-radius:5px; font-weight:bold;">Comprar</a>
+        </div>
+      </div>
+    </div>
+    <style>
+      .productos-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+      .product-card { display: inline-block; margin: 15px; text-align: center; }
+      .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); animation: fadeIn 0.3s ease-in-out; }
+      .modal.fade-out { animation: fadeOut 0.4s forwards; }
+      .modal-container { display: flex; width: 80%; height: 80%; margin: 5% auto; background-color: #fff; border-radius: 10px; overflow: hidden; animation: slideIn 0.4s ease-in-out; position: relative; }
+      .close-btn { position: absolute; top: 10px; right: 20px; font-size: 24px; cursor: pointer; color: #444; z-index: 10; }
+      .modal-left { flex: 1; position: relative; background-color: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+      .modal-left img { max-width: 100%; max-height: 100%; object-fit: contain; display: none; }
+      .modal-left img.active { display: block; }
+      .modal-right { flex: 1; padding: 20px; overflow-y: auto; text-align: left; }
+      .slider-controls { position: absolute; width: 100%; bottom: 10px; display: flex; justify-content: space-between; padding: 0 10px; }
+      .slider-controls button { background-color: rgba(255,255,255,0.5); border: none; font-size: 24px; cursor: pointer; padding: 5px 10px; border-radius: 5px; }
+      @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+      @keyframes fadeOut { from {opacity: 1;} to {opacity: 0;} }
+      @keyframes slideIn { from {transform: scale(0.9); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+    </style>
+  `;
 
-// Modal usuario para finalizar compra
-const userModal = document.getElementById('userModal');
-const closeUserBtn = document.getElementById('closeUserBtn');
-const confirmUserBtn = document.getElementById('confirmUserBtn');
-const userName = document.getElementById('userName');
-const userPhone = document.getElementById('userPhone');
-checkoutBtn.onclick = () => {
-  if(carrito.length === 0) {
-    alert("El carrito está vacío.");
-    return;
-  }
-  userModal.classList.add('active');
-  userName.value = '';
-  userPhone.value = '';
-};
-closeUserBtn.onclick = () => {
-  userModal.classList.remove('active');
-};
-confirmUserBtn.onclick = () => {
-  const name = userName.value.trim();
-  const phone = userPhone.value.trim();
-  if(name.length < 3) {
-    alert("Por favor, ingresa tu nombre completo.");
-    userName.focus(); return;
-  }
-  if(!/^[0-9]{10}$/.test(phone)) {
-    alert("El número de celular debe tener 10 dígitos.");
-    userPhone.focus(); return;
-  }
-  enviarPedidoWhatsapp(name, phone);
-  userModal.classList.remove('active');
-  cartModal.classList.remove('active');
-  carrito = [];
-  updateCartCount();
-  renderCart();
-  setTimeout(() => {
-    alert("¡Gracias por tu compra! Pronto nos contactaremos contigo.");
-  }, 350);
-};
-function enviarPedidoWhatsapp(nombre, telefono) {
-  let texto = `🛒 *Nuevo pedido JS Technology*%0A`;
-  texto += `👤 Nombre: ${nombre}%0A📱 Celular: +57${telefono}%0A`;
-  texto += `------------------------%0A`;
-  texto += `*Productos:*%0A`;
-  carrito.forEach(item => {
-    texto += `• ${item.nombre} x${item.cant} - $${(item.precio*item.cant).toLocaleString('es-CO') }%0A`;
-  });
-  let total = carrito.reduce((acc, item) => acc + item.precio * item.cant, 0);
-  texto += `------------------------%0A`;
-  texto += `*Total*: $${total.toLocaleString('es-CO')}`;
-  const numero = "3003858390";
-  const url = `https://wa.me/57${numero}?text=${texto}`;
-  window.open(url, "_blank");
-}
-
-/* --- SERVICIOS TECNICOS --- */
-const serviciosContenido = {
-  /* ... (todo tu contenido de servicios técnicos aquí, ya responsive y visualmente ordenado para móviles; ver parte anterior para el contenido completo) ... */
-};
-const servicioBtns = document.querySelectorAll('.servicio-btn');
-const servicioDetalle = document.getElementById('servicioDetalle');
-function mostrarServicio(tipo) {
-  servicioBtns.forEach(btn=>btn.classList.remove('active'));
-  document.querySelector(`.servicio-btn[data-tipo='${tipo}']`).classList.add('active');
-  servicioDetalle.innerHTML = serviciosContenido[tipo] || '';
-}
-servicioBtns.forEach(btn=>{
-  btn.onclick = ()=> mostrarServicio(btn.dataset.tipo);
-});
-mostrarServicio("PC");
-
-/* --- CAMARAS DE SEGURIDAD --- */
-const camarasContenido = {
-  /* ... (todo tu contenido de cámaras aquí, ya responsive y visualmente ordenado para móviles; ver parte anterior para el contenido completo) ... */
-};
-const camaraBtns = document.querySelectorAll('.camaras-opciones .servicio-btn');
-const camarasDetalle = document.getElementById('camarasDetalle');
-function mostrarApartadoCamara(tipo) {
-  camaraBtns.forEach(btn=>btn.classList.remove('active'));
-  document.querySelector(`.camaras-opciones .servicio-btn[data-tipo='${tipo}']`).classList.add('active');
-  camarasDetalle.innerHTML = camarasContenido[tipo] || '';
-}
-camaraBtns.forEach(btn=>{
-  btn.onclick = ()=> mostrarApartadoCamara(btn.dataset.tipo);
-});
-mostrarApartadoCamara("CamaraHogar");
-// Modal imagen grande (para Kit)
-function abrirModalImg(src) {
-  var modal = document.getElementById('modal-img-full');
-  var img = document.getElementById('modal-img-full-el');
-  img.src = src;
-  modal.style.display = "flex";
-  document.body.style.overflow = "hidden";
-}
-function cerrarModalImg() {
-  document.getElementById('modal-img-full').style.display = "none";
-  document.body.style.overflow = "";
-}
-document.getElementById('modal-img-full').addEventListener('mousedown', function(e) {
-  let img = document.getElementById('modal-img-full-el');
-  if (!img.contains(e.target)) cerrarModalImg();
-});
-// MODAL DETALLE CÁMARA
-const camarasData = {
-  /* ... (todo tu detalle de cámaras aquí, ya responsive y visualmente ordenado para móviles; ver parte anterior para el contenido completo) ... */
-};
-const modalCamara = document.getElementById('modalCamara');
-const closeModalCamara = document.getElementById('closeModalCamara');
-const modalCamaraImgs = document.getElementById('modalCamaraImgs');
-const modalCamaraTitulo = document.getElementById('modalCamaraTitulo');
-const modalCamaraDesc = document.getElementById('modalCamaraDesc');
-const modalCamaraPrecio = document.getElementById('modalCamaraPrecio');
-const modalCamaraExtra = document.getElementById('modalCamaraExtra');
-const modalCamaraWhats = document.getElementById('modalCamaraWhats');
-function abrirModalCamara(id) {
-  const cam = camarasData[id];
-  if (!cam) return;
-  modalCamaraImgs.innerHTML = cam.img.map(src=>`<img src="${src}" style="width:180px;max-width:90vw;border-radius:12px;box-shadow:0 2px 8px #0ea5e955;">`).join('');
-  modalCamaraTitulo.textContent = cam.titulo;
-  modalCamaraDesc.textContent = cam.desc;
-  modalCamaraPrecio.innerHTML = `<b style="color:#06b6d4;">$${cam.precio.toLocaleString('es-CO')}</b>`;
-  modalCamaraExtra.innerHTML = cam.extra;
-  modalCamaraWhats.href = cam.wa;
-  modalCamara.classList.add('active');
-}
-closeModalCamara.onclick = () => { modalCamara.classList.remove('active'); };
-modalCamara.onclick = e => { if(e.target === modalCamara) modalCamara.classList.remove('active'); };
-// Conectar botones
-function mostrarDetalleCamaraHogar(id) { abrirModalCamara(id); }
-function mostrarDetalleCamaraEmpresa(id) { abrirModalCamara(id); }
-/* --- TUTORIAL DINÁMICO FUNCIONAL --- */
-const tutorialSteps = [
-  {
-    el: "#tutorial-logo",
-    msg: "Este es el logo de JS Technology, puedes hacer clic para volver al inicio."
-  },
-  {
-    el: ".search-bar",
-    msg: "Esta barra te permite buscar productos y servicios específicos en nuestra tienda."
-  },
-  {
-    el: ".main-nav",
-    msg: "Aquí navegas a las distintas secciones: productos, servicios técnicos, cámaras y contacto."
-  },
-  {
-    el: "#cartBtn",
-    msg: "Haz clic aquí para ver tu carrito de compras y finalizar tu pedido."
-  },
-  {
-    el: "#productosGrid",
-    msg: "Aquí aparecen todos nuestros productos destacados. Haz clic en uno para verlo en grande y ver sus características."
-  },
-  {
-    el: "#servicios",
-    msg: "En esta sección encuentras información sobre nuestro servicio técnico especializado. Haz clic en cada opción para ver detalles."
-  },
-  {
-    el: "#camaras",
-    msg: "Aquí puedes conocer y cotizar diferentes cámaras de seguridad para hogar y empresas. Haz clic en cada cámara para más detalles."
-  },
-  {
-    el: "#contacto",
-    msg: "¿Dudas o necesitas soporte? Contáctanos por WhatsApp, correo o formulario."
-  }
-];
-const tutorialKey = "jsTechTutorialV2";
-const tutorialOverlay = document.getElementById('tutorialOverlay');
-const tutorialTooltip = document.getElementById('tutorialTooltip');
-let tutorialStep = 0;
-function showStep(n) {
-  document.querySelectorAll('.tutorial-highlight').forEach(e=>e.classList.remove('tutorial-highlight'));
-  tutorialTooltip.classList.remove('active');
-  tutorialOverlay.style.display = "block";
-  tutorialOverlay.style.zIndex = 4400;
-  const step = tutorialSteps[n];
-  const el = document.querySelector(step.el);
-  if(!el) return;
-  el.classList.add('tutorial-highlight');
-  el.style.zIndex = 4501;
-  const rect = el.getBoundingClientRect();
-  let top = rect.bottom + 12;
-  let left = rect.left;
-  if(window.innerWidth - rect.right < 340) left = Math.max(8, window.innerWidth-360);
-  if(window.innerHeight - rect.bottom < 110) top = rect.top-120;
-  tutorialTooltip.innerHTML = step.msg + `<br><button class="tutorial-btn" id="tutorialNextBtn">${tutorialStep === tutorialSteps.length-1 ? "Terminar" : "Siguiente"}</button>`;
-  tutorialTooltip.style.top = (top + window.scrollY) + "px";
-  tutorialTooltip.style.left = (left + window.scrollX) + "px";
-  tutorialTooltip.classList.add("active");
-  setTimeout(()=>{ el.scrollIntoView({behavior:"smooth",block:"center"}); },300);
-  document.getElementById('tutorialNextBtn').onclick = function() {
-    el.style.zIndex = "";
-    tutorialStep++;
-    if(tutorialStep < tutorialSteps.length){
-      showStep(tutorialStep);
-    } else {
-      finishTutorial();
+  const productsInfo = {
+    1: {
+      title: "Motorola G85 512GB",
+      images: ["TiendaOnline/M1.png", "TiendaOnline/M11.jpg", "TiendaOnline/M111.jpg"],
+      description: "El <strong>Motorola G85</strong> es un smartphone de última generación que ofrece un excelente equilibrio entre rendimiento, estilo y funcionalidad. Con una impresionante <strong>capacidad de almacenamiento de 512GB</strong>, tendrás espacio más que suficiente para guardar todas tus fotos, videos, aplicaciones y archivos importantes.",
+      specs: `<li><strong>Pantalla:</strong> AMOLED de 6.5" FHD+ con tasa de refresco de 120Hz.</li>
+        <li><strong>Procesador:</strong> Qualcomm Snapdragon 695 para un rendimiento fluido.</li>
+        <li><strong>Memoria RAM:</strong> 8GB para multitarea eficiente.</li>
+        <li><strong>Almacenamiento:</strong> 512GB internos, expandibles vía microSD.</li>
+        <li><strong>Cámaras:</strong> Dual 64MP + 8MP traseras / 16MP frontal.</li>
+        <li><strong>Batería:</strong> 5000mAh con carga rápida de 30W.</li>
+        <li><strong>Sistema operativo:</strong> Android 13.</li>
+        <li><strong>Otros:</strong> Lector de huellas, reconocimiento facial, audio estéreo Dolby Atmos.</li>`,
+      price: "$1'050.000 COP",
+      buyLink: "https://wa.me/573244973675?text=Hola,%20estoy%20interesado%20en%20adquirir%20el%20Motorola%20G85%20512GB"
+    },
+    2: {
+      title: "Samsung A16 5G",
+      images: ["TiendaOnline/S1.png", "TiendaOnline/S11.png", "TiendaOnline/S111.png"],
+      description: "El <strong>Samsung A16 5G</strong> combina conectividad 5G con una capacidad de almacenamiento de 256GB, ideal para una experiencia multimedia veloz y sin interrupciones.",
+      specs: `<li><strong>Pantalla:</strong> LCD de 6.6" HD+.</li>
+        <li><strong>Procesador:</strong> MediaTek Dimensity 700.</li>
+        <li><strong>Memoria RAM:</strong> 6GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB expandible.</li>
+        <li><strong>Cámaras:</strong> Triple 48MP+2MP+2MP / 13MP frontal.</li>
+        <li><strong>Batería:</strong> 5000mAh carga rápida.</li>
+        <li><strong>Sistema operativo:</strong> Android 14.</li>`,
+      price: "$740.000 COP",
+      buyLink: "https://wa.me/573244973675?text=Hola,%20estoy%20interesado%20en%20adquirir%20el%20Samsung%20A16%205G%20256GB"
+    },
+    3: {
+      title: "Samsung A05s 128gb",
+      images: ["TiendaOnline/S2.png", "TiendaOnline/S22.png", "TiendaOnline/S222.png"],
+      description: "El <strong>Samsung A05s</strong> es un equipo accesible con 128GB de almacenamiento, perfecto para tareas diarias, redes sociales y contenido multimedia básico.",
+      specs: `<li><strong>Pantalla:</strong> LCD de 6.7".</li>
+        <li><strong>Procesador:</strong> Snapdragon 680.</li>
+        <li><strong>RAM:</strong> 4GB.</li>
+        <li><strong>Almacenamiento:</strong> 128GB.</li>
+        <li><strong>Cámara:</strong> 50MP principal.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$450.000",
+      buyLink: "https://wa.me/573244973675?text=Hola,%20quiero%20comprar%20el%20Samsung%20A05s%20128GB"
+    },
+    4: {
+      title: "Samsung a36 5G 256GB",
+      images: ["TiendaOnline/S3.png", "TiendaOnline/S33.png", "TiendaOnline/S333.png"],
+      description: "El <strong>Samsung A36 5G</strong> destaca por su conectividad veloz y 256GB de memoria, ofreciendo un equilibrio entre rendimiento, almacenamiento y diseño.",
+      specs: `<li><strong>Pantalla:</strong> AMOLED 6.4".</li>
+        <li><strong>Procesador:</strong> Exynos 1380.</li>
+        <li><strong>RAM:</strong> 8GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB.</li>
+        <li><strong>Cámara:</strong> 50MP triple lente.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$1.170.000",
+      buyLink: "https://wa.me/573244973675?text=Estoy%20interesado%20en%20el%20Samsung%20A36%205G%20256GB"
+    },
+    5: {
+      title: "Samsung A55 5g 256gb",
+      images: ["TiendaOnline/S4.png", "TiendaOnline/S44.png", "TiendaOnline/S444.png"],
+      description: "El <strong>Samsung A55 5G</strong> ofrece 256GB de almacenamiento y una cámara optimizada para fotos nítidas, ideal para usuarios exigentes.",
+      specs: `<li><strong>Pantalla:</strong> 6.7" Super AMOLED.</li>
+        <li><strong>Procesador:</strong> Exynos 1480.</li>
+        <li><strong>RAM:</strong> 8GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB.</li>
+        <li><strong>Cámara:</strong> 64MP triple lente.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$1.510.000",
+      buyLink: "https://wa.me/573244973675?text=Hola,%20me%20interesa%20el%20Samsung%20A55%205G%20256GB"
+    },
+    6: {
+      title: "Samsung a 56 5g 256GB",
+      images: ["TiendaOnline/S5.png", "TiendaOnline/S55.png", "TiendaOnline/S555.png"],
+      description: "Con 256GB y conectividad 5G, el <strong>Samsung A56 5G</strong> ofrece potencia y velocidad para juegos, multitarea y streaming sin interrupciones.",
+      specs: `<li><strong>Pantalla:</strong> AMOLED 6.8".</li>
+        <li><strong>Procesador:</strong> Octa-Core 2.8GHz.</li>
+        <li><strong>RAM:</strong> 8GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB.</li>
+        <li><strong>Cámara:</strong> 64MP triple lente.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$1.650.000",
+      buyLink: "https://wa.me/573244973675?text=Quiero%20el%20Samsung%20A56%205G%20256GB"
+    },
+    7: {
+      title: "Xiaomi 14t 512 GB",
+      images: ["TiendaOnline/X1.png", "TiendaOnline/X11.png", "TiendaOnline/X111.png"],
+      description: "El <strong>Xiaomi 14T</strong> ofrece 512GB de almacenamiento con un rendimiento fluido, ideal para creadores de contenido y usuarios avanzados.",
+      specs: `<li><strong>Pantalla:</strong> AMOLED 6.8".</li>
+        <li><strong>Procesador:</strong> Dimensity 8200 Ultra.</li>
+        <li><strong>RAM:</strong> 12GB.</li>
+        <li><strong>Almacenamiento:</strong> 512GB.</li>
+        <li><strong>Cámara:</strong> 108MP triple lente.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$1.870.000",
+      buyLink: "https://wa.me/573244973675?text=Interesado%20en%20el%20Xiaomi%2014T%20512GB"
+    },
+    8: {
+      title: "Xiaomi 14t pro 512gb",
+      images: ["TiendaOnline/X2.png", "TiendaOnline/X22.png", "TiendaOnline/X222.png"],
+      description: "El <strong>Xiaomi 14T Pro</strong> combina tecnología de punta, 512GB de espacio y alto rendimiento para quienes exigen lo mejor.",
+      specs: `<li><strong>Pantalla:</strong> AMOLED 6.8".</li>
+        <li><strong>Procesador:</strong> Snapdragon 8 Gen 3.</li>
+        <li><strong>RAM:</strong> 12GB.</li>
+        <li><strong>Almacenamiento:</strong> 512GB.</li>
+        <li><strong>Cámara:</strong> 200MP triple lente.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$2.530.000",
+      buyLink: "https://wa.me/573244973675?text=Hola,%20deseo%20el%20Xiaomi%2014T%20Pro%20512GB"
+    },
+    9: {
+      title: "Redmi note 14 256gb + buds 6 play",
+      images: ["TiendaOnline/X3.png", "TiendaOnline/X33.png", "TiendaOnline/X333.png"],
+      description: "El <strong>Redmi Note 14</strong> de 256GB incluye los audífonos Buds 6 Play. Gran relación calidad-precio y excelente para multimedia.",
+      specs: `<li><strong>Pantalla:</strong> LCD 6.5".</li>
+        <li><strong>Procesador:</strong> Snapdragon 680.</li>
+        <li><strong>RAM:</strong> 6GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB.</li>
+        <li><strong>Cámara:</strong> 50MP triple lente.</li>
+        <li><strong>Incluye:</strong> Buds 6 Play.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$720.000 COP",
+      buyLink: "https://wa.me/573244973675?text=Estoy%20interesado%20en%20el%20Redmi%20Note%2014%20256GB%20+%20Buds%206%20Play"
+    },
+    10: {
+      title: "Redmi note 14 pro",
+      images: ["TiendaOnline/X4.png", "TiendaOnline/X44.png", "TiendaOnline/X444.png"],
+      description: "El <strong>Redmi Note 14 Pro</strong> combina diseño, fluidez y buena cámara con sus 256GB de almacenamiento. Ideal para el día a día.",
+      specs: `<li><strong>Pantalla:</strong> AMOLED 6.7".</li>
+        <li><strong>Procesador:</strong> Snapdragon 732G.</li>
+        <li><strong>RAM:</strong> 8GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB.</li>
+        <li><strong>Cámara:</strong> 108MP cuádruple.</li>
+        <li><strong>Batería:</strong> 5020mAh.</li>`,
+      price: "$910.000",
+      buyLink: "https://wa.me/573244973675?text=Quiero%20comprar%20el%20Redmi%20Note%2014%20Pro"
+    },
+    11: {
+      title: "Redmi A3 64gb",
+      images: ["TiendaOnline/X5.png", "TiendaOnline/X55.png", "TiendaOnline/X555.png"],
+      description: "El <strong>Redmi A3</strong> es una opción económica con 64GB de almacenamiento, perfecta para quienes buscan funcionalidad básica.",
+      specs: `<li><strong>Pantalla:</strong> LCD 6.5".</li>
+        <li><strong>Procesador:</strong> Helio G36.</li>
+        <li><strong>RAM:</strong> 3GB.</li>
+        <li><strong>Almacenamiento:</strong> 64GB.</li>
+        <li><strong>Cámara:</strong> 8MP dual.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$399.000",
+      buyLink: "https://wa.me/573244973675?text=Hola,%20me%20interesa%20el%20Redmi%20A3%2064GB"
+    },
+    12: {
+      title: "redmi 14c 128 GB",
+      images: ["TiendaOnline/X6.png", "TiendaOnline/X66.png", "TiendaOnline/X666.png"],
+      description: "El <strong>Redmi 14C</strong> cuenta con 128GB de almacenamiento, ideal para estudiantes y usuarios que buscan rendimiento esencial.",
+      specs: `<li><strong>Pantalla:</strong> LCD 6.5".</li>
+        <li><strong>Procesador:</strong> Unisoc T606.</li>
+        <li><strong>RAM:</strong> 4GB.</li>
+        <li><strong>Almacenamiento:</strong> 128GB.</li>
+        <li><strong>Cámara:</strong> 50MP dual.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$399.000",
+      buyLink: "https://wa.me/573244973675?text=Estoy%20interesado%20en%20el%20Redmi%2014C%20128GB"
+    },
+    13: {
+      title: "Redmi 14c 256gb",
+      images: ["TiendaOnline/X7.png", "TiendaOnline/X77.png", "TiendaOnline/X777.png"],
+      description: "El <strong>Redmi 14c 256gb</strong> en su versión estándar de 256GB es ideal para quienes buscan equilibrio entre calidad y precio.",
+      specs: `<li><strong>Pantalla:</strong> LCD 6.5".</li>
+        <li><strong>Procesador:</strong> Unisoc T606.</li>
+        <li><strong>RAM:</strong> 6GB.</li>
+        <li><strong>Almacenamiento:</strong> 256GB.</li>
+        <li><strong>Cámara:</strong> 50MP dual.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$460.000",
+      buyLink: "https://wa.me/573244973675?text=Quiero%20el%20Redmi14c%20G85%20256GB"
+    },
+    14: {
+      title: "Zte A75 128 gb",
+      images: ["TiendaOnline/Z1.png", "TiendaOnline/Z11.png", "TiendaOnline/Z111.png"],
+      description: "Otro modelo del <strong>Zte A75 128 gb</strong> con mejoras menores y excelente rendimiento general. Opción ideal para usuarios promedio.",
+      specs: `<li><strong>Pantalla:</strong> LCD 6.5".</li>
+        <li><strong>Procesador:</strong> Unisoc T610.</li>
+        <li><strong>RAM:</strong> 4GB.</li>
+        <li><strong>Almacenamiento:</strong> 128GB.</li>
+        <li><strong>Cámara:</strong> 13MP dual.</li>
+        <li><strong>Batería:</strong> 5000mAh.</li>`,
+      price: "$340.000",
+      buyLink: "https://wa.me/573244973675?text=Interesado%20en%20ZteA75%20de%20128GB%20variante"
     }
   };
-}
-function finishTutorial(){
-  tutorialOverlay.style.display = "none";
-  tutorialTooltip.classList.remove("active");
-  document.querySelectorAll('.tutorial-highlight').forEach(e=>{
-    e.classList.remove('tutorial-highlight');
-    e.style.zIndex = "";
-  });
-  try { localStorage.setItem(tutorialKey,"1"); } catch(e){}
-}
-tutorialOverlay.onclick = finishTutorial;
-function startTutorialIfFirstTime(){
-  try {
-    if(!localStorage.getItem(tutorialKey)) {
-      tutorialStep = 0;
-      setTimeout(()=>showStep(0), 650);
-    }
-  } catch(e) {
-    tutorialStep = 0;
-    setTimeout(()=>showStep(0), 650);
-  }
-}
-window.onload = function() {
-  startTutorialIfFirstTime();
-};
-document.addEventListener("DOMContentLoaded", () => {
+
   setTimeout(() => {
-    document.querySelectorAll('.servicio-card').forEach(card => card.style.opacity = 1);
-    var img = document.querySelector('.instalacion-img');
-    if(img) img.style.opacity = 1;
-  }, 800);
-});
-document.querySelector('.search-bar').onsubmit = function(e) {
-  e.preventDefault();
-};
-document.querySelector('.contact-form').onsubmit = function(e) {
-  e.preventDefault();
-  alert("¡Mensaje enviado! Nos comunicaremos pronto.");
-  this.reset();
-};
+    const modal = document.getElementById('modal');
+    const closeBtn = modal.querySelector('.close-btn');
+    const slides = [
+      document.getElementById('modalImg1'),
+      document.getElementById('modalImg2'),
+      document.getElementById('modalImg3')
+    ];
+    let currentSlide = 0;
+    let slideInterval;
+
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalSpecs = document.getElementById('modalSpecs');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalBuyLink = document.getElementById('modalBuyLink');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if(i === index) slide.classList.add('active');
+      });
+    }
+    function openModal(event) {
+      const id = event.currentTarget.getAttribute('data-product');
+      const info = productsInfo[id];
+      if(!info) return;
+      slides[0].src = info.images[0];
+      slides[1].src = info.images[1];
+      slides[2].src = info.images[2];
+      slides[0].alt = info.title + " imagen 1";
+      slides[1].alt = info.title + " imagen 2";
+      slides[2].alt = info.title + " imagen 3";
+      modalTitle.textContent = info.title;
+      modalDescription.innerHTML = info.description;
+      modalSpecs.innerHTML = info.specs;
+      modalPrice.innerHTML = "<strong>Precio:</strong> " + info.price;
+      modalBuyLink.href = info.buyLink;
+      modal.classList.remove('fade-out');
+      modal.style.display = 'block';
+      currentSlide = 0;
+      showSlide(currentSlide);
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+    function closeModal() {
+      modal.classList.add('fade-out');
+      clearInterval(slideInterval);
+      setTimeout(() => {
+        modal.style.display = 'none';
+        modal.classList.remove('fade-out');
+      }, 400);
+    }
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+    document.querySelectorAll('.openModalBtn').forEach(btn => {
+      btn.addEventListener('click', openModal);
+      btn.addEventListener('touchstart', openModal);
+    });
+    closeBtn.addEventListener('click', closeModal);
+    closeBtn.addEventListener('touchstart', closeModal);
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      prevSlide(); clearInterval(slideInterval);
+    });
+    document.getElementById('prevBtn').addEventListener('touchstart', () => {
+      prevSlide(); clearInterval(slideInterval);
+    });
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      nextSlide(); clearInterval(slideInterval);
+    });
+    document.getElementById('nextBtn').addEventListener('touchstart', () => {
+      nextSlide(); clearInterval(slideInterval);
+    });
+  }, 0);
+
+  return;
+
+    }
+
+ content.innerHTML = `<h3>${servicio}</h3>${texto}`;
+}
+
+  function enviarWhatsAppTexto(texto) {
+    const url = `https://wa.me/573244973675?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank');
+  }
+
+  function enviarWhatsApp() {
+    const mensaje = document.getElementById('userRequest').value.trim();
+    if (!mensaje) {
+      alert("Por favor describe tu solicitud.");
+      return;
+    }
+    const url = `https://wa.me/573244973675?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  }
+      
+function mostrarDetalleCamaraHogar(modelo) {
+  let data = {
+    hogar1: {
+      nombre: "Cámara Mini Interior",
+      precio: "$120.000",
+      img: 'Camaras/CH1.png',
+      desc: `Compacta y discreta, ideal para espacios pequeños como habitaciones, estudios u oficinas en el hogar. 
+      Cuenta con visión nocturna para monitoreo las 24 horas, audio bidireccional para escuchar y hablar desde la app móvil, y grabación en alta definición. 
+      Su instalación es sencilla y permite acceso remoto desde cualquier lugar.
+      <br><br>
+      <b>Nota:</b> El precio corresponde solo al equipo. Acepto y entiendo que el valor de la instalación se cotiza por separado y puede variar según el tipo de cámara elegido y las características del lugar.`,
+    },
+    hogar2: {
+      nombre: "Cámara Panorámica 360°",
+      precio: "$180.000",
+      img: 'Camaras/CH2.png',
+      desc: `Cámara con visión panorámica de 360°, diseñada para cubrir todo el ambiente desde un solo punto, ideal para salas, comercios o espacios amplios. 
+      Incluye seguimiento inteligente de movimiento, grabación en alta definición, almacenamiento en la nube y audio bidireccional. 
+      Puedes controlar la orientación de la cámara desde tu celular.
+      <br><br>
+      <b>Nota:</b> El precio corresponde solo al equipo. Acepto y entiendo que el valor de la instalación se cotiza por separado y puede variar según el tipo de cámara elegido y las características del lugar.`,
+    },
+    hogar3: {
+      nombre: "Cámara Exterior WiFi",
+      precio: "$210.000",
+      img: 'Camaras/CH3.png',
+      desc: `Especial para exteriores, resistente al agua y a condiciones climáticas adversas. 
+      Ofrece visión nocturna avanzada, detección de movimiento y notificaciones en tiempo real. 
+      Conéctala a tu red WiFi y visualiza todo desde tu dispositivo móvil. Perfecta para entradas, patios o zonas externas del hogar.
+      <br><br>
+      <b>Nota:</b> El precio corresponde solo al equipo. Acepto y entiendo que el valor de la instalación se cotiza por separado y puede variar según el tipo de cámara elegido y las características del lugar.`,
+    }
+  }
+  let cam = data[modelo];
+  let urlWhatsapp = 'https://wa.me/573244973675?text=Quiero%20adquirir%20la%20'+encodeURIComponent(cam.nombre);
+  document.body.insertAdjacentHTML('beforeend', `
+    <div id="modalCamaraHogar" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0008;display:flex;justify-content:center;align-items:center;z-index:9999;">
+      <div style="background:#fff;border-radius:14px;padding:32px 36px;display:flex;gap:36px;align-items:center;max-width:95vw;box-shadow:0 4px 24px #0002;">
+        <img src='${cam.img}' alt='${cam.nombre}' style='width:320px;height:320px;object-fit:cover;border-radius:12px;box-shadow:0 2px 8px #0004;flex-shrink:0;'>
+        <div style="max-width:440px;min-width:320px;">
+          <h2 style="margin-top:0;margin-bottom:8px;font-size:2.1em;line-height:1.1;">${cam.nombre}</h2>
+          <div style="font-size:1.18em;line-height:1.6;margin-bottom:20px;color:#333;">
+            ${cam.desc}
+          </div>
+          <div style="font-weight:bold;font-size:1.3em;margin-bottom:18px;margin-top:8px;">${cam.precio}</div>
+          <div id="aceptarAvisoHogar" style="margin:18px 0 8px 0; background:#f7f7f7; border-radius:8px; padding:12px; display:flex; align-items:center; gap:10px;">
+            <input type="checkbox" id="chkAceptarHogar" style="width:22px;height:22px;accent-color:#111;cursor:pointer;" onchange="document.getElementById('btnAdquirirHogar').disabled=!this.checked;document.getElementById('nikeCheckHogar').style.opacity=this.checked?1:0;">
+            <label for="chkAceptarHogar" style="cursor:pointer;user-select:none;font-size:0.97em;">Acepto que el precio de la instalación puede variar según el tipo de cámara y las características del lugar.</label>
+            <span id="nikeCheckHogar" style="margin-left:6px;opacity:0;transition:opacity 0.2s;"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 12.5L9.2 17L18 6" stroke="#23d160" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <a id="btnAdquirirHogar" href="${urlWhatsapp}" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:1.13em;opacity:0.7;pointer-events:none;margin-top:8px;" disabled>Adquirir por WhatsApp</a>
+          <br><br>
+          <button onclick="document.getElementById('modalCamaraHogar').remove()" style="margin-top:10px;background:#eee;padding:8px 16px;border-radius:6px;border:none;cursor:pointer;font-size:1em;">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  `);
+
+  // Habilitar botón solo si acepta
+  setTimeout(()=>{
+    const chk = document.getElementById('chkAceptarHogar');
+    const btn = document.getElementById('btnAdquirirHogar');
+    if(chk && btn) {
+      chk.addEventListener('change', function() {
+        if(this.checked) {
+          btn.style.opacity = "1";
+          btn.style.pointerEvents = "auto";
+          btn.removeAttribute("disabled");
+        } else {
+          btn.style.opacity = "0.7";
+          btn.style.pointerEvents = "none";
+          btn.setAttribute("disabled", "true");
+        }
+      });
+    }
+  },100);
+}
+
+function mostrarDetalleCamaraEmpresa(modelo) {
+  let data = {
+    empresa1: {
+      nombre: "Cámara Domo HD",
+      precio: "$320.000",
+      img: 'Camaras/CE1.png',
+      desc: `Cámara profesional de alta definición apta para interiores y exteriores. 
+      Su diseño domo la hace resistente a actos vandálicos y permite vigilancia discreta de áreas comunes, pasillos o recepciones. 
+      Incorpora visión nocturna infrarroja y grabación HD continua.
+      <br><br>
+      <b>Nota:</b> El precio corresponde solo al equipo. Acepto y entiendo que el valor de la instalación se cotiza por separado y puede variar según el modelo de cámara elegido y las condiciones del sitio.`,
+    },
+    empresa2: {
+      nombre: "Cámara Bullet IR",
+      precio: "$390.000",
+      img: 'Camaras/CE2.png',
+      desc: `Especializada para vigilancia perimetral y zonas externas. 
+      Cuenta con visión infrarroja de largo alcance, carcasa metálica de alta resistencia y gran angular para monitorear amplias áreas con excelente calidad de imagen HD.
+      <br><br>
+      <b>Nota:</b> El precio corresponde solo al equipo. Acepto y entiendo que el valor de la instalación se cotiza por separado y puede variar según el modelo de cámara elegido y las condiciones del sitio.`,
+    },
+    empresa3: {
+      nombre: "Cámara PTZ Motorizada",
+      precio: "$750.000",
+      img: 'Camaras/CE3.png',
+      desc: `Cámara motorizada con control remoto de giro, inclinación y zoom óptico 18X. 
+      Ideal para cubrir grandes espacios, realizar patrullajes automáticos y seguimiento inteligente de personas u objetos. Grabación en alta definición y alertas automáticas por movimiento.
+      <br><br>
+      <b>Nota:</b> El precio corresponde solo al equipo. Acepto y entiendo que el valor de la instalación se cotiza por separado y puede variar según el modelo de cámara elegido y las condiciones del sitio.`,
+    }
+  }
+  let cam = data[modelo];
+  let urlWhatsapp = 'https://wa.me/573244973675?text=Quiero%20adquirir%20la%20'+encodeURIComponent(cam.nombre);
+  document.body.insertAdjacentHTML('beforeend', `
+    <div id="modalCamaraEmpresa" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0008;display:flex;justify-content:center;align-items:center;z-index:9999;">
+      <div style="background:#fff;border-radius:14px;padding:32px 36px;display:flex;gap:36px;align-items:center;max-width:95vw;box-shadow:0 4px 24px #0002;">
+        <img src='${cam.img}' alt='${cam.nombre}' style='width:320px;height:320px;object-fit:cover;border-radius:12px;box-shadow:0 2px 8px #0004;flex-shrink:0;'>
+        <div style="max-width:440px;min-width:320px;">
+          <h2 style="margin-top:0;margin-bottom:8px;font-size:2.1em;line-height:1.1;">${cam.nombre}</h2>
+          <div style="font-size:1.18em;line-height:1.6;margin-bottom:20px;color:#333;">
+            ${cam.desc}
+          </div>
+          <div style="font-weight:bold;font-size:1.3em;margin-bottom:18px;margin-top:8px;">${cam.precio}</div>
+          <div id="aceptarAvisoEmpresa" style="margin:18px 0 8px 0; background:#f7f7f7; border-radius:8px; padding:12px; display:flex; align-items:center; gap:10px;">
+            <input type="checkbox" id="chkAceptarEmpresa" style="width:22px;height:22px;accent-color:#111;cursor:pointer;" onchange="document.getElementById('btnAdquirirEmpresa').disabled=!this.checked;document.getElementById('nikeCheckEmpresa').style.opacity=this.checked?1:0;">
+            <label for="chkAceptarEmpresa" style="cursor:pointer;user-select:none;font-size:0.97em;">Acepto que el precio de la instalación puede variar según el modelo de cámara y las condiciones del sitio.</label>
+            <span id="nikeCheckEmpresa" style="margin-left:6px;opacity:0;transition:opacity 0.2s;"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 12.5L9.2 17L18 6" stroke="#23d160" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <a id="btnAdquirirEmpresa" href="${urlWhatsapp}" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:1.13em;opacity:0.7;pointer-events:none;margin-top:8px;" disabled>Adquirir por WhatsApp</a>
+          <br><br>
+          <button onclick="document.getElementById('modalCamaraEmpresa').remove()" style="margin-top:10px;background:#eee;padding:8px 16px;border-radius:6px;border:none;cursor:pointer;font-size:1em;">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  `);
+
+  // Habilitar botón solo si acepta
+  setTimeout(()=>{
+    const chk = document.getElementById('chkAceptarEmpresa');
+    const btn = document.getElementById('btnAdquirirEmpresa');
+    if(chk && btn) {
+      chk.addEventListener('change', function() {
+        if(this.checked) {
+          btn.style.opacity = "1";
+          btn.style.pointerEvents = "auto";
+          btn.removeAttribute("disabled");
+        } else {
+          btn.style.opacity = "0.7";
+          btn.style.pointerEvents = "none";
+          btn.setAttribute("disabled", "true");
+        }
+      });
+    }
+  },100);
+}
+      
 </script>
 </body>
 </html>
+
